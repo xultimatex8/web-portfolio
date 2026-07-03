@@ -27,7 +27,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body>
-        <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-surface font-sans text-foreground px-5">
+        <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-surface font-sans text-foreground px-5 z-50">
           <h1 className="text-3xl font-bold tracking-tight">
             Alejandro González Macías
           </h1>
@@ -37,6 +37,7 @@ export default function RootLayout({
             ))}
           </nav>
         </div>
+        
         <main className="mt-20">{children}</main>
       </body>
     </html>
