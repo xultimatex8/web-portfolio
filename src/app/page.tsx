@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import { Timeline } from "./components/Timeline";
 
 export default function Home() {
   const shouldReduceMotion = useReducedMotion();
@@ -26,6 +27,17 @@ export default function Home() {
       },
     },
   };
+
+  const EDUCATION_ITEMS = [
+    {
+      title: "Francisco Pacheco High School",
+      subtitle: "Science track — 2020–2022",
+    },
+    {
+      title: "University of Seville",
+      subtitle: "Bachelor's in Software Engineering — 2022–2026",
+    },
+  ];
 
   return (
     <div className="flex flex-col flex-1 items-center justify-start bg-background font-sans">
@@ -73,17 +85,19 @@ export default function Home() {
 
         <motion.div
           variants={fadeUp}
-          className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-6 text-start"
+          className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-12 text-start"
         >
-          <h1 className="text-7xl font-bold tracking-tight text-foreground">
-            About <span className="text-accent-primary">Me</span>
-          </h1>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h1 className="text-7xl font-bold tracking-tight text-foreground">
+              About <span className="text-accent-primary">Me</span>
+            </h1>
 
-          <div className="-mt-2 text-xl flex flex-wrap gap-3">
-            <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
-            <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
-            <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
-            <span className="rounded-full bg-card px-4 py-2">💼 Open to Work</span>
+            <div className="text-xl flex flex-wrap gap-3">
+              <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
+              <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
+              <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
+              <span className="rounded-full bg-card px-4 py-2">💼 Open to Work</span>
+            </div>
           </div>
 
           <div className="flex flex-col items-start justify-center gap-4 text-2xl text-foreground">
@@ -108,6 +122,17 @@ export default function Home() {
           </div>
         </motion.div>
       </motion.section>
+
+      <section
+        id="education"
+        className="relative w-full py-30 bg-surface flex items-start justify-start gap-40 px-15"
+      >
+        <h1 className="text-7xl font-bold tracking-tight text-foreground sticky top-30">
+          Education
+        </h1>
+
+        <Timeline items={EDUCATION_ITEMS} />
+      </section>
     </div>
   );
 }
