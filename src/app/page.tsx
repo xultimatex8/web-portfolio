@@ -1,65 +1,113 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 
 export default function Home() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
+    },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.6,
+        ease: [0.8, 1, 0.6, 1] as const,
+      },
+    },
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="flex flex-col flex-1 items-center justify-start bg-background font-sans">
+      <motion.section
+        id="home"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="relative py-30 flex flex-col items-center justify-between gap-40 px-5"
+      >
+        <div className="flex items-center justify-start gap-15">
+          <motion.div variants={fadeUp}>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/images/photo.jpeg"
+              alt="Alejandro González Macías"
+              width={700}
+              height={550}
+              priority
+              className="rounded-full object-cover border-6 border-surface"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </motion.div>
+
+          <div className="relative max-w-350 flex flex-col items-start justify-center gap-8 text-start">
+            <div className="flex flex-col items-start justify-center gap-1">
+              <motion.h1
+                variants={fadeUp}
+                className="text-9xl font-bold tracking-tight text-foreground"
+              >
+                Alejandro González Macías
+              </motion.h1>
+
+              <motion.h2
+                variants={fadeUp}
+                className="text-7xl font-medium tracking-tight text-foreground-secondary"
+              >
+                Final-Year{" "}
+                <span className="text-accent-primary">
+                  Software Engineering
+                </span>{" "}
+                Student
+              </motion.h2>
+            </div>
+          </div>
         </div>
-      </main>
+
+        <motion.div
+          variants={fadeUp}
+          className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-6 text-start"
+        >
+          <h1 className="text-7xl font-bold tracking-tight text-foreground">
+            About <span className="text-accent-primary">Me</span>
+          </h1>
+
+          <div className="-mt-2 text-xl flex flex-wrap gap-3">
+            <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
+            <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
+            <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
+            <span className="rounded-full bg-card px-4 py-2">💼 Open to Work</span>
+          </div>
+
+          <div className="flex flex-col items-start justify-center gap-4 text-2xl text-foreground">
+            <p>
+              Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
+              Engineering student at the University of Seville (Bachelor&apos;s Thesis pending
+              defense), based in Sanlúcar de Barrameda, Spain. I love turning ideas into
+              functional, maintainable, and scalable software, and I&apos;m always exploring new
+              tools and technologies to keep growing as a developer.
+            </p>
+            <p>
+              My studies gave me a solid foundation in software engineering, architecture, and
+              problem-solving, both independently and in team projects using version control and
+              agile practices. I&apos;m curious, adapt quickly to new environments, and I&apos;m
+              proficient in English for technical and international work. I&apos;m currently
+              looking for opportunities to keep growing and contribute to meaningful projects.
+            </p>
+            <p>
+              Outside of code, I enjoy spending time with friends, working on personal projects,
+              going to the gym, watching films, and playing video games.
+            </p>
+          </div>
+        </motion.div>
+      </motion.section>
     </div>
   );
 }
