@@ -168,22 +168,44 @@ export default function Home() {
         {/* Fill this section with actual projects */}
 
         <div className="flex-1 grid grid-cols-3 items-start justify-center gap-10">
-          <button className="relative w-163 h-auto p-5 rounded-2xl bg-card text-foreground flex flex-col items-center justify-start gap-4">
-            <Image
-              src="/images/placeholder.svg"
-              alt="Lorem ipsum"
-              width={660}
-              height={350}
-              className="rounded-2xl object-cover border-6 border-surface"
-            />
-            <div className="flex flex-col self-start items-start justify-center gap-2 text-start">
+          <div className="relative w-163 h-auto p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
+            <button 
+              className="w-full cursor-pointer rounded-2xl border-6 border-surface" 
+              title="Lorem ipsum"
+              onClick={() => console.log("Lorem ipsum")}>
+              <Image
+                src="/images/placeholder.svg"
+                alt="Lorem ipsum"
+                width={660}
+                height={350}
+                className="rounded-2xl object-cover"
+              />
+            </button>
+
+            <div className="flex flex-col items-start justify-center gap-2 text-start">
               <h2 className="text-3xl font-bold tracking-tight">Lorem ipsum</h2>
               <p className="text-xl text-foreground-secondary">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt vel sapien in rhoncus. Nulla viverra id urna sed consectetur. Aenean in purus accumsan, rutrum metus non, vehicula neque. 
                 Sed malesuada semper viverra. Quisque porta nunc ac tempor ultricies. Duis dapibus augue at viverra consequat.
               </p>
             </div>
-          </button>
+
+            <div className="flex flex-col items-start justify-start gap-2 font-semibold">
+              <div className="flex items-center justify-start gap-2">
+                <p className="px-3 py-1 bg-done rounded-xl">
+                  Lore
+                </p>
+                <p className="px-3 py-1 bg-category rounded-xl">
+                  Lore
+                </p>
+              </div>
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <p className="px-3 py-1 bg-accent-secondary rounded-xl">
+                  Lore
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
