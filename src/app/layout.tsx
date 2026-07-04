@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 const NAV_ITEMS = [
   { href: "home", label: "Home" },
   { href: "education", label: "Education" },
+  { href: "experience", label: "Experience" },
 ];
 
 export default function RootLayout({
