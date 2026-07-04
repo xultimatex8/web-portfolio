@@ -156,6 +156,36 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <section
+        id="projects"
+        className="relative w-full py-30 bg-surface flex items-start justify-start gap-40 px-15"
+      >
+        <h1 className="text-7xl font-bold tracking-tight text-foreground sticky top-30">
+          Projects
+        </h1>
+
+        {/* Fill this section with actual projects */}
+
+        <div className="flex-1 grid grid-cols-3 items-start justify-center gap-10">
+          <button className="relative w-163 h-auto p-5 rounded-2xl bg-card text-foreground flex flex-col items-center justify-start gap-4">
+            <Image
+              src="/images/placeholder.svg"
+              alt="Lorem ipsum"
+              width={660}
+              height={350}
+              className="rounded-2xl object-cover border-6 border-surface"
+            />
+            <div className="flex flex-col self-start items-start justify-center gap-2 text-start">
+              <h2 className="text-3xl font-bold tracking-tight">Lorem ipsum</h2>
+              <p className="text-xl text-foreground-secondary">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt vel sapien in rhoncus. Nulla viverra id urna sed consectetur. Aenean in purus accumsan, rutrum metus non, vehicula neque. 
+                Sed malesuada semper viverra. Quisque porta nunc ac tempor ultricies. Duis dapibus augue at viverra consequat.
+              </p>
+            </div>
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

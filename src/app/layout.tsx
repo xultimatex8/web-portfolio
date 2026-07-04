@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { href: "home", label: "Home" },
   { href: "education", label: "Education" },
   { href: "experience", label: "Experience" },
+  { href: "projects", label: "Projects" },
 ];
 
 export default function RootLayout({
