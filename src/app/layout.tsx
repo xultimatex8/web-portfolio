@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body>
-        <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-surface font-sans text-foreground px-5 z-50">
+        <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-nav text-nav-foreground font-sans px-5 z-50">
           <h1 className="text-3xl font-bold tracking-tight">
             Alejandro González Macías
           </h1>
@@ -43,6 +43,18 @@ export default function RootLayout({
         </div>
         
         <main className="mt-20">{children}</main>
+
+        <footer className="w-full py-10 px-15 flex items-center justify-between bg-nav text-nav-foreground text-lg">
+          <p>© {new Date().getFullYear()} Alejandro González Macías</p>
+          <a
+            href="https://github.com/Ultimate88x/web-portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent-primary transition-colors"
+          >
+            Built with Next.js — view source on GitHub
+          </a>
+        </footer>
       </body>
     </html>
   );
