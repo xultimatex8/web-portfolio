@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Project } from "@/types/project";
 import { ProjectCard } from "./ProjectCard";
 import { TagFilter } from "./TagFilter";
 import { PROJECTS } from "@/data/projects";
@@ -27,10 +26,6 @@ export function ProjectsSection() {
     );
   };
 
-  const openProject = (project: Project) => {
-    console.log("Opening project:", project.title);
-  };
-
   return (
     <section
       id="projects"
@@ -46,7 +41,7 @@ export function ProjectsSection() {
       <div className="flex-1 flex flex-col gap-10">
         <div className="grid grid-cols-3 items-start justify-center gap-10">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onOpen={openProject} />
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
