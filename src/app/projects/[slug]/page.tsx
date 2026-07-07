@@ -13,6 +13,28 @@ export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.id }));
 }
 
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+
+const extractHeadings = (content: string) =>
+  content
+    .split("\n")
+    .filter((line) => /^#{1,3}\s/.test(line))
+    .map((line) => {
+      const level = line.match(/^#+/)![0].length;
+      const text = line.replace(/^#{1,3}\s/, "");
+
+      return {
+        level,
+        text,
+        id: slugify(text),
+      };
+    });
+
 export default async function ProjectPage({
   params,
 }: {
@@ -29,6 +51,36 @@ export default async function ProjectPage({
   const filePath = path.join(process.cwd(), "src/app/content/projects", `${slug}.mdx`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { content, data: frontmatter } = matter(fileContent);
+  const headings = extractHeadings(content);
+
+  const components = {
+    h1: ({ children }: { children: string }) => (
+      <h1
+        id={slugify(children)}
+        className="mb-2 text-5xl font-bold tracking-tight"
+      >
+        {children}
+      </h1>
+    ),
+
+    h2: ({ children }: { children: string }) => (
+      <h2
+        id={slugify(children)}
+        className="mb-3 text-4xl font-semibold tracking-tight"
+      >
+        {children}
+      </h2>
+    ),
+
+    h3: ({ children }: { children: string }) => (
+      <h3
+        id={slugify(children)}
+        className="mb-3 text-3xl font-semibold"
+      >
+        {children}
+      </h3>
+    ),
+  };
 
   return (
     <article className="relative w-full px-15 py-8 flex flex-col items-start justify-start gap-10">
@@ -119,22 +171,51 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <div
-        className="
-          prose
-          prose-lg
-          max-w-none
+      <div className="w-full flex items-start justify-start gap-12">
+        <aside className="sticky top-28 w-72 shrink-0">
+          <div className="rounded-2xl bg-surface p-6">
+            <h2 className="mb-5 text-2xl font-semibold tracking-tight">
+              On this page
+            </h2>
 
-          prose-headings:text-foreground
-          prose-p:text-foreground-secondary
-          prose-strong:text-foreground
-          prose-a:text-accent-primary
-          prose-li:text-foreground-secondary
-          prose-blockquote:text-foreground-secondary
-          prose-code:text-accent-primary
-        "
-      >
-        <MDXRemote source={content} />
+            <nav className="flex flex-col gap-3">
+              {headings.map((heading) => (
+                <a
+                  key={heading.id}
+                  href={`#${heading.id}`}
+                  className={`transition-colors hover:text-accent-primary ${
+                    heading.level === 1
+                      ? "font-semibold text-foreground"
+                      : heading.level === 2
+                      ? "pl-4 text-foreground-secondary"
+                      : "pl-8 text-sm text-foreground-secondary"
+                  }`}
+                >
+                  {heading.text}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        <div
+          className="
+            prose
+            prose-lg
+            max-w-none
+            flex-1
+
+            prose-headings:text-foreground
+            prose-p:text-foreground-secondary
+            prose-strong:text-foreground
+            prose-a:text-accent-primary
+            prose-li:text-foreground-secondary
+            prose-blockquote:text-foreground-secondary
+            prose-code:text-accent-primary
+          "
+        >
+          <MDXRemote source={content} components={components} />
+        </div>
       </div>
     </article>
   );
