@@ -4,6 +4,8 @@
   --background: #FBFAF7;
   --surface: #DEDBD0;
   --card: #F0EEE7;
+  --nav: #C4C0B2;
+  --nav-foreground: #1B1A17;
   --accent-primary: #D6473F;
   --accent-secondary: #378ADD;
   --foreground: #1B1A17;
@@ -17,6 +19,8 @@
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-card: var(--card);
+  --color-nav: var(--nav);
+  --color-nav-foreground: var(--nav-foreground);
   --color-accent-primary: var(--accent-primary);
   --color-accent-secondary: var(--accent-secondary);
   --color-foreground: var(--foreground);
@@ -33,6 +37,8 @@
     --background: #0A0E14;
     --surface: #1D2733;
     --card: #131A24;
+    --nav: #263241;
+    --nav-foreground: #F1EFE8;
     --accent-primary: #C7433C;
     --accent-secondary: #3E7CB1;
     --foreground: #F1EFE8;
