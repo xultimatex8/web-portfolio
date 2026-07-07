@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { Timeline } from "./components/Timeline";
 import { ProjectsSection } from "./components/ProjectsSection";
+import { ContactSection } from "./components/ContactSection";
 
 export default function Home() {
   const shouldReduceMotion = useReducedMotion();
@@ -159,6 +160,8 @@ export default function Home() {
       </section>
 
       <ProjectsSection />
+
+      <ContactSection />
     </div>
   );
 }
