@@ -4,9 +4,10 @@ import { useMemo, useState } from "react";
 import { ProjectCard } from "./ProjectCard";
 import { TagFilter } from "./TagFilter";
 import { PROJECTS } from "@/data/projects";
+import { Technology } from "@/types/project";
 
 export function ProjectsSection() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Technology[]>([]);
 
   const allTags = useMemo(
     () => [...new Set(PROJECTS.flatMap((p) => p.technologies))],
@@ -20,7 +21,7 @@ export function ProjectsSection() {
     );
   }, [selectedTags]);
 
-  const toggleTag = (tag: string) => {
+  const toggleTag = (tag: Technology) => {
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );

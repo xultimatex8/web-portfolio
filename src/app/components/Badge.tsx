@@ -1,11 +1,12 @@
 interface BadgeProps {
   label: string;
   backgroundColor: string;
+  textSize?: string;
 }
 
-export function Badge({ label, backgroundColor }: BadgeProps) {
+export function Badge({ label, backgroundColor, textSize = "text-sm" }: BadgeProps) {
   return (
-    <span className={`px-3 py-1 rounded-xl text-sm font-semibold text-foreground ${backgroundColor}`}>
+    <span className={`px-3 py-1 rounded-xl font-semibold text-foreground ${backgroundColor} ${textSize}`}>
       {label}
     </span>
   );

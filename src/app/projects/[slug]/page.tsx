@@ -1,9 +1,13 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
+import { TECHNOLOGY_ICONS } from "@/types/project";
+import { CATEGORY_STYLES, STATUS_STYLES } from "@/helpers/projectStyles";
+import { Badge } from "@/components/Badge";
 
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.id }));
@@ -12,41 +16,124 @@ export function generateStaticParams() {
 export default async function ProjectPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const project = PROJECTS.find((p) => p.id === slug);
 
   if (!project) notFound();
 
+  const status = STATUS_STYLES[project.status];
+  const category = CATEGORY_STYLES[project.category];
+
   const filePath = path.join(process.cwd(), "src/app/content/projects", `${slug}.mdx`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { content, data: frontmatter } = matter(fileContent);
 
   return (
-    <article className="max-w-4xl mx-auto px-5 py-20">
-      <h1 className="text-6xl font-bold tracking-tight text-foreground mb-4">
-        {project.title}
-      </h1>
-      <p className="text-xl text-foreground-secondary mb-8">
-        {project.description}
-      </p>
+    <article className="relative w-full px-15 py-8 flex flex-col items-start justify-start gap-10">
+      <div className="w-full flex flex-col items-start justify-start gap-5">
+        <div className="w-full flex items-start justify-between gap-8">
+          <div className="flex flex-col items-start gap-3">
+            <h1 className="text-7xl font-bold tracking-tight text-foreground">
+              {project.title}
+            </h1>
 
-      <div className="flex gap-3 mb-10">
-        {project.technologies.map((tech) => (
-          <span key={tech} className="px-3 py-1 rounded-full bg-accent-secondary/15 text-accent-secondary text-sm">
-            {tech}
-          </span>
-        ))}
+            <div className="flex items-center gap-2">
+              <Badge
+                label={status.label}
+                backgroundColor={status.backgroundColor}
+                textSize="text-lg"
+              />
+              <Badge
+                label={category.label}
+                backgroundColor={category.backgroundColor}
+                textSize="text-lg"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 text-xl">
+            {frontmatter.repoUrl && (
+              <a
+                href={frontmatter.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
+              >
+                View code
+              </a>
+            )}
+
+            {frontmatter.demoUrl && (
+              <a
+                href={frontmatter.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
+              >
+                View demo
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div className="w-full flex items-start justify-start gap-8">
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={1500}
+            height={350}
+            className="w-3/5 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
+          />
+
+          <div className="flex-1 flex flex-col items-start justify-start gap-10">
+            <div className="flex flex-col items-start gap-3">
+              <h1 className="text-5xl font-semibold tracking-tight text-foreground">
+                Project <span className="text-accent-primary">Summary</span>
+              </h1>
+              <p className="text-2xl text-foreground-secondary">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="w-full p-10 flex flex-col items-start justify-start gap-8 bg-surface rounded-2xl">
+              <h1 className="text-5xl font-semibold tracking-tight text-foreground">
+                Tech <span className="text-accent-primary">Stack</span>
+              </h1>
+              <div className="grid grid-cols-4 gap-4 w-full">
+                {project.technologies.map((tech) => (
+                  <div
+                    key={tech}
+                    className="flex flex-col items-center justify-center gap-3 p-4 pt-6 rounded-xl bg-card"
+                  >
+                    <i className={`${TECHNOLOGY_ICONS[tech]} text-8xl text-foreground`} />
+                    <span className="text-center text-[23px] font-mono text-foreground-secondary">
+                      {tech}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {frontmatter.repoUrl && (
-        <a href={frontmatter.repoUrl} className="text-accent-primary underline">
-          View code
-        </a>
-      )}
+      <div
+        className="
+          prose
+          prose-lg
+          max-w-none
 
-      <div className="prose prose-lg text-foreground mt-10">
+          prose-headings:text-foreground
+          prose-p:text-foreground-secondary
+          prose-strong:text-foreground
+          prose-a:text-accent-primary
+          prose-li:text-foreground-secondary
+          prose-blockquote:text-foreground-secondary
+          prose-code:text-accent-primary
+        "
+      >
         <MDXRemote source={content} />
       </div>
     </article>
