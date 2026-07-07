@@ -1,9 +1,10 @@
+import { Technology } from "@/types/project";
 import { Check } from "lucide-react";
 
 interface TagFilterProps {
-  tags: string[];
-  selected: string[];
-  onToggle: (tag: string) => void;
+  tags: Technology[];
+  selected: Technology[];
+  onToggle: (tag: Technology) => void;
 }
 
 export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {

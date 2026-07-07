@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body>
+      <body className="min-h-screen flex flex-col">
         <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-nav text-nav-foreground font-sans px-5 z-50">
           <h1 className="text-3xl font-bold tracking-tight">
             Alejandro González Macías
@@ -42,7 +42,7 @@ export default function RootLayout({
           </nav>
         </div>
         
-        <main className="mt-20">{children}</main>
+        <main className="mt-20 flex-1">{children}</main>
 
         <footer className="w-full py-10 px-15 flex items-center justify-between bg-nav text-nav-foreground text-lg">
           <p>© {new Date().getFullYear()} Alejandro González Macías</p>

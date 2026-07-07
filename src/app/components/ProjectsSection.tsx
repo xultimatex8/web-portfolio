@@ -1,13 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Project } from "@/types/project";
 import { ProjectCard } from "./ProjectCard";
 import { TagFilter } from "./TagFilter";
 import { PROJECTS } from "@/data/projects";
+import { Technology } from "@/types/project";
 
 export function ProjectsSection() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Technology[]>([]);
 
   const allTags = useMemo(
     () => [...new Set(PROJECTS.flatMap((p) => p.technologies))],
@@ -21,14 +21,10 @@ export function ProjectsSection() {
     );
   }, [selectedTags]);
 
-  const toggleTag = (tag: string) => {
+  const toggleTag = (tag: Technology) => {
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
-  };
-
-  const openProject = (project: Project) => {
-    console.log("Opening project:", project.title);
   };
 
   return (
@@ -46,7 +42,7 @@ export function ProjectsSection() {
       <div className="flex-1 flex flex-col gap-10">
         <div className="grid grid-cols-3 items-start justify-center gap-10">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onOpen={openProject} />
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>

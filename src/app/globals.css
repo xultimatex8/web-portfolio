@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "devicon/devicon.min.css";
 
 :root {
   --background: #FBFAF7;
