@@ -28,6 +28,6 @@ import { Project } from "@/types/project";
       image: "/images/projects/zeolite/hero_zeolite.jpeg",
       status: "done",
       category: "academic",
-      technologies: ["Python", "FastAPI", "Neo4j", "React", "TypeScript"],
+      technologies: ["Python", "FastAPI", "Neo4j", "TypeScript", "React"],
     },
   ];
