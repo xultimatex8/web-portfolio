@@ -10,6 +10,10 @@ export const TECHNOLOGY_ICONS = {
   "NestJS": "devicon-nestjs-plain colored",
   "Socket.IO": "devicon-socketio-plain colored",
   "Tailwind CSS": "devicon-tailwindcss-plain colored",
+  "Jupyter": "devicon-jupyter-plain colored",
+  "Whoosh": "devicon-whoosh-plain colored",
+  "NLTK": "devicon-nltk-plain colored",
+  "Scikit-learn": "devicon-scikitlearn-plain colored"
 } as const;
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;

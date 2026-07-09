@@ -60,4 +60,18 @@ import { Project } from "@/types/project";
       category: "academic",
       technologies: ["Python", "FastAPI", "Neo4j", "TypeScript", "React"],
     },
+    {
+      id: "movies-ir",
+      title: "Movies Information Retrieval",
+      description:
+        `
+          Collaborative information retrieval project featuring a Jupyter application for searching and
+          analyzing movie reviews. It implements both Boolean retrieval and TF-IDF-based free-text retrieval
+          models, allowing users to compare their behavior and performance.
+        `,
+      image: "/images/projects/movies-ir/hero_movies-ir.jpeg",
+      status: "done",
+      category: "academic",
+      technologies: ["Python", "Jupyter", "Whoosh", "NLTK", "Scikit-learn"],
+    },
   ];
