@@ -1,7 +1,9 @@
 export const TECHNOLOGY_ICONS = {
-  TypeScript: "devicon-typescript-plain colored",
-  "Next.js": "devicon-nextjs-plain colored",
-  "Tailwind CSS": "devicon-tailwindcss-original colored",
+  "Python": "devicon-python-plain colored",
+  "FastAPI": "devicon-fastapi-plain colored",
+  "Neo4j": "devicon-neo4j-plain colored",
+  "React": "devicon-react-original colored",
+  "TypeScript": "devicon-typescript-plain colored",
 } as const;
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;
