@@ -10,7 +10,7 @@ interface TagFilterProps {
 export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {
   return (
     <div className="flex flex-col items-start gap-3">
-      {tags.map((tag) => {
+      {tags.sort((a, b) => a.localeCompare(b)).map((tag) => {
         const isActive = selected.includes(tag);
         return (
           <button

@@ -16,6 +16,21 @@ import { Project } from "@/types/project";
 
   export const PROJECTS: Project[] = [
     {
+      id: "ultimatewatch",
+      title: "UltimateWatch",
+      description:
+        `
+          Web application that unifies movie and TV show catalogs from multiple streaming platforms 
+          into a single search experience, while enabling users to coordinate real-time viewing sessions. 
+          Its social core lets a host synchronize a timer, manage an interactive playlist, and 
+          chat with friends, all within virtual rooms using WebSockets.
+        `,
+      image: "/images/projects/ultimatewatch/hero_ultimatewatch.jpeg",
+      status: "done",
+      category: "academic",
+      technologies: ["TypeScript", "NestJS", "Socket.IO", "PostgreSQL", "React", "Tailwind CSS"],
+    },
+    {
       id: "keakit",
       title: "KeaKit",
       description:

@@ -7,6 +7,9 @@ export const TECHNOLOGY_ICONS = {
   "Java": "devicon-java-plain colored",
   "Spring Boot": "devicon-spring-plain colored",
   "PostgreSQL": "devicon-postgresql-plain colored",
+  "NestJS": "devicon-nestjs-plain colored",
+  "Socket.IO": "devicon-socketio-plain colored",
+  "Tailwind CSS": "devicon-tailwindcss-plain colored",
 } as const;
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;
