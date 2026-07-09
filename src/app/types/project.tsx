@@ -4,6 +4,9 @@ export const TECHNOLOGY_ICONS = {
   "Neo4j": "devicon-neo4j-plain colored",
   "React": "devicon-react-original colored",
   "TypeScript": "devicon-typescript-plain colored",
+  "Java": "devicon-java-plain colored",
+  "Spring Boot": "devicon-spring-plain colored",
+  "PostgreSQL": "devicon-postgresql-plain colored",
 } as const;
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;

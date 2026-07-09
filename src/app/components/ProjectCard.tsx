@@ -13,7 +13,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const category = CATEGORY_STYLES[project.category];
 
   return (
-    <div className="relative w-163 h-auto p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
+    <div className="relative w-163 h-170 p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
       <Link
         href={`/projects/${project.id}`}
         className="w-full cursor-pointer rounded-2xl border-6 border-surface block"
@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           alt={project.title}
           width={660}
           height={350}
-          className="w-full h-auto rounded-2xl object-cover"
+          className="w-full h-80 rounded-2xl object-cover"
         />
       </Link>
 
@@ -33,7 +33,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-xl text-foreground-secondary">{project.description}</p>
       </div>
 
-      <div className="flex flex-col items-start justify-start gap-2">
+      <div className="mt-auto flex flex-col items-start justify-start gap-2">
         <div className="flex items-center justify-start gap-2">
           <Badge label={status.label} backgroundColor={status.backgroundColor} />
           <Badge label={category.label} backgroundColor={category.backgroundColor} />
