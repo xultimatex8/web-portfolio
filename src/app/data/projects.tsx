@@ -16,6 +16,21 @@ import { Project } from "@/types/project";
 
   export const PROJECTS: Project[] = [
     {
+      id: "keakit",
+      title: "KeaKit",
+      description:
+        `
+          Digital platform that connects people to rent items and hire services in a single place, 
+          allowing users to build personalized "kits" according to their needs. Its two-sided approach 
+          makes it easy for users to quickly find what they need, while enabling others to earn money 
+          from unused items, all through a centralized and flexible process.
+        `,
+      image: "/images/projects/keakit/hero_keakit.jpeg",
+      status: "done",
+      category: "academic",
+      technologies: ["Java", "Spring Boot", "PostgreSQL", "TypeScript", "React"],
+    },
+    {
       id: "zeolite",
       title: "Zeolite",
       description:
