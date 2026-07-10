@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function DesktopOnlyNotice() {
   return (
-    <div className="md:hidden fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-background px-8 text-center">
+    <div className="lg:hidden fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-background px-8 text-center">
       <Image
         src="/images/photo.jpeg"
         alt="Alejandro González Macías"
