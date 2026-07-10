@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /cv-alejandro-gonzalez.pdf
