@@ -32,6 +32,7 @@
   --color-category: var(--category);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --breakpoint-qhd: 1000px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,6 +50,11 @@
     --progress: #C9902E;
     --category: #9B8BC0;
   }
+}
+
+@theme {
+  --breakpoint-fhd: 120rem;
+  --breakpoint-qhd: 160rem;
 }
 
 body {
