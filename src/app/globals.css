@@ -53,8 +53,8 @@
 }
 
 @theme {
-  --breakpoint-fhd: 120rem;
-  --breakpoint-qhd: 160rem;
+  --breakpoint-fhd: 118rem;
+  --breakpoint-qhd: 158rem;
 }
 
 body {
