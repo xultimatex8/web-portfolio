@@ -26,14 +26,14 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full py-20 xl:py-30 flex items-start justify-start gap-40 px-15"
+      className="relative w-full py-20 fhd:py-30 flex items-start justify-start gap-40 px-15"
     >
-      <h1 className="w-27 xl:w-xs text-4xl xl:text-6xl font-bold tracking-tight text-foreground sticky top-30">
+      <h1 className="w-27 fhd:w-xs text-4xl fhd:text-6xl font-bold tracking-tight text-foreground sticky top-30">
         Contact
       </h1>
 
       <div className="flex-1 flex flex-col gap-6">
-        <p className="text-xl xl:text-2xl text-foreground-secondary max-w-2xl">
+        <p className="text-xl fhd:text-2xl text-foreground-secondary max-w-2xl">
           Feel free to reach out — I&apos;m open to new opportunities and always happy to
           connect.
         </p>
@@ -51,8 +51,8 @@ export function ContactSection() {
                 <Icon className="w-5 h-5 text-foreground group-hover:text-background transition-colors" />
               </span>
               <div className="flex flex-col">
-                <span className="text-xs xl:text-sm text-foreground-secondary">{label}</span>
-                <span className="text-base xl:text-lg font-medium text-foreground group-hover:text-accent-primary transition-colors">
+                <span className="text-xs fhd:text-sm text-foreground-secondary">{label}</span>
+                <span className="text-base fhd:text-lg font-medium text-foreground group-hover:text-accent-primary transition-colors">
                   {value}
                 </span>
               </div>
@@ -64,7 +64,7 @@ export function ContactSection() {
           href="/CV_AlejandroGonzalez_Software.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 mt-4 px-4 xl:px-6 py-3 w-fit rounded-full bg-accent-primary text-sm xl:text-base text-background font-semibold hover:opacity-90 transition-opacity"
+          className="flex items-center gap-3 mt-4 px-4 fhd:px-6 py-3 w-fit rounded-full bg-accent-primary text-sm fhd:text-base text-background font-semibold hover:opacity-90 transition-opacity"
         >
           <FileDown className="w-5 h-5" />
           Open CV

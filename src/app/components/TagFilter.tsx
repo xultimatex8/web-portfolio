@@ -26,7 +26,7 @@ export function TagFilter({
   }
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-0 xl:gap-x-6 gap-y-2.5">
+    <div className="grid grid-cols-1 fhd:grid-cols-2 gap-x-0 fhd:gap-x-6 gap-y-2.5">
       {orderedTags.map((tag) => {
         const isActive = selected.includes(tag);
 
