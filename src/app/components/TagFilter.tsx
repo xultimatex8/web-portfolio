@@ -26,7 +26,7 @@ export function TagFilter({
   }
 
   return (
-    <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-0 xl:gap-x-6 gap-y-2.5">
       {orderedTags.map((tag) => {
         const isActive = selected.includes(tag);
 
@@ -52,7 +52,7 @@ export function TagFilter({
             </span>
 
             <span
-              className={`text-m font-medium transition-colors ${
+              className={`text-base font-medium transition-colors ${
                 isActive
                   ? "text-foreground"
                   : "text-foreground-secondary group-hover:text-foreground/60"

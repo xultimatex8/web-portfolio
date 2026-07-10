@@ -30,17 +30,17 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full py-30 bg-surface flex items-start justify-start gap-20 px-15"
+      className="relative w-full py-20 xl:py-30 bg-surface flex items-start justify-start gap-20 px-15"
     >
-      <div className="w-xs flex flex-col items-start gap-8 sticky top-30">
-        <h1 className="text-6xl font-bold tracking-tight text-foreground">
+      <div className="w-47 xl:w-xs flex flex-col items-start gap-8 sticky top-30">
+        <h1 className="text-4xl xl:text-4xl font-bold tracking-tight text-foreground">
           Projects
         </h1>
         <TagFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />
       </div>
 
       <div className="flex-1 flex flex-col gap-10">
-        <div className="grid grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-13 qhd:gap-15">
+        <div className="grid grid-cols-2 xl:grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-14 xl:gap-13 qhd:gap-15">
           {filteredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

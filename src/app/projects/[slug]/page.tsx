@@ -58,7 +58,7 @@ export default async function ProjectPage({
     h1: ({ children }: { children: string }) => (
       <h1
         id={slugify(children)}
-        className="mb-2 text-5xl font-bold tracking-tight"
+        className="mb-2 text-3xl xl:text-5xl font-bold tracking-tight"
       >
         {children}
       </h1>
@@ -67,7 +67,7 @@ export default async function ProjectPage({
     h2: ({ children }: { children: string }) => (
       <h2
         id={slugify(children)}
-        className="mb-3 text-4xl font-semibold tracking-tight"
+        className="mb-3 text-2xl xl:text-4xl font-semibold tracking-tight"
       >
         {children}
       </h2>
@@ -76,7 +76,7 @@ export default async function ProjectPage({
     h3: ({ children }: { children: string }) => (
       <h3
         id={slugify(children)}
-        className="mb-3 text-3xl font-semibold"
+        className="mb-3 text-xl xl:text-3xl font-semibold"
       >
         {children}
       </h3>
@@ -89,7 +89,7 @@ export default async function ProjectPage({
       <div className="w-full flex flex-col items-start justify-start gap-5">
         <div className="w-full flex items-start justify-between gap-8">
           <div className="flex flex-col items-start gap-3">
-            <h1 className="text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
+            <h1 className="text-4xl xl:text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
               {project.title}
             </h1>
 
@@ -97,21 +97,23 @@ export default async function ProjectPage({
               <Badge
                 label={status.label}
                 backgroundColor={status.backgroundColor}
+                textSize="text-xs xl:text-sm"
               />
               <Badge
                 label={category.label}
                 backgroundColor={category.backgroundColor}
+                textSize="text-xs xl:text-sm"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-lg">
+          <div className="flex items-center gap-4 text-sm xl:text-lg">
             {project.repoUrl && (
               <a
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
+                className="px-3 xl:px-5 py-2 xl:py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
               >
                 View code
               </a>
@@ -122,7 +124,7 @@ export default async function ProjectPage({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
+                className="px-3 xl:px-5 py-2 xl:py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
               >
                 View demo
               </a>
@@ -130,30 +132,30 @@ export default async function ProjectPage({
           </div>
         </div>
 
-        <div className="w-full flex items-start justify-start gap-8">
+        <div className="w-full flex flex-col xl:flex-row items-start justify-start gap-8">
           <Image
             src={project.image}
             alt={project.title}
             width={1500}
             height={350}
-            className="w-3/5 qhd:w-2/3 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
+            className="w-full xl:w-3/5 qhd:w-2/3 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
           />
 
-          <div className="flex-1 flex flex-col items-start justify-start gap-10">
+          <div className="flex-1 flex flex-col items-start justify-start gap-5 xl:gap-10">
             <div className="flex flex-col items-start gap-3">
-              <h1 className="text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-3xl xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Project <span className="text-accent-primary">Summary</span>
               </h1>
-              <p className="text-xl qhd:text-2xl text-foreground-secondary">
+              <p className="text-lg xl:text-xl qhd:text-2xl text-foreground-secondary">
                 {project.description}
               </p>
             </div>
 
-            <div className="w-full p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
-              <h1 className="text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
+            <div className="w-full p-4.5 xl:p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
+              <h1 className="text-3xl xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Tech <span className="text-accent-primary">Stack</span>
               </h1>
-              <div className="grid grid-cols-5 gap-2.5 w-full">
+              <div className="grid grid-cols-6 xl:grid-cols-5 gap-2.5 w-full">
                 {project.technologies.map((tech) => (
                   <div
                     key={tech}
@@ -172,9 +174,9 @@ export default async function ProjectPage({
       </div>
 
       <div className="w-full flex items-start justify-start gap-12">
-        <aside className="sticky top-28 w-72 shrink-0">
+        <aside className="sticky top-28 w-46 xl:w-72 shrink-0">
           <div className="rounded-2xl bg-surface p-6">
-            <h2 className="mb-5 text-2xl font-semibold tracking-tight">
+            <h2 className="mb-5 text-lg xl:text-2xl font-semibold tracking-tight">
               On this page
             </h2>
 
@@ -183,12 +185,12 @@ export default async function ProjectPage({
                 <a
                   key={heading.id}
                   href={`#${heading.id}`}
-                  className={`transition-colors hover:text-accent-primary ${
+                  className={`text-sm xl:text-base transition-colors hover:text-accent-primary ${
                     heading.level === 1
                       ? "font-semibold text-foreground"
                       : heading.level === 2
                       ? "pl-4 text-foreground-secondary"
-                      : "pl-8 text-sm text-foreground-secondary"
+                      : "pl-8 text-xs xl:text-sm text-foreground-secondary"
                   }`}
                 >
                   {heading.text}
