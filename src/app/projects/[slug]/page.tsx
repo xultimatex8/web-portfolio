@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { TECHNOLOGY_ICONS } from "@/types/project";
 import { CATEGORY_STYLES, STATUS_STYLES } from "@/helpers/projectStyles";
 import { Badge } from "@/components/Badge";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.id }));
@@ -50,7 +51,7 @@ export default async function ProjectPage({
 
   const filePath = path.join(process.cwd(), "src/app/content/projects", `${slug}.mdx`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content, data: frontmatter } = matter(fileContent);
+  const { content } = matter(fileContent);
   const headings = extractHeadings(content);
 
   const components = {
@@ -84,6 +85,7 @@ export default async function ProjectPage({
 
   return (
     <article className="relative w-full px-15 py-8 flex flex-col items-start justify-start gap-10">
+      <ScrollToTop />
       <div className="w-full flex flex-col items-start justify-start gap-5">
         <div className="w-full flex items-start justify-between gap-8">
           <div className="flex flex-col items-start gap-3">
@@ -106,9 +108,9 @@ export default async function ProjectPage({
           </div>
 
           <div className="flex items-center gap-4 text-xl">
-            {frontmatter.repoUrl && (
+            {project.repoUrl && (
               <a
-                href={frontmatter.repoUrl}
+                href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
@@ -117,9 +119,9 @@ export default async function ProjectPage({
               </a>
             )}
 
-            {frontmatter.demoUrl && (
+            {project.demoUrl && (
               <a
-                href={frontmatter.demoUrl}
+                href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
