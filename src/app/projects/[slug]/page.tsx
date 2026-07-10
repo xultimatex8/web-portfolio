@@ -50,7 +50,7 @@ export default async function ProjectPage({
 
   const filePath = path.join(process.cwd(), "src/app/content/projects", `${slug}.mdx`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content, data: frontmatter } = matter(fileContent);
+  const { content } = matter(fileContent);
   const headings = extractHeadings(content);
 
   const components = {
@@ -106,9 +106,9 @@ export default async function ProjectPage({
           </div>
 
           <div className="flex items-center gap-4 text-xl">
-            {frontmatter.repoUrl && (
+            {project.repoUrl && (
               <a
-                href={frontmatter.repoUrl}
+                href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
@@ -117,9 +117,9 @@ export default async function ProjectPage({
               </a>
             )}
 
-            {frontmatter.demoUrl && (
+            {project.demoUrl && (
               <a
-                href={frontmatter.demoUrl}
+                href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"

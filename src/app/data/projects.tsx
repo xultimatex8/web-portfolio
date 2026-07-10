@@ -11,6 +11,8 @@ import { Project } from "@/types/project";
     status: "in-progress",
     category: "personal",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
+    repoUrl: "https://github.com/lorem-ipsum/lorem-ipsum",
+    demoUrl: "https://lorem-ipsum-demo.vercel.app",
   },
 */
 
@@ -29,6 +31,7 @@ import { Project } from "@/types/project";
       status: "done",
       category: "academic",
       technologies: ["TypeScript", "NestJS", "Socket.IO", "PostgreSQL", "React", "Tailwind CSS"],
+      repoUrl: "https://github.com/Ultimate88x/UltimateWatch",
     },
     {
       id: "keakit",
@@ -44,6 +47,7 @@ import { Project } from "@/types/project";
       status: "done",
       category: "academic",
       technologies: ["Java", "Spring Boot", "PostgreSQL", "TypeScript", "React"],
+      repoUrl: "https://github.com/KeaKit/KeaKit",
     },
     {
       id: "zeolite",
@@ -59,6 +63,7 @@ import { Project } from "@/types/project";
       status: "done",
       category: "academic",
       technologies: ["Python", "FastAPI", "Neo4j", "TypeScript", "React"],
+      repoUrl: "https://github.com/AdrianChabrera/zeolite",
     },
     {
       id: "movies-ir",
@@ -73,5 +78,7 @@ import { Project } from "@/types/project";
       status: "done",
       category: "academic",
       technologies: ["Python", "Jupyter", "Whoosh", "NLTK", "Scikit-learn"],
+      repoUrl: "https://github.com/Ultimate88x/movies-ir",
+      demoUrl: "https://mybinder.org/v2/gh/Ultimate88x/movie-ir/HEAD?urlpath=%2Fdoc%2Ftree%2FRecuperacionDeLaInformacionMovies.ipynb",
     },
   ];

@@ -29,4 +29,6 @@ export interface Project {
   status: ProjectStatus;
   category: ProjectCategory;
   technologies: Technology[];
+  repoUrl?: string;
+  demoUrl?: string;
 }
