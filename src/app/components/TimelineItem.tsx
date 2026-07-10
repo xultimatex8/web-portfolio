@@ -10,8 +10,8 @@ export function TimelineItem({ title, subtitle }: TimelineItemProps) {
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-0.5 bg-accent-primary" />
 
       <div className="ml-10 h-32 bg-card rounded-2xl p-6 flex flex-col justify-center">
-        <h2 className="text-3xl font-semibold text-foreground">{title}</h2>
-        <p className="text-xl text-foreground-secondary">{subtitle}</p>
+        <h2 className="text-2xl font-semibold text-foreground">{title}</h2>
+        <p className="text-lg text-foreground-secondary">{subtitle}</p>
       </div>
     </div>
   );

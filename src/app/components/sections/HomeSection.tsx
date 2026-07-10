@@ -33,32 +33,32 @@ export function HomeSection() {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="relative py-30 flex flex-col items-center justify-between gap-40 px-5"
+      className="relative py-20 flex flex-col items-center justify-between gap-30 px-5"
     >
-      <div className="flex items-center justify-start gap-15">
+      <div className="flex items-center justify-start gap-10">
         <motion.div variants={fadeUp}>
           <Image
             src="/images/photo.jpeg"
             alt="Alejandro González Macías"
-            width={700}
+            width={600}
             height={550}
             priority
             className="rounded-full object-cover border-6 border-surface"
           />
         </motion.div>
 
-        <div className="relative max-w-350 flex flex-col items-start justify-center gap-8 text-start">
+        <div className="relative max-w-275 flex flex-col items-start justify-center gap-8 text-start">
           <div className="flex flex-col items-start justify-center gap-1">
             <motion.h1
               variants={fadeUp}
-              className="text-9xl font-bold tracking-tight text-foreground"
+              className="text-8xl font-bold tracking-tight text-foreground"
             >
               Alejandro González Macías
             </motion.h1>
 
             <motion.h2
               variants={fadeUp}
-              className="text-7xl font-medium tracking-tight text-foreground-secondary"
+              className="text-6xl font-medium tracking-tight text-foreground-secondary"
             >
               Final-Year{" "}
               <span className="text-accent-primary">
@@ -72,14 +72,14 @@ export function HomeSection() {
 
       <motion.div
         variants={fadeUp}
-        className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-12 text-start"
+        className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-8 text-start"
       >
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-7xl font-bold tracking-tight text-foreground">
+          <h1 className="text-6xl font-bold tracking-tight text-foreground">
             About <span className="text-accent-primary">Me</span>
           </h1>
 
-          <div className="text-xl flex flex-wrap gap-3">
+          <div className="text-lg flex flex-wrap gap-3">
             <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
             <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
             <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
@@ -87,7 +87,7 @@ export function HomeSection() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-center gap-4 text-2xl text-foreground">
+        <div className="flex flex-col items-start justify-center gap-4 text-xl text-foreground">
           <p>
             Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
             Engineering student at the University of Seville (Bachelor&apos;s Thesis pending

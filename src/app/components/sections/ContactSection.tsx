@@ -28,7 +28,7 @@ export function ContactSection() {
       id="contact"
       className="relative w-full py-30 flex items-start justify-start gap-40 px-15"
     >
-      <h1 className="w-xs text-7xl font-bold tracking-tight text-foreground sticky top-30">
+      <h1 className="w-xs text-6xl font-bold tracking-tight text-foreground sticky top-30">
         Contact
       </h1>
 
@@ -52,7 +52,7 @@ export function ContactSection() {
               </span>
               <div className="flex flex-col">
                 <span className="text-sm text-foreground-secondary">{label}</span>
-                <span className="text-xl font-medium text-foreground group-hover:text-accent-primary transition-colors">
+                <span className="text-lg font-medium text-foreground group-hover:text-accent-primary transition-colors">
                   {value}
                 </span>
               </div>

@@ -89,7 +89,7 @@ export default async function ProjectPage({
       <div className="w-full flex flex-col items-start justify-start gap-5">
         <div className="w-full flex items-start justify-between gap-8">
           <div className="flex flex-col items-start gap-3">
-            <h1 className="text-7xl font-bold tracking-tight text-foreground">
+            <h1 className="text-6xl font-bold tracking-tight text-foreground">
               {project.title}
             </h1>
 
@@ -97,23 +97,21 @@ export default async function ProjectPage({
               <Badge
                 label={status.label}
                 backgroundColor={status.backgroundColor}
-                textSize="text-lg"
               />
               <Badge
                 label={category.label}
                 backgroundColor={category.backgroundColor}
-                textSize="text-lg"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-xl">
+          <div className="flex items-center gap-4 text-lg">
             {project.repoUrl && (
               <a
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
+                className="px-5 py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
               >
                 View code
               </a>
@@ -124,7 +122,7 @@ export default async function ProjectPage({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
+                className="px-5 py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
               >
                 View demo
               </a>
@@ -143,26 +141,26 @@ export default async function ProjectPage({
 
           <div className="flex-1 flex flex-col items-start justify-start gap-10">
             <div className="flex flex-col items-start gap-3">
-              <h1 className="text-5xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-4xl font-semibold tracking-tight text-foreground">
                 Project <span className="text-accent-primary">Summary</span>
               </h1>
-              <p className="text-2xl text-foreground-secondary">
+              <p className="text-xl text-foreground-secondary">
                 {project.description}
               </p>
             </div>
 
-            <div className="w-full p-10 flex flex-col items-start justify-start gap-8 bg-surface rounded-2xl">
-              <h1 className="text-5xl font-semibold tracking-tight text-foreground">
+            <div className="w-full p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
+              <h1 className="text-4xl font-semibold tracking-tight text-foreground">
                 Tech <span className="text-accent-primary">Stack</span>
               </h1>
-              <div className="grid grid-cols-4 gap-4 w-full">
+              <div className="grid grid-cols-5 gap-2.5 w-full">
                 {project.technologies.map((tech) => (
                   <div
                     key={tech}
-                    className="flex flex-col items-center justify-center gap-3 p-4 pt-6 rounded-xl bg-card"
+                    className="flex flex-col items-center justify-center gap-2 pt-4 pb-2 rounded-xl bg-card"
                   >
-                    <i className={`${TECHNOLOGY_ICONS[tech]} text-8xl text-foreground`} />
-                    <span className="text-center text-[23px] font-mono text-foreground-secondary">
+                    <i className={`${TECHNOLOGY_ICONS[tech]} text-4xl text-foreground`} />
+                    <span className="text-center text-sm font-mono text-foreground-secondary">
                       {tech}
                     </span>
                   </div>
