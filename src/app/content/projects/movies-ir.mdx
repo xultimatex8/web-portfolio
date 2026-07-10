@@ -1,0 +1,46 @@
+---
+repoUrl: "https://github.com/Ultimate88x/movies-ir"
+demoUrl: "https://mybinder.org/v2/gh/Ultimate88x/movie-ir/HEAD?urlpath=%2Fdoc%2Ftree%2FRecuperacionDeLaInformacionMovies.ipynb"
+---
+
+# Movies Information Retrieval
+
+Movies Information Retrieval is a collaborative project focused on building and comparing different information retrieval models applied to a corpus of movie reviews. It provides a Jupyter-based application where users can search and analyze reviews, exploring how different retrieval strategies affect the results.
+
+The project implements two complementary retrieval models: a Boolean retrieval model, based on exact term matching and logical operators, and a TF-IDF-based free-text retrieval model, which ranks documents by relevance using term frequency and inverse document frequency weighting.
+
+## Key Features
+
+- **Boolean Retrieval**: exact-match search using logical operators over an inverted index.
+- **TF-IDF Retrieval**: free-text search ranked by term frequency-inverse document frequency weighting.
+- **Text Preprocessing**: tokenization, normalization and cleaning of movie reviews with NLTK.
+
+## How to Use It
+
+If the notebook hasn't been executed yet, click **Run** in the top toolbar and select **Run All Cells**. This will execute every cell in the notebook, and once finished, the interactive interfaces for each retrieval system will open sequentially. Once every cell has been executed, if one specific system/interface wants to be used, press **Ctrl + Enter** on its cell to execute it.
+
+To exit any of the interfaces, type:
+
+```text
+salir
+```
+
+and press **Enter**.
+
+> **Note**: the first run may take a few moments while the indexes are created and the necessary resources are loaded.
+
+## Challenges
+
+Building Movies Information Retrieval involved several technical challenges:
+
+- Designing an inverted index structure capable of supporting both Boolean and TF-IDF retrieval efficiently.
+- Preprocessing a large collection of movie reviews consistently, handling tokenization, stopwords and normalization without losing relevant information.
+- Implementing TF-IDF weighting and similarity scoring correctly, and validating that ranking results matched expected relevance.
+
+## Lessons Learned
+
+Working on this project gave me hands-on experience with core information retrieval concepts, moving from theory into a working system that could actually index and query real text data.
+
+Comparing Boolean and TF-IDF retrieval side by side helped me understand the practical trade-offs between exact-match search and ranked relevance.
+
+It also strengthened my experience with the Python data ecosystem, particularly using NLTK for text preprocessing and Scikit-learn for vectorization, and how much preprocessing quality affects the final retrieval results.
