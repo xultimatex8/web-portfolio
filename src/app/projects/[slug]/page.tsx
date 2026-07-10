@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { TECHNOLOGY_ICONS } from "@/types/project";
 import { CATEGORY_STYLES, STATUS_STYLES } from "@/helpers/projectStyles";
 import { Badge } from "@/components/Badge";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.id }));
@@ -84,6 +85,7 @@ export default async function ProjectPage({
 
   return (
     <article className="relative w-full px-15 py-8 flex flex-col items-start justify-start gap-10">
+      <ScrollToTop />
       <div className="w-full flex flex-col items-start justify-start gap-5">
         <div className="w-full flex items-start justify-between gap-8">
           <div className="flex flex-col items-start gap-3">
