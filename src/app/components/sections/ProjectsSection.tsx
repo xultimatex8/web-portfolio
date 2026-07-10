@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ProjectCard } from "./ProjectCard";
-import { TagFilter } from "./TagFilter";
 import { PROJECTS } from "@/data/projects";
 import { Technology } from "@/types/project";
+import { TagFilter } from "../TagFilter";
+import { ProjectCard } from "../ProjectCard";
 
 export function ProjectsSection() {
   const [selectedTags, setSelectedTags] = useState<Technology[]>([]);
