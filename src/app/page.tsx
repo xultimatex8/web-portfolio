@@ -1,61 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
-import { Timeline } from "./components/Timeline";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { ContactSection } from "./components/ContactSection";
 import { HomeSection } from "./components/sections/HomeSection";
+import { EducationSection } from "./components/sections/EducationSection";
 
 export default function Home() {
-  const shouldReduceMotion = useReducedMotion();
-
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.15,
-      },
-    },
-  };
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
-        ease: [0.8, 1, 0.6, 1] as const,
-      },
-    },
-  };
-
-  const EDUCATION_ITEMS = [
-    {
-      title: "Francisco Pacheco High School",
-      subtitle: "Science track — 2020–2022",
-    },
-    {
-      title: "University of Seville",
-      subtitle: "Bachelor's in Software Engineering — 2022–2026",
-    },
-  ];
-
   return (
     <div className="flex flex-col flex-1 items-center justify-start bg-background font-sans">
       <HomeSection />
 
-      <section
-        id="education"
-        className="relative w-full py-30 bg-surface flex items-start justify-start gap-40 px-15"
-      >
-        <h1 className="w-xs text-7xl font-bold tracking-tight text-foreground sticky top-30">
-          Education
-        </h1>
-
-        <Timeline items={EDUCATION_ITEMS} />
-      </section>
+      <EducationSection />
 
       <section
         id="experience"
