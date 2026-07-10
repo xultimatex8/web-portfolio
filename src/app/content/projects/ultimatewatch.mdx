@@ -1,0 +1,130 @@
+---
+repoUrl: "https://github.com/Ultimate88x/UltimateWatch"
+---
+
+# UltimateWatch
+
+UltimateWatch is a web application designed to unify multimedia catalogs and make it easier for users to coordinate remote viewing sessions with friends. It connects to the public APIs of TMDb and Watchmode to provide a unified search engine where users can check movie and TV show details and instantly see which streaming platforms they're available on.
+
+Its core feature is a social module that lets users create virtual rooms where multiple participants can coordinate their viewing experience through a synchronized timer controlled by the room host, alongside an interactive playlist and an integrated chat for discussing the session in real time.
+
+
+## Key Features
+
+- **Unified Search**: consult movies and TV shows across TMDb and Watchmode, with real-time availability by platform.
+- **Social**: make friends by sending and resolving friend requests.
+- **Organize Events**: create social spaces to coordinate viewing sessions with friends remotely.
+- **Event Calendar**: keep control of joined events with a calendar.
+- **Event Voting**: organize a votation to decide which contents to watch during an event.
+- **Synchronized Playback**: host-controlled timer to keep every participant watching in sync.
+- **Interactive Playlist**: queue and manage content to watch during a session.
+- **Real-time Chat**: integrated messaging to discuss the session as it happens.
+- **Role-based Administration**: manage permissions and access within each room.
+
+## Demo
+
+The following examples showcase some of UltimateWatch's core features.
+
+<div className="grid gap-8 grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Browse Movies and Series</h4>
+    <video
+      src="/videos/projects/ultimatewatch/series.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Organize Events</h4>
+    <video
+      src="/videos/projects/ultimatewatch/organize_event.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Join Events</h4>
+    <video
+      src="/videos/projects/ultimatewatch/join_event.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Real-time Event Room and Statistics</h4>
+    <video
+      src="/videos/projects/ultimatewatch/event_room.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Event Calendar</h4>
+    <video
+      src="/videos/projects/ultimatewatch/calendar.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Make Friends</h4>
+    <video
+      src="/videos/projects/ultimatewatch/friend.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Challenges
+
+Developing UltimateWatch involved several technical and planning challenges:
+
+- Managing the entire project individually, from planning and estimation through development and testing, under a Scrum-based methodology.
+- Designing a database inheritance strategy that could scale efficiently.
+- Implementing low-latency, real-time communication with WebSockets to support synchronized timers, live chat, and room events.
+- Integrating and combining data from two external APIs (TMDb and Watchmode) into a single, consistent catalog, while respecting each API's usage policies.
+- Estimating and breaking down tasks accurately.
+
+## Lessons Learned
+
+Working on UltimateWatch taught me how to manage a project of this scale on my own, applying agile practices and MVP prioritization to stay on track with sprint deadlines.
+
+Researching technologies before development, such as evaluating NestJS for its modular structure, made a noticeable difference later on, while validating both external APIs in advance helped avoid unexpected issues when extracting data.
+
+Implementing real-time features with WebSockets gave me practical experience in designing event-driven communication, handling connected clients, and keeping multiple users synchronized during collaborative sessions.
+
+I also learned firsthand how much database design choices matter for maintainability: switching inheritance strategies after the project was already underway was only manageable because the codebase had been kept properly cohesive and decoupled.
+
+Finally, this project reinforced the importance of thorough task breakdown and not underestimating seemingly simple tasks.
