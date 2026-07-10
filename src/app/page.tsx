@@ -1,166 +1,18 @@
 "use client";
 
-import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
-import { Timeline } from "./components/Timeline";
-import { ProjectsSection } from "./components/ProjectsSection";
-import { ContactSection } from "./components/ContactSection";
+import { ContactSection } from "./components/sections/ContactSection";
+import { HomeSection } from "./components/sections/HomeSection";
+import { EducationSection } from "./components/sections/EducationSection";
+import { ExperienceSection } from "./components/sections/ExperienceSection";
+import { ProjectsSection } from "./components/sections/ProjectsSection";
 
 export default function Home() {
-  const shouldReduceMotion = useReducedMotion();
-
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.15,
-      },
-    },
-  };
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
-        ease: [0.8, 1, 0.6, 1] as const,
-      },
-    },
-  };
-
-  const EDUCATION_ITEMS = [
-    {
-      title: "Francisco Pacheco High School",
-      subtitle: "Science track — 2020–2022",
-    },
-    {
-      title: "University of Seville",
-      subtitle: "Bachelor's in Software Engineering — 2022–2026",
-    },
-  ];
-
   return (
     <div className="flex flex-col flex-1 items-center justify-start bg-background font-sans">
-      <motion.section
-        id="home"
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="relative py-30 flex flex-col items-center justify-between gap-40 px-5"
-      >
-        <div className="flex items-center justify-start gap-15">
-          <motion.div variants={fadeUp}>
-            <Image
-              src="/images/photo.jpeg"
-              alt="Alejandro González Macías"
-              width={700}
-              height={550}
-              priority
-              className="rounded-full object-cover border-6 border-surface"
-            />
-          </motion.div>
-
-          <div className="relative max-w-350 flex flex-col items-start justify-center gap-8 text-start">
-            <div className="flex flex-col items-start justify-center gap-1">
-              <motion.h1
-                variants={fadeUp}
-                className="text-9xl font-bold tracking-tight text-foreground"
-              >
-                Alejandro González Macías
-              </motion.h1>
-
-              <motion.h2
-                variants={fadeUp}
-                className="text-7xl font-medium tracking-tight text-foreground-secondary"
-              >
-                Final-Year{" "}
-                <span className="text-accent-primary">
-                  Software Engineering
-                </span>{" "}
-                Student
-              </motion.h2>
-            </div>
-          </div>
-        </div>
-
-        <motion.div
-          variants={fadeUp}
-          className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-12 text-start"
-        >
-          <div className="flex flex-col items-center justify-center gap-4">
-            <h1 className="text-7xl font-bold tracking-tight text-foreground">
-              About <span className="text-accent-primary">Me</span>
-            </h1>
-
-            <div className="text-xl flex flex-wrap gap-3">
-              <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
-              <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
-              <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
-              <span className="rounded-full bg-card px-4 py-2">💼 Open to Work</span>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-start justify-center gap-4 text-2xl text-foreground">
-            <p>
-              Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
-              Engineering student at the University of Seville (Bachelor&apos;s Thesis pending
-              defense), based in Sanlúcar de Barrameda, Spain. I love turning ideas into
-              functional, maintainable, and scalable software, and I&apos;m always exploring new
-              tools and technologies to keep growing as a developer.
-            </p>
-            <p>
-              My studies gave me a solid foundation in software engineering, architecture, and
-              problem-solving, both independently and in team projects using version control and
-              agile practices. I&apos;m curious, adapt quickly to new environments, and I&apos;m
-              proficient in English for technical and international work. I&apos;m currently
-              looking for opportunities to keep growing and contribute to meaningful projects.
-            </p>
-            <p>
-              Outside of code, I enjoy spending time with friends, working on personal projects,
-              going to the gym, watching films, and playing video games.
-            </p>
-          </div>
-        </motion.div>
-      </motion.section>
-
-      <section
-        id="education"
-        className="relative w-full py-30 bg-surface flex items-start justify-start gap-40 px-15"
-      >
-        <h1 className="w-xs text-7xl font-bold tracking-tight text-foreground sticky top-30">
-          Education
-        </h1>
-
-        <Timeline items={EDUCATION_ITEMS} />
-      </section>
-
-      <section
-        id="experience"
-        className="relative w-full py-30 flex items-start justify-start gap-40 px-15"
-      >
-        <h1 className="w-xs text-7xl font-bold tracking-tight text-foreground sticky top-30">
-          Experience
-        </h1>
-
-        {/* Update this section with actual experience items using the Timeline component when any experience is acquired */}
-
-        <div className="max-w-4xl flex flex-col items-start justify-center gap-4">
-          <p className="text-2xl text-foreground">
-            I&apos;m about to graduate and currently looking for my first professional
-            opportunity in Software Engineering.
-          </p>
-          <p className="text-xl text-foreground-secondary">
-            While I don&apos;t have formal work experience yet, I&apos;ve built a solid
-            technical foundation through the personal and academic projects showcased
-            below — feel free to check them out.
-          </p>
-        </div>
-      </section>
-
+      <HomeSection />
+      <EducationSection />
+      <ExperienceSection />
       <ProjectsSection />
-
       <ContactSection />
     </div>
   );
