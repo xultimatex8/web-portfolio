@@ -51,14 +51,14 @@ export function HomeSection() {
           <div className="flex flex-col items-start justify-center gap-1">
             <motion.h1
               variants={fadeUp}
-              className="text-6xl fhd:text-8xl font-bold tracking-tight text-foreground"
+              className="text-6xl 2xl:text-7xl fhd:text-8xl font-bold tracking-tight text-foreground"
             >
               Alejandro González Macías
             </motion.h1>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
+              className="text-4xl 2xl:text-5xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
             >
               Final-Year{" "}
               <span className="text-accent-primary">
@@ -75,11 +75,11 @@ export function HomeSection() {
         className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-8 text-start"
       >
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-5xl fhd:text-6xl font-bold tracking-tight text-foreground">
+          <h1 className="text-5xl 2xl:text-6xl font-bold tracking-tight text-foreground">
             About <span className="text-accent-primary">Me</span>
           </h1>
 
-          <div className="text-sm fhd:text-lg flex flex-wrap gap-3">
+          <div className="text-sm 2xl:text-base fhd:text-lg flex flex-wrap gap-3">
             <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
             <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
             <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
@@ -87,7 +87,7 @@ export function HomeSection() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-center gap-4 text-lg fhd:text-xl text-foreground">
+        <div className="flex flex-col items-start justify-center gap-4 text-lg 2xl:text-xl text-foreground">
           <p>
             Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
             Engineering student at the University of Seville (Bachelor&apos;s Thesis pending
