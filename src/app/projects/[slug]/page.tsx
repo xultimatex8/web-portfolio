@@ -89,7 +89,7 @@ export default async function ProjectPage({
       <div className="w-full flex flex-col items-start justify-start gap-5">
         <div className="w-full flex items-start justify-between gap-8">
           <div className="flex flex-col items-start gap-3">
-            <h1 className="text-6xl font-bold tracking-tight text-foreground">
+            <h1 className="text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
               {project.title}
             </h1>
 
@@ -136,21 +136,21 @@ export default async function ProjectPage({
             alt={project.title}
             width={1500}
             height={350}
-            className="w-3/5 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
+            className="w-3/5 qhd:w-2/3 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
           />
 
           <div className="flex-1 flex flex-col items-start justify-start gap-10">
             <div className="flex flex-col items-start gap-3">
-              <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Project <span className="text-accent-primary">Summary</span>
               </h1>
-              <p className="text-xl text-foreground-secondary">
+              <p className="text-xl qhd:text-2xl text-foreground-secondary">
                 {project.description}
               </p>
             </div>
 
             <div className="w-full p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
-              <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Tech <span className="text-accent-primary">Stack</span>
               </h1>
               <div className="grid grid-cols-5 gap-2.5 w-full">
@@ -159,8 +159,8 @@ export default async function ProjectPage({
                     key={tech}
                     className="flex flex-col items-center justify-center gap-2 pt-4 pb-2 rounded-xl bg-card"
                   >
-                    <i className={`${TECHNOLOGY_ICONS[tech]} text-4xl text-foreground`} />
-                    <span className="text-center text-sm font-mono text-foreground-secondary">
+                    <i className={`${TECHNOLOGY_ICONS[tech]} text-4xl qhd:text-5xl text-foreground`} />
+                    <span className="text-center text-sm qhd:text-base font-mono text-foreground-secondary">
                       {tech}
                     </span>
                   </div>

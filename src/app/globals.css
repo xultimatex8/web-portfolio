@@ -51,6 +51,10 @@
   }
 }
 
+@theme {
+  --breakpoint-qhd: 2560px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
