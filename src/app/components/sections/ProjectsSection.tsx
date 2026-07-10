@@ -40,7 +40,7 @@ export function ProjectsSection() {
       </div>
 
       <div className="flex-1 flex flex-col gap-10">
-        <div className="grid grid-cols-2 fhd:grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-14 fhd:gap-13 qhd:gap-15">
+        <div className="grid grid-cols-2 fhd:grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-14 xl:gap-10 fhd:gap-13 qhd:gap-15">
           {filteredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

@@ -155,7 +155,7 @@ export default async function ProjectPage({
               <h1 className="text-3xl fhd:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Tech <span className="text-accent-primary">Stack</span>
               </h1>
-              <div className="grid grid-cols-6 fhd:grid-cols-5 gap-2.5 w-full">
+              <div className="grid grid-cols-6 xl:grid-cols-8 fhd:grid-cols-5 gap-2.5 w-full">
                 {project.technologies.map((tech) => (
                   <div
                     key={tech}
