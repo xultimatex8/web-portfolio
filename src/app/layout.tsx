@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { NavLink } from "@/components/NavLink";
 import "./globals.css";
+import { DesktopOnlyNotice } from "./components/DesktopOnlyNotice";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,30 +32,34 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-screen flex flex-col">
-        <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-nav text-nav-foreground font-sans px-5 z-50">
-          <h1 className="text-3xl font-bold tracking-tight">
-            Alejandro González Macías
-          </h1>
-          <nav className="flex items-center gap-5">
-            {NAV_ITEMS.map((item) => (
-              <NavLink key={item.href} href={item.href} label={item.label} />
-            ))}
-          </nav>
-        </div>
-        
-        <main className="mt-20 flex-1">{children}</main>
+        <DesktopOnlyNotice />
 
-        <footer className="w-full py-10 px-15 flex items-center justify-between bg-nav text-nav-foreground text-lg">
-          <p>© {new Date().getFullYear()} Alejandro González Macías</p>
-          <a
-            href="https://github.com/Ultimate88x/web-portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent-primary transition-colors"
-          >
-            Built with Next.js — view source on GitHub
-          </a>
-        </footer>
+        <div className="hidden md:flex md:flex-col md:flex-1 md:min-h-screen">
+          <div className="fixed inset-0 h-20 w-max-screen flex justify-between items-center bg-nav text-nav-foreground font-sans px-5 z-50">
+            <h1 className="text-3xl font-bold tracking-tight">
+              Alejandro González Macías
+            </h1>
+            <nav className="flex items-center gap-5">
+              {NAV_ITEMS.map((item) => (
+                <NavLink key={item.href} href={item.href} label={item.label} />
+              ))}
+            </nav>
+          </div>
+
+          <main className="mt-20 flex-1">{children}</main>
+
+          <footer className="w-full py-10 px-15 flex items-center justify-between bg-nav text-nav-foreground text-lg">
+            <p>© {new Date().getFullYear()} Alejandro González Macías</p>
+            <a
+              href="https://github.com/Ultimate88x/web-portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent-primary transition-colors"
+            >
+              Built with Next.js — view source on GitHub
+            </a>
+          </footer>
+        </div>
       </body>
     </html>
   );
