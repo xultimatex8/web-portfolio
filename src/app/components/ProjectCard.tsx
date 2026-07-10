@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { Project } from "@/types/project";
 import { Badge } from "./Badge";
 import { STATUS_STYLES, CATEGORY_STYLES } from "@/helpers/projectStyles";
@@ -28,8 +29,33 @@ export function ProjectCard({ project }: ProjectCardProps) {
         />
       </Link>
 
-      <div className="flex flex-col items-start justify-center gap-2 text-start">
-        <h2 className="text-3xl font-bold tracking-tight">{project.title}</h2>
+      <div className="relative w-full flex flex-col items-start justify-center gap-2 text-start">
+        <div className="absolute top-0 right-0 flex items-center gap-2">
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="View code"
+              className="text-foreground-secondary hover:text-foreground transition-colors"
+            >
+              <i className="devicon-github-original text-2xl" />
+            </a>
+          )}
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="View demo"
+              className="text-foreground-secondary hover:text-foreground transition-colors"
+            >
+              <ExternalLink className="relative bottom-0.75 w-6.5 h-6.5" />
+            </a>
+          )}
+        </div>
+
+        <h2 className="text-3xl font-bold tracking-tight pr-16">{project.title}</h2>
         <p className="text-xl text-foreground-secondary">{project.description}</p>
       </div>
 
