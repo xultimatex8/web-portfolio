@@ -3,18 +3,18 @@
 @import "devicon/devicon.min.css";
 
 :root {
-  --background: #FBFAF7;
-  --surface: #DEDBD0;
-  --card: #F0EEE7;
-  --nav: #C4C0B2;
-  --nav-foreground: #1B1A17;
-  --accent-primary: #D6473F;
-  --accent-secondary: #378ADD;
-  --foreground: #1B1A17;
-  --foreground-secondary: #6E6C64;
-  --done: #4A7C59;
-  --progress: #C9902E;
-  --category: #8B7BA8;
+  --background: #EEF0F3;
+  --surface: #D5D9E0;
+  --card: #F9FAFB;
+  --nav: #1F2937;
+  --nav-foreground: #F7F8FA;
+  --accent-primary: #D97706;
+  --accent-secondary: #93C5FD;
+  --foreground: #111827;
+  --foreground-secondary: #5B6472;
+  --done: #86EFAC;
+  --progress: #FCD34D;
+  --category: #C4B5FD;
 }
 
 @theme inline {
