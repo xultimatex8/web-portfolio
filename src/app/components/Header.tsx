@@ -17,7 +17,7 @@ export function Header() {
   const handleNavClick = () => setIsOpen(false);
 
   return (
-    <div className="fixed inset-x-0 top-0 h-16 lg:h-20 flex justify-between items-center bg-nav text-nav-foreground font-sans px-5 z-50">
+    <div className="fixed inset-x-0 top-0 h-16 lg:h-20 flex justify-between items-center text-white bg-nav font-sans px-5 z-50">
       <h1 className="text-lg md:text-xl lg:text-2xl fhd:text-3xl font-bold tracking-tight truncate">
         Alejandro González Macías
       </h1>
@@ -52,9 +52,9 @@ export function Header() {
       </button>
 
       {isOpen && (
-        <nav className="lg:hidden fixed inset-x-0 top-12 flex flex-col items-center gap-2 bg-nav text-foreground py-2 shadow-lg">
+        <nav className="lg:hidden fixed inset-x-0 top-12 flex flex-col items-center gap-2 bg-nav py-2 shadow-lg">
           {NAV_ITEMS.map((item) => (
-            <div key={item.href} className="w-full border-b border-nav-foreground/20 last:border-b-0">
+            <div key={item.href} className="w-full border-b last:border-b-0">
               <div onClick={handleNavClick} className="text-center">
                 <NavLink href={item.href} label={item.label} />
               </div>
