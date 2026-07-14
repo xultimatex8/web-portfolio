@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alejandro González Macías — Portfolio
+
+Personal portfolio built with Next.js, showcasing my background, academic projects, and ways to get in touch. Live at **[alejandro-gonzalez.vercel.app](https://alejandro-gonzalez.vercel.app)**.
+
+## Features
+
+- **Home** — introduction, photo, and a short "About Me" section.
+- **Education** — academic timeline.
+- **Experience** — current status and background.
+- **Projects** — filterable grid of projects, each with its own detail page rendered from MDX content.
+- **Contact** — direct links to email, LinkedIn, GitHub, and a downloadable CV.
+- Fully responsive, from mobile up to desktop.
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Content:** MDX for individual project pages
+- **Deployment:** [Vercel](https://vercel.com/)
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/          # Page-level sections
+│   ├── content/
+│   │   └── projects/        # One .mdx file per project
+│   ├── projects/
+│   │   └── [slug]/          # Dynamic project detail page, renders the matching .mdx
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Home page
+├── components/              # Shared UI components
+├── data/
+│   └── projects.ts          # Project metadata
+├── helpers/                 # Style maps
+└── types/                   # Shared TypeScript types
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Adding a new project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Add its metadata to `src/data/projects.ts` (`id`, `title`, `description`, `image`, `status`, `category`, `technologies`, and optionally `repoUrl` / `demoUrl`).
+2. Create a matching `src/app/content/projects/<id>.mdx` file with the project's write-up.
+3. Add the corresponding images and demo media under `public/images/projects/<id>/` and `public/videos/projects/<id>/`.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The site is deployed on [Vercel](https://vercel.com/), with automatic deployments on every push to `main`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The code in this repository is licensed under the [MIT License](./LICENSE) — feel free to use it as a reference or starting point for your own portfolio.
 
-## Deploy on Vercel
+Personal content (photos, videos, CV, resume, biographical text, and project write-ups) is **not** covered by this license and is not licensed for reuse.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email:** alegonzmac@gmail.com
+- **LinkedIn:** [linkedin.com/in/alejandro-gonzalez-macias-agm](https://linkedin.com/in/alejandro-gonzalez-macias-agm)
+- **GitHub:** [github.com/Ultimate88x](https://github.com/Ultimate88x)
