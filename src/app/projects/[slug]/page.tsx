@@ -58,7 +58,7 @@ export default async function ProjectPage({
     h1: ({ children }: { children: string }) => (
       <h1
         id={slugify(children)}
-        className="mb-2 text-3xl 2xl:text-4xl fhd:text-5xl font-bold tracking-tight"
+        className="mb-2 text-2xl lg:text-3xl 2xl:text-4xl fhd:text-5xl font-bold tracking-tight"
       >
         {children}
       </h1>
@@ -67,7 +67,7 @@ export default async function ProjectPage({
     h2: ({ children }: { children: string }) => (
       <h2
         id={slugify(children)}
-        className="mb-3 text-2xl 2xl:text-3xl fhd:text-4xl font-semibold tracking-tight"
+        className="mb-3 text-xl lg:text-2xl 2xl:text-3xl fhd:text-4xl font-semibold tracking-tight"
       >
         {children}
       </h2>
@@ -76,7 +76,7 @@ export default async function ProjectPage({
     h3: ({ children }: { children: string }) => (
       <h3
         id={slugify(children)}
-        className="mb-3 text-xl 2xl:text-2xl fhd:text-3xl font-semibold"
+        className="mb-3 text-lg lg:text-xl 2xl:text-2xl fhd:text-3xl font-semibold"
       >
         {children}
       </h3>
@@ -84,10 +84,10 @@ export default async function ProjectPage({
   };
 
   return (
-    <article className="relative w-full px-15 py-8 flex flex-col items-start justify-start gap-10">
+    <article className="relative w-full px-6 lg:px-15 pt-2 pb-8 lg:py-8 flex flex-col items-start justify-start gap-8 lg:gap-10">
       <ScrollToTop />
       <div className="w-full flex flex-col items-start justify-start gap-5">
-        <div className="w-full flex items-start justify-between gap-8">
+        <div className="w-full flex flex-col lg:flex-row items-start lg:justify-between gap-4 lg:gap-8">
           <div className="flex flex-col items-start gap-3">
             <h1 className="text-4xl 2xl:text-5xl fhd:text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
               {project.title}
@@ -107,7 +107,7 @@ export default async function ProjectPage({
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-sm 2xl:text-base fhd:text-lg">
+          <div className="flex items-center gap-3 lg:gap-4 text-sm 2xl:text-base fhd:text-lg">
             {project.repoUrl && (
               <a
                 href={project.repoUrl}
@@ -132,7 +132,7 @@ export default async function ProjectPage({
           </div>
         </div>
 
-        <div className="w-full flex flex-col 2xl:flex-row items-start justify-start gap-8">
+        <div className="w-full flex flex-col 2xl:flex-row items-start justify-start gap-6 lg:gap-8">
           <Image
             src={project.image}
             alt={project.title}
@@ -143,26 +143,26 @@ export default async function ProjectPage({
 
           <div className="flex-1 flex flex-col items-start justify-start gap-5 fhd:gap-10">
             <div className="flex flex-col items-start gap-3">
-              <h1 className="text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
+              <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Project <span className="text-accent-primary">Summary</span>
               </h1>
-              <p className="text-lg 2xl:text-xl qhd:text-2xl text-foreground-secondary">
+              <p className="text-base lg:text-lg 2xl:text-xl qhd:text-2xl text-foreground-secondary">
                 {project.description}
               </p>
             </div>
 
-            <div className="w-full p-4.5 fhd:p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
-              <h1 className="text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
+            <div className="w-full p-4 lg:p-4.5 fhd:p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
+              <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Tech <span className="text-accent-primary">Stack</span>
               </h1>
-              <div className="grid grid-cols-6 xl:grid-cols-8 2xl:grid-cols-4 fhd:grid-cols-5 gap-2.5 w-full">
+              <div className="grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-4 fhd:grid-cols-5 gap-2 lg:gap-2.5 w-full">
                 {project.technologies.map((tech) => (
                   <div
                     key={tech}
                     className="flex flex-col items-center justify-center gap-2 pt-4 pb-2 rounded-xl bg-card"
                   >
-                    <i className={`${TECHNOLOGY_ICONS[tech]} text-4xl qhd:text-5xl text-foreground`} />
-                    <span className="text-center text-sm qhd:text-base font-mono text-foreground-secondary">
+                    <i className={`${TECHNOLOGY_ICONS[tech]} text-3xl lg:text-4xl qhd:text-5xl text-foreground`} />
+                    <span className="text-center text-xs lg:text-sm qhd:text-base font-mono text-foreground-secondary">
                       {tech}
                     </span>
                   </div>
@@ -173,9 +173,9 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <div className="w-full flex items-start justify-start gap-12">
-        <aside className="sticky top-28 w-46 2xl:w-56 fhd:w-72 shrink-0">
-          <div className="rounded-2xl bg-surface p-6">
+      <div className="w-full flex flex-col lg:flex-row items-start justify-start gap-8 lg:gap-12">
+        <aside className="w-full lg:w-46 2xl:w-56 fhd:w-72 lg:sticky lg:top-28 shrink-0">
+          <div className="rounded-2xl bg-surface p-5 lg:p-6">
             <h2 className="mb-5 text-lg 2xl:text-xl fhd:text-2xl font-semibold tracking-tight">
               On this page
             </h2>
@@ -203,9 +203,11 @@ export default async function ProjectPage({
         <div
           className="
             prose
-            prose-lg
+            prose-base
+            lg:prose-lg
             max-w-none
             flex-1
+            w-full
 
             prose-headings:text-foreground
             prose-p:text-foreground-secondary

@@ -33,32 +33,32 @@ export function HomeSection() {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="relative py-20 flex flex-col items-center justify-between gap-30 px-5"
+      className="relative py-10 lg:py-20 flex flex-col items-center justify-between gap-15 lg:gap-30 px-5"
     >
-      <div className="flex items-center justify-start gap-10">
+      <div className="flex flex-col lg:flex-row items-center justify-start gap-10">
         <motion.div variants={fadeUp}>
           <Image
             src="/images/photo.jpeg"
             alt="Alejandro González Macías"
             width={600}
-            height={550}
+            height={600}
             priority
-            className="rounded-full object-cover border-6 border-surface"
+            className="w-80 h-80 lg:w-150 lg:h-150 rounded-full object-cover border-6 border-surface"
           />
         </motion.div>
 
-        <div className="relative max-w-275 flex flex-col items-start justify-center gap-8 text-start">
+        <div className="relative max-w-275 flex flex-col items-start justify-center gap-8 text-center lg:text-start">
           <div className="flex flex-col items-start justify-center gap-1">
             <motion.h1
               variants={fadeUp}
-              className="text-6xl 2xl:text-7xl fhd:text-8xl font-bold tracking-tight text-foreground"
+              className="text-4xl lg:text-6xl 2xl:text-7xl fhd:text-8xl font-bold tracking-tight text-foreground"
             >
               Alejandro González Macías
             </motion.h1>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl 2xl:text-5xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
+              className="text-2xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
             >
               Final-Year{" "}
               <span className="text-accent-primary">
@@ -72,22 +72,22 @@ export function HomeSection() {
 
       <motion.div
         variants={fadeUp}
-        className="relative max-w-450 px-15 pt-7 pb-10 rounded-t-[5rem] rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-8 text-start"
+        className="relative max-w-450 px-6 lg:px-15 pt-6 lg:pt-7 pb-8 lg:pb-10 rounded-t-[2.5rem] rounded-b-4xl lg:rounded-t-[5rem] lg:rounded-b-[4rem] bg-surface flex flex-col items-center justify-start gap-6 lg:gap-8 text-start"
       >
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-5xl 2xl:text-6xl font-bold tracking-tight text-foreground">
+        <div className="flex flex-col items-center justify-center gap-2 lg:gap-4">
+          <h1 className="text-4xl lg:text-5xl 2xl:text-6xl font-bold tracking-tight text-foreground">
             About <span className="text-accent-primary">Me</span>
           </h1>
 
-          <div className="text-sm 2xl:text-base fhd:text-lg flex flex-wrap gap-3">
-            <span className="rounded-full bg-card px-4 py-2">📍 Sanlúcar de Barrameda</span>
-            <span className="rounded-full bg-card px-4 py-2">🎓 University of Seville</span>
-            <span className="rounded-full bg-card px-4 py-2">🌍 Spanish • English</span>
-            <span className="rounded-full bg-card px-4 py-2">💼 Open to Work</span>
+          <div className="text-[10px] lg:text-sm 2xl:text-base fhd:text-lg flex flex-wrap justify-center gap-2 lg:gap-3">
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">📍 Sanlúcar de Barrameda</span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">🎓 University of Seville</span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">🌍 Spanish • English</span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">💼 Open to Work</span>
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-center gap-4 text-lg 2xl:text-xl text-foreground">
+        <div className="flex flex-col items-start justify-center gap-4 text-sm lg:text-lg 2xl:text-xl text-foreground">
           <p>
             Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
             Engineering student at the University of Seville (Bachelor&apos;s Thesis pending

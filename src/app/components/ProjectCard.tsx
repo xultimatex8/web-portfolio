@@ -14,7 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const category = CATEGORY_STYLES[project.category];
 
   return (
-    <div className="relative w-83 xl:w-md 2xl:w-96 fhd:w-114 qhd:w-124 h-115 xl:h-128 2xl:h-132 fhd:h-137 p-2.5 xl:p-3 fhd:p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
+    <div className="relative w-full lg:w-83 xl:w-md 2xl:w-96 fhd:w-114 qhd:w-124 h-auto lg:h-115 xl:h-128 2xl:h-132 fhd:h-137 p-3 lg:p-2.5 xl:p-3 fhd:p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
       <Link
         href={`/projects/${project.id}`}
         className="w-full cursor-pointer rounded-2xl border-6 border-surface block"
@@ -25,7 +25,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           alt={project.title}
           width={660}
           height={350}
-          className="w-full h-50 xl:h-60 2xl:h-56 fhd:h-60 rounded-2xl object-cover"
+          className="w-full h-44 lg:h-50 xl:h-60 2xl:h-56 fhd:h-60 rounded-2xl object-cover"
         />
       </Link>
 
@@ -55,7 +55,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
 
-        <h2 className="text-xl xl:text-2xl fhd:text-3xl font-bold tracking-tight pr-16">{project.title}</h2>
+        <h2 className="text-lg lg:text-xl xl:text-2xl fhd:text-3xl font-bold tracking-tight pr-16">{project.title}</h2>
         <p className="text-sm xl:text-base text-foreground-secondary">{project.description}</p>
       </div>
 

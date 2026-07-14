@@ -15,9 +15,9 @@ export function EducationSection() {
   return (
     <section
       id="education"
-      className="relative w-full py-20 fhd:py-30 bg-surface flex items-start justify-start gap-20 px-15"
+      className="relative w-full py-10 lg:py-20 fhd:py-30 bg-surface flex flex-col lg:flex-row items-start justify-start gap-6 lg:gap-20 px-6 lg:px-15"
     >
-      <h1 className="w-xs lg:w-xs xl:w-56 fhd:w-xs text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground sticky top-30">
+      <h1 className="w-full lg:w-xs 2xl:w-68 fhd:w-xs text-3xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground lg:sticky">
         Education
       </h1>
 
