@@ -14,7 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const category = CATEGORY_STYLES[project.category];
 
   return (
-    <div className="relative w-full lg:w-83 xl:w-md 2xl:w-96 fhd:w-114 qhd:w-124 h-auto lg:h-115 xl:h-128 2xl:h-132 fhd:h-137 p-3 lg:p-2.5 xl:p-3 fhd:p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
+    <div className="relative w-full sm:w-74 lg:w-83 xl:w-md 2xl:w-96 fhd:w-114 qhd:w-124 h-auto sm:h-115 xl:h-128 2xl:h-132 fhd:h-137 p-3 lg:p-2.5 xl:p-3 fhd:p-5 rounded-2xl bg-card text-foreground flex flex-col items-start justify-start gap-4">
       <Link
         href={`/projects/${project.id}`}
         className="w-full cursor-pointer rounded-2xl border-6 border-surface block"

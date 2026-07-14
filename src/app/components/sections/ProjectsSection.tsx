@@ -41,7 +41,7 @@ export function ProjectsSection() {
 
       <div className="flex-1 flex flex-col gap-10 w-full">
         {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-8 lg:gap-14 xl:gap-10 2xl:gap-15 fhd:gap-13 qhd:gap-15">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-8 sm:gap-5 lg:gap-14 xl:gap-10 2xl:gap-15 fhd:gap-13 qhd:gap-15">
             {filteredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

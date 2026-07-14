@@ -79,7 +79,7 @@ export function HomeSection() {
             About <span className="text-accent-primary">Me</span>
           </h1>
 
-          <div className="text-[10px] lg:text-sm 2xl:text-base fhd:text-lg flex flex-wrap justify-center gap-2 lg:gap-3">
+          <div className="text-[10px] sm:text-xs lg:text-sm 2xl:text-base fhd:text-lg flex flex-wrap justify-center gap-2 lg:gap-3">
             <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">📍 Sanlúcar de Barrameda</span>
             <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">🎓 University of Seville</span>
             <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">🌍 Spanish • English</span>
