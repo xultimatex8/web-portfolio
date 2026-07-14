@@ -30,10 +30,10 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full py-10 lg:py-20 fhd:py-30 bg-surface flex flex-col lg:flex-row items-start justify-start gap-4 lg:gap-20 px-6 lg:px-15"
+      className="relative w-full py-10 lg:py-20 fhd:py-30 bg-surface flex flex-col lg:flex-row items-start justify-start gap-4 lg:gap-20 px-6 md:px-15"
     >
       <div className="w-full lg:w-47 2xl:w-52 fhd:w-xs flex flex-col items-start gap-4 lg:gap-8 lg:sticky lg:top-30">
-        <h1 className="text-3xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground">
+        <h1 className="text-3xl md:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground">
           Projects
         </h1>
         <TagFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />

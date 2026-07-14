@@ -22,7 +22,7 @@ export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {
 
   return (
     <>
-      <div className="lg:hidden w-full -mx-3 px-5 flex items-center gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
+      <div className="lg:hidden w-full -mx-3 md:-mx-1.5 px-5 flex items-center gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
         {sortedTags.map((tag) => {
           const isActive = selected.includes(tag);
           return (
@@ -41,7 +41,7 @@ export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {
         })}
       </div>
 
-      <div className="hidden lg:grid grid-cols-2 fhd:grid-cols-2 gap-x-6 gap-y-2.5">
+      <div className="hidden lg:grid grid-cols-1 fhd:grid-cols-2 gap-x-6 gap-y-2.5">
         {orderedTags.map((tag) => {
           const isActive = selected.includes(tag);
 
@@ -64,7 +64,7 @@ export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {
               </span>
 
               <span
-                className={`text-base font-medium transition-colors ${
+                className={`text-base font-medium whitespace-nowrap transition-colors ${
                   isActive
                     ? "text-foreground"
                     : "text-foreground-secondary group-hover:text-foreground/60"

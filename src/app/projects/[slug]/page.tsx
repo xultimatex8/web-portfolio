@@ -87,7 +87,7 @@ export default async function ProjectPage({
     <article className="relative w-full px-6 lg:px-15 pt-2 pb-8 lg:py-8 flex flex-col items-start justify-start gap-8 lg:gap-10">
       <ScrollToTop />
       <div className="w-full flex flex-col items-start justify-start gap-5">
-        <div className="w-full flex flex-col lg:flex-row items-start lg:justify-between gap-4 lg:gap-8">
+        <div className="w-full flex flex-col md:flex-row items-start md:justify-between gap-4">
           <div className="flex flex-col items-start gap-3">
             <h1 className="text-4xl 2xl:text-5xl fhd:text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
               {project.title}
@@ -155,7 +155,7 @@ export default async function ProjectPage({
               <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
                 Tech <span className="text-accent-primary">Stack</span>
               </h1>
-              <div className="grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-4 fhd:grid-cols-5 gap-2 lg:gap-2.5 w-full">
+              <div className="grid grid-cols-4 md:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-4 fhd:grid-cols-5 gap-2 lg:gap-2.5 w-full">
                 {project.technologies.map((tech) => (
                   <div
                     key={tech}
@@ -173,8 +173,8 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <div className="w-full flex flex-col lg:flex-row items-start justify-start gap-8 lg:gap-12">
-        <aside className="w-full lg:w-46 2xl:w-56 fhd:w-72 lg:sticky lg:top-28 shrink-0">
+      <div className="w-full flex flex-col md:flex-row items-start justify-start gap-8 lg:gap-12">
+        <aside className="w-full md:w-46 2xl:w-56 fhd:w-72 md:sticky md:top-28 shrink-0">
           <div className="rounded-2xl bg-surface p-5 lg:p-6">
             <h2 className="mb-5 text-lg 2xl:text-xl fhd:text-2xl font-semibold tracking-tight">
               On this page

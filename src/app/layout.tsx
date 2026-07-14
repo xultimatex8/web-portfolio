@@ -27,7 +27,7 @@ export default function RootLayout({
 
         <main className="mt-20 flex-1">{children}</main>
 
-        <footer className="w-full py-8 lg:py-10 px-6 lg:px-15 flex flex-col lg:flex-row items-center justify-between gap-3 bg-nav text-nav-foreground text-sm lg:text-md fhd:text-lg text-center">
+        <footer className="w-full py-8 lg:py-10 px-6 lg:px-15 flex flex-col lg:flex-row items-center justify-between gap-3 bg-nav text-nav-foreground text-sm md:text-base fhd:text-lg text-center">
           <p>© {new Date().getFullYear()} Alejandro González Macías</p>
           <a
             href="https://github.com/Ultimate88x/web-portfolio"

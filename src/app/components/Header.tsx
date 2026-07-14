@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <div className="fixed inset-x-0 top-0 h-16 lg:h-20 flex justify-between items-center bg-nav text-nav-foreground font-sans px-5 z-50">
-      <h1 className="text-lg lg:text-2xl fhd:text-3xl font-bold tracking-tight truncate">
+      <h1 className="text-lg md:text-xl lg:text-2xl fhd:text-3xl font-bold tracking-tight truncate">
         Alejandro González Macías
       </h1>
 

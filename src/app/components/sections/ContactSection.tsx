@@ -26,14 +26,14 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full py-10 lg:py-20 fhd:py-30 flex flex-col lg:flex-row items-start justify-start gap-8 lg:gap-40 px-6 lg:px-15"
+      className="relative w-full py-10 lg:py-20 fhd:py-30 flex flex-col lg:flex-row items-start justify-start gap-6 lg:gap-40 px-6 md:px-15"
     >
-      <h1 className="w-full lg:w-27 fhd:w-xs text-3xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground lg:sticky">
+      <h1 className="w-full lg:w-27 fhd:w-xs text-3xl md:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground lg:sticky lg:top-30">
         Contact
       </h1>
 
       <div className="flex-1 flex flex-col gap-6 w-full">
-        <p className="text-base lg:text-xl 2xl:text-2xl text-foreground-secondary max-w-2xl">
+        <p className="text-base md:text-lg lg:text-xl 2xl:text-2xl text-foreground-secondary max-w-2xl">
           Feel free to reach out — I&apos;m open to new opportunities and always happy to
           connect.
         </p>

@@ -43,22 +43,22 @@ export function HomeSection() {
             width={600}
             height={600}
             priority
-            className="w-80 h-80 lg:w-150 lg:h-150 rounded-full object-cover border-6 border-surface"
+            className="w-80 md:w-100 lg:w-150 h-auto rounded-full object-cover border-6 border-surface"
           />
         </motion.div>
 
         <div className="relative max-w-275 flex flex-col items-start justify-center gap-8 text-center lg:text-start">
-          <div className="flex flex-col items-start justify-center gap-1">
+          <div className="flex flex-col items-center justify-center gap-1">
             <motion.h1
               variants={fadeUp}
-              className="text-4xl lg:text-6xl 2xl:text-7xl fhd:text-8xl font-bold tracking-tight text-foreground"
+              className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl fhd:text-8xl font-bold tracking-tight text-foreground"
             >
               Alejandro González Macías
             </motion.h1>
 
             <motion.h2
               variants={fadeUp}
-              className="text-2xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
+              className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
             >
               Final-Year{" "}
               <span className="text-accent-primary">
@@ -87,7 +87,7 @@ export function HomeSection() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-center gap-4 text-sm lg:text-lg 2xl:text-xl text-foreground">
+        <div className="flex flex-col items-start justify-center gap-4 text-sm md:text-base lg:text-lg 2xl:text-xl text-foreground">
           <p>
             Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
             Engineering student at the University of Seville (Bachelor&apos;s Thesis pending
