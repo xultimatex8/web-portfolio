@@ -70,4 +70,4 @@ Personal content (photos, videos, CV, resume, biographical text, and project wri
 
 - **Email:** alegonzmac@gmail.com
 - **LinkedIn:** [linkedin.com/in/alejandro-gonzalez-macias-agm](https://linkedin.com/in/alejandro-gonzalez-macias-agm)
-- **GitHub:** [github.com/Ultimate88x](https://github.com/Ultimate88x)
+- **GitHub:** [github.com/xultimatex8](https://github.com/xultimatex8)

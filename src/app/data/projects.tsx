@@ -29,7 +29,7 @@ import { Project } from "@/types/project";
       status: "done",
       category: "academic",
       technologies: ["TypeScript", "NestJS", "Socket.IO", "PostgreSQL", "React", "Tailwind CSS"],
-      repoUrl: "https://github.com/Ultimate88x/UltimateWatch",
+      repoUrl: "https://github.com/xultimatex8/UltimateWatch",
     },
     {
       id: "keakit",
@@ -70,7 +70,7 @@ import { Project } from "@/types/project";
       status: "done",
       category: "academic",
       technologies: ["Python", "Jupyter", "Whoosh", "NLTK", "Scikit-learn"],
-      repoUrl: "https://github.com/Ultimate88x/movies-ir",
-      demoUrl: "https://mybinder.org/v2/gh/Ultimate88x/movie-ir/HEAD?urlpath=%2Fdoc%2Ftree%2FRecuperacionDeLaInformacionMovies.ipynb",
+      repoUrl: "https://github.com/xultimatex8/movie-ir",
+      demoUrl: "https://mybinder.org/v2/gh/xultimatex8/movie-ir/HEAD?urlpath=%2Fdoc%2Ftree%2FRecuperacionDeLaInformacionMovies.ipynb",
     },
   ];
