@@ -16,8 +16,8 @@ const CONTACT_LINKS = [
   },
   {
     label: "GitHub",
-    value: "github.com/Ultimate88x",
-    href: "https://github.com/Ultimate88x",
+    value: "github.com/xultimatex8",
+    href: "https://github.com/xultimatex8",
     icon: FaGithub,
   },
 ];
