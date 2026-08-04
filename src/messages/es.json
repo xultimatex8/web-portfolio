@@ -1,0 +1,76 @@
+{
+  "Layout": {
+    "sourceCode": "Desarrollado con Next.js — Ver código fuente en GitHub"
+  },
+  "Header": {
+    "home": "Inicio",
+    "education": "Educación",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "Home": {
+    "role": "Graduado en",
+    "roleHighlight": "Ingeniería del Software",
+    "aboutTitle": "Sobre",
+    "aboutHighlight": "Mí",
+    "bio1": "¡Hola! Soy <strong>Alejandro González Macías</strong>, graduado en Ingeniería del Software por la Universidad de Sevilla. Disfruto el hecho de transformar ideas en software funcional, mantenible y escalable, y me interesa nuevas herramientas y tecnologías para seguir creciendo como desarrollador.",
+    "bio2": "Mi formación me ha proporcionado una base sólida en ingeniería del software, arquitectura y resolución de problemas, tanto trabajando de forma individual como en equipo utilizando control de versiones y metodologías ágiles. Soy una persona curiosa, me adapto con rapidez a nuevos entornos y tengo un buen dominio del inglés para desenvolverme en contextos técnicos e internacionales. Actualmente busco oportunidades para crecer y aportar valor en proyectos con impacto.",
+    "bio3": "Además de codeando, disfruto pasando tiempo con mis amigos, desarrollando proyectos personales, yendo al gimnasio, viendo películas y jugando a videojuegos.",
+    "location": "Sanlúcar de Barrameda",
+    "university": "Universidad de Sevilla",
+    "languages": "Español • Inglés",
+    "openToWork": "Abierto a oportunidades"
+  },
+  "Education": {
+    "title": "Educación",
+    "highSchool": {
+      "title": "IES Francisco Pacheco",
+      "subtitle": "Bachillerato de Ciencias — 2020–2022"
+    },
+    "university": {
+      "title": "Universidad de Sevilla",
+      "subtitle": "Grado en Ingeniería del Software — 2022–2026"
+    }
+  },
+  "Experience": {
+    "title": "Experiencia",
+    "text1": "Me he graduado recientemente en Ingeniería del Software y actualmente busco mi primera oportunidad profesional en el sector.",
+    "text2": "Aunque todavía no cuento con experiencia laboral formal, he construido una sólida base técnica a través de los proyectos personales y académicos que muestro a continuación."
+  },
+  "Projects": {
+    "title": "Proyectos",
+    "viewCode": "Ver código",
+    "viewDemo": "Ver demo",
+    "empty": {
+      "title": "Ningún proyecto coincide con estos filtros",
+      "description": "Prueba a quitar algunas tecnologías para ver más resultados."
+    }
+  },
+  "Contact": {
+    "title": "Contacto",
+    "intro": "No dudes en ponerte en contacto conmigo. Estoy abierto a nuevas oportunidades y siempre encantado de conectar con otras personas.",
+    "cv": "Abrir CV",
+    "cvUrl": "/CV_AlejandroGonzalez_Software_ES.pdf"
+  },
+    "ProjectData": {
+    "ultimatewatch": {
+      "title": "UltimateWatch",
+      "description": "Aplicación web que unifica catálogos de plataformas de streaming en un único buscador y permite organizar sesiones sincronizadas con chat en tiempo real y listas de reproducción compartidas."
+    },
+    "keakit": {
+      "title": "KeaKit",
+      "description": "Plataforma de marketplace para alquilar objetos, contratar servicios y crear kits personalizados, facilitando la conexión entre usuarios y productos o servicios disponibles."
+    },
+    "zeolite": {
+      "title": "Zeolite",
+      "description": "Aplicación web para organizar universos ficticios mediante visualización de grafos, entidades personalizadas y detección de inconsistencias narrativas."
+    },
+    "movies-ir": {
+      "title": "Recuperación de la Información - Películas",
+      "description": "Proyecto colaborativo de recuperación de la información para buscar y analizar reseñas de películas utilizando modelos Booleanos y TF-IDF."
+    }
+  }
+}
