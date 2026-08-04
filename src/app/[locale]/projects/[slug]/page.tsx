@@ -3,12 +3,12 @@ import path from "path";
 import matter from "gray-matter";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS } from "@/[locale]/data/projects";
 import { notFound } from "next/navigation";
-import { TECHNOLOGY_ICONS } from "@/types/project";
-import { CATEGORY_STYLES, STATUS_STYLES } from "@/helpers/projectStyles";
-import { Badge } from "@/components/Badge";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { TECHNOLOGY_ICONS } from "@/[locale]/types/project";
+import { CATEGORY_STYLES, STATUS_STYLES } from "@/[locale]/helpers/projectStyles";
+import { Badge } from "@/[locale]/components/Badge";
+import { ScrollToTop } from "@/[locale]/components/ScrollToTop";
 
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.id }));

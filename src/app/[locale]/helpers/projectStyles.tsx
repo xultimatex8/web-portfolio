@@ -1,4 +1,4 @@
-import { ProjectStatus, ProjectCategory } from "@/types/project";
+import { ProjectStatus, ProjectCategory } from "@/[locale]/types/project";
 
 export const STATUS_STYLES: Record<ProjectStatus, { label: string; backgroundColor: string }> = {
   done: { label: "Completed", backgroundColor: "bg-done" },

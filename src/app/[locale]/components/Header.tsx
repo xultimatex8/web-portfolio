@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { NavLink } from "@/components/NavLink";
+import { NavLink } from "@/[locale]/components/NavLink";
 
 const NAV_ITEMS = [
   { href: "home", label: "Home" },

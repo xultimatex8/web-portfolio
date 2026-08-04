@@ -1,0 +1,117 @@
+# Zeolite
+
+Zeolite is a web application for organizing, designing, and analyzing stories and fictional universes. It combines a Python backend with a Neo4j graph database to store and connect all narrative information as a graph, alongside an interactive React frontend.
+
+One of its main features is a visual workspace that brings together scattered notes in a single place, clearly distinguishing between characters, events, and locations. Thanks to the flexibility of the graph database, users can describe each element in a clean and structured way while defining their own custom attributes to adapt the application to the needs of their fictional world.
+
+The platform also includes an analysis system that continuously examines the story graph to detect errors and narrative inconsistencies. Through an interactive dashboard, it alerts users to issues such as characters with no interactions, events that have no impact on the plot, or locations that have become isolated, helping writers maintain a coherent and well-connected story.
+
+## Key Features
+
+- **Story Organization**: visual graph editor for structuring narrative elements.
+- **Entity & Relationship Creation**: define characters, events and locations with custom attributes.
+- **Consistency Analysis**: automatic detection of narrative inconsistencies through a dashboard.
+- **Quick Prototyping**: fast application development with FastAPI and React.
+- **Graph Database**: Neo4j no-sql database for storing highly connected story data.
+
+## Demo
+
+The following examples showcase some of Zeolite's core features.
+
+<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Create Entities</h4>
+    <video
+      src="/videos/projects/zeolite/create_node.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Create Relationships</h4>
+    <video
+      src="/videos/projects/zeolite/create_edge.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Edit Data</h4>
+    <video
+      src="/videos/projects/zeolite/edit.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Delete Entities & Relationships</h4>
+    <video
+      src="/videos/projects/zeolite/delete.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Customize Graph View</h4>
+    <video
+      src="/videos/projects/zeolite/views.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Real-time Analysis Dashboard</h4>
+    <video
+      src="/videos/projects/zeolite/dashboard.mp4"
+      autoPlay
+      loop
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Challenges
+
+Developing Zeolite involved several technical challenges:
+
+- Designing a structured data model that balances predefined entity types with extensibility through custom attributes.
+- Translating graph database concepts into an intuitive user interface.
+- Keeping the graph visualization responsive and readable as the number of entities and relationships grows.
+- Designing and implementing graph analysis queries in Neo4j to automatically detect narrative inconsistencies.
+
+## Lessons Learned
+
+Zeolite introduced me to graph databases through Neo4j, giving me hands-on experience with graph modeling and NoSQL data structures. It showed me how choosing the right database can greatly simplify the representation of highly connected data.
+
+Working on the project also taught me how to quickly turn an idea into a functional application, iterating on the data model and features.
+
+Finally, developing the interactive graph editor gave me practical experience building graph-based interfaces in React, including visualizing connected data and creating intuitive interactions.

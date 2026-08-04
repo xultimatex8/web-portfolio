@@ -1,4 +1,4 @@
-import { Technology } from "@/types/project";
+import { Technology } from "@/[locale]/types/project";
 import { Check } from "lucide-react";
 
 interface TagFilterProps {

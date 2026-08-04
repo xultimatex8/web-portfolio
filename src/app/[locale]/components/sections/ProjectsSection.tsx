@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { PROJECTS } from "@/data/projects";
-import { Technology } from "@/types/project";
+import { PROJECTS } from "@/[locale]/data/projects";
+import { Technology } from "@/[locale]/types/project";
 import { TagFilter } from "../TagFilter";
 import { ProjectCard } from "../ProjectCard";
 

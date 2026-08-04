@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { Project } from "@/types/project";
+import { Project } from "@/[locale]/types/project";
 import { Badge } from "./Badge";
-import { STATUS_STYLES, CATEGORY_STYLES } from "@/helpers/projectStyles";
+import { STATUS_STYLES, CATEGORY_STYLES } from "@/[locale]/helpers/projectStyles";
 
 interface ProjectCardProps {
   project: Project;

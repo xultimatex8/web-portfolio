@@ -1,4 +1,4 @@
-import { Project } from "@/types/project";
+import { Project } from "@/[locale]/types/project";
 
 /*
   Example project object:
