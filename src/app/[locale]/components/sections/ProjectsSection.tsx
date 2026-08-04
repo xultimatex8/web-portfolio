@@ -1,12 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { PROJECTS } from "@/data/projects";
-import { Technology } from "@/types/project";
+import { useTranslations } from "next-intl";
+
+import { PROJECTS } from "@/app/[locale]/data/projects";
+import { Technology } from "@/app/[locale]/types/project";
 import { TagFilter } from "../TagFilter";
 import { ProjectCard } from "../ProjectCard";
 
 export function ProjectsSection() {
+  const t = useTranslations("Projects");
+
   const [selectedTags, setSelectedTags] = useState<Technology[]>([]);
 
   const allTags = useMemo(
@@ -34,9 +38,14 @@ export function ProjectsSection() {
     >
       <div className="w-full lg:w-47 2xl:w-52 fhd:w-xs flex flex-col items-start gap-4 lg:gap-8 lg:sticky lg:top-30">
         <h1 className="text-3xl md:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground">
-          Projects
+          {t("title")}
         </h1>
-        <TagFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />
+
+        <TagFilter
+          tags={allTags}
+          selected={selectedTags}
+          onToggle={toggleTag}
+        />
       </div>
 
       <div className="flex-1 flex flex-col gap-10 w-full">
@@ -49,10 +58,10 @@ export function ProjectsSection() {
         ) : (
           <div className="w-full flex flex-col items-center justify-center gap-3 text-center">
             <p className="text-xl 2xl:text-2xl font-semibold text-foreground">
-              No projects match these filters
+              {t("empty.title")}
             </p>
             <p className="text-base 2xl:text-lg text-foreground-secondary">
-              Try removing some tags to see more results.
+              {t("empty.description")}
             </p>
           </div>
         )}

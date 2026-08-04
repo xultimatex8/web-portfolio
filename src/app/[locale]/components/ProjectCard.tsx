@@ -1,15 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { Project } from "@/types/project";
+import { useTranslations } from "next-intl";
+
+import { Project } from "@/app/[locale]/types/project";
 import { Badge } from "./Badge";
-import { STATUS_STYLES, CATEGORY_STYLES } from "@/helpers/projectStyles";
+import {
+  STATUS_STYLES,
+  CATEGORY_STYLES,
+} from "@/app/[locale]/helpers/projectStyles";
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const t = useTranslations("ProjectData");
+  const tCommon = useTranslations("Projects");
+
   const status = STATUS_STYLES[project.status];
   const category = CATEGORY_STYLES[project.category];
 
@@ -18,11 +26,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <Link
         href={`/projects/${project.id}`}
         className="w-full cursor-pointer rounded-2xl border-6 border-surface block"
-        title={project.title}
+        title={t(`${project.id}.title`)}
       >
         <Image
           src={project.image}
-          alt={project.title}
+          alt={t(`${project.id}.title`)}
           width={660}
           height={350}
           className="w-full h-44 lg:h-50 xl:h-60 2xl:h-56 fhd:h-60 rounded-2xl object-cover"
@@ -36,18 +44,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              title="View code"
+              title={tCommon("viewCode")}
               className="text-foreground-secondary hover:text-foreground transition-colors"
             >
               <i className="devicon-github-original text-xl 2xl:text-2xl" />
             </a>
           )}
+
           {project.demoUrl && (
             <a
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              title="View demo"
+              title={tCommon("viewDemo")}
               className="text-foreground-secondary hover:text-foreground transition-colors"
             >
               <ExternalLink className="relative bottom-0.75 w-5 2xl:w-6.5 h-5 2xl:h-6.5" />
@@ -55,15 +64,29 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
 
-        <h2 className="text-lg lg:text-xl xl:text-2xl fhd:text-3xl font-bold tracking-tight pr-16">{project.title}</h2>
-        <p className="text-sm xl:text-base text-foreground-secondary">{project.description}</p>
+        <h2 className="text-lg lg:text-xl xl:text-2xl fhd:text-3xl font-bold tracking-tight pr-16">
+          {t(`${project.id}.title`)}
+        </h2>
+
+        <p className="text-sm xl:text-base text-foreground-secondary">
+          {t(`${project.id}.description`)}
+        </p>
       </div>
 
       <div className="mt-auto flex flex-col items-start justify-start gap-2">
         <div className="flex items-center justify-start gap-2">
-          <Badge label={status.label} backgroundColor={status.backgroundColor} textSize="text-[0.575rem] md:text-[0.585rem] lg:text-[0.620rem] xl:text-[0.650rem] 2xl:text-xs" />
-          <Badge label={category.label} backgroundColor={category.backgroundColor} textSize="text-[0.575rem] md:text-[0.585rem] lg:text-[0.620rem] xl:text-[0.650rem] 2xl:text-xs" />
+          <Badge
+            label={status.label}
+            backgroundColor={status.backgroundColor}
+            textSize="text-[0.575rem] md:text-[0.585rem] lg:text-[0.620rem] xl:text-[0.650rem] 2xl:text-xs"
+          />
+          <Badge
+            label={category.label}
+            backgroundColor={category.backgroundColor}
+            textSize="text-[0.575rem] md:text-[0.585rem] lg:text-[0.620rem] xl:text-[0.650rem] 2xl:text-xs"
+          />
         </div>
+
         <div className="flex items-center justify-start gap-2 flex-wrap">
           {project.technologies.map((tech) => (
             <Badge

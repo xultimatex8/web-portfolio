@@ -1,0 +1,83 @@
+{
+  "Layout": {
+    "sourceCode": "Built with Next.js — View source code on GitHub"
+  },
+  "Header": {
+    "home": "Home",
+    "education": "Education",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Home": {
+    "role": "Software Engineering",
+    "roleHighlight": "Graduate",
+    "aboutTitle": "About",
+    "aboutHighlight": "Me",
+    "bio1": "Hi! I'm <strong>Alejandro González Macías</strong>, a Software Engineering graduate from the University of Seville. I enjoy turning ideas into functional, maintainable, and scalable software, and I'm always interested in exploring new tools and technologies to continue growing as a developer.",
+    "bio2": "My academic background has provided me with a solid foundation in software engineering, software architecture, and problem-solving, both through independent work and collaborative projects using version control and agile methodologies. I'm curious, adapt quickly to new environments, and have a strong command of English for technical and international contexts. I'm currently looking for opportunities to grow professionally and contribute to meaningful projects.",
+    "bio3": "Outside of coding, I enjoy spending time with friends, working on personal projects, going to the gym, watching films, and playing video games.",
+    "location": "Sanlúcar de Barrameda",
+    "university": "University of Seville",
+    "languages": "Spanish • English",
+    "openToWork": "Open to Work"
+  },
+  "Education": {
+    "title": "Education",
+    "highSchool": {
+      "title": "Francisco Pacheco High School",
+      "subtitle": "Science Track — 2020–2022"
+    },
+    "university": {
+      "title": "University of Seville",
+      "subtitle": "Bachelor's Degree in Software Engineering — 2022–2026"
+    }
+  },
+  "Experience": {
+    "title": "Experience",
+    "text1": "I recently graduated in Software Engineering and I'm currently looking for my first professional opportunity in the field.",
+    "text2": "Although I don't have formal work experience yet, I've built a solid technical foundation through the personal and academic projects showcased below."
+  },
+  "Projects": {
+    "title": "Projects",
+    "viewCode": "View code",
+    "viewDemo": "View demo",
+    "empty": {
+      "title": "No projects match these filters",
+      "description": "Try removing some technologies to see more results."
+    }
+  },
+  "Contact": {
+    "title": "Contact",
+    "intro": "Feel free to get in touch. I'm open to new opportunities and always happy to connect with new people.",
+    "cv": "Open CV",
+    "cvUrl": "/CV_AlejandroGonzalez_Software_EN.pdf"
+  },
+  "ProjectData": {
+    "ultimatewatch": {
+      "title": "UltimateWatch",
+      "description": "A web application that unifies streaming platform catalogs into a single search experience and allows users to host synchronized watch parties with real-time chat and shared playlists."
+    },
+    "keakit": {
+      "title": "KeaKit",
+      "description": "A marketplace platform for renting items, hiring services, and creating personalized kits, making it easy to connect users with available products and services."
+    },
+    "zeolite": {
+      "title": "Zeolite",
+      "description": "A web application for organizing fictional universes through graph visualization, custom entities, and automatic detection of narrative inconsistencies."
+    },
+    "movies-ir": {
+      "title": "Movie Information Retrieval",
+      "description": "A collaborative information retrieval project for searching and analyzing movie reviews using Boolean and TF-IDF retrieval models."
+    }
+  },
+  "Project": {
+    "viewCode": "View code",
+    "viewDemo": "View demo",
+    "summary": "Project <highlight>Summary</highlight>",
+    "techStack": "Tech <highlight>Stack</highlight>",
+    "onThisPage": "On this page"
+  }
+}

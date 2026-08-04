@@ -3,15 +3,22 @@ import path from "path";
 import matter from "gray-matter";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS } from "@/app/[locale]/data/projects";
 import { notFound } from "next/navigation";
-import { TECHNOLOGY_ICONS } from "@/types/project";
-import { CATEGORY_STYLES, STATUS_STYLES } from "@/helpers/projectStyles";
-import { Badge } from "@/components/Badge";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { TECHNOLOGY_ICONS } from "@/app/[locale]/types/project";
+import { CATEGORY_STYLES, STATUS_STYLES } from "@/app/[locale]/helpers/projectStyles";
+import { Badge } from "@/app/[locale]/components/Badge";
+import { ScrollToTop } from "@/app/[locale]/components/ScrollToTop";
+import { routing } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
-  return PROJECTS.map((project) => ({ slug: project.id }));
+  return routing.locales.flatMap((locale) =>
+    PROJECTS.map((project) => ({
+      locale,
+      slug: project.id,
+    }))
+  );
 }
 
 const slugify = (text: string) =>
@@ -39,9 +46,14 @@ const extractHeadings = (content: string) =>
 export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{
+  locale: (typeof routing.locales)[number];
+  slug: string;
+}>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  const t = await getTranslations("Project");
+  const projectData = await getTranslations("ProjectData");
   const project = PROJECTS.find((p) => p.id === slug);
 
   if (!project) notFound();
@@ -49,7 +61,16 @@ export default async function ProjectPage({
   const status = STATUS_STYLES[project.status];
   const category = CATEGORY_STYLES[project.category];
 
-  const filePath = path.join(process.cwd(), "src/app/content/projects", `${slug}.mdx`);
+  const filePath = path.join(
+    process.cwd(),
+    "src",
+    "app",
+    "[locale]",
+    "content",
+    locale,
+    "projects",
+    `${slug}.mdx`
+  );
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { content } = matter(fileContent);
   const headings = extractHeadings(content);
@@ -90,7 +111,7 @@ export default async function ProjectPage({
         <div className="w-full flex flex-col md:flex-row items-start md:justify-between gap-4">
           <div className="flex flex-col items-start gap-3">
             <h1 className="text-4xl 2xl:text-5xl fhd:text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
-              {project.title}
+              {projectData(`${project.id}.title`)}
             </h1>
 
             <div className="flex items-center gap-2">
@@ -115,7 +136,7 @@ export default async function ProjectPage({
                 rel="noopener noreferrer"
                 className="px-3 fhd:px-5 py-2 fhd:py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
               >
-                View code
+                {t("viewCode")}
               </a>
             )}
 
@@ -126,7 +147,7 @@ export default async function ProjectPage({
                 rel="noopener noreferrer"
                 className="px-3 fhd:px-5 py-2 fhd:py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
               >
-                View demo
+                {t("viewDemo")}
               </a>
             )}
           </div>
@@ -135,7 +156,7 @@ export default async function ProjectPage({
         <div className="w-full flex flex-col 2xl:flex-row items-start justify-start gap-6 lg:gap-8">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={projectData(`${project.id}.title`)}
             width={1500}
             height={350}
             className="w-full 2xl:w-3/5 qhd:w-2/3 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
@@ -144,16 +165,24 @@ export default async function ProjectPage({
           <div className="flex-1 flex flex-col items-start justify-start gap-5 fhd:gap-10">
             <div className="flex flex-col items-start gap-3">
               <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
-                Project <span className="text-accent-primary">Summary</span>
+                {t.rich("summary", {
+                  highlight: (chunks) => (
+                    <span className="text-accent-primary">{chunks}</span>
+                  )
+                })}
               </h1>
               <p className="text-base lg:text-lg 2xl:text-xl qhd:text-2xl text-foreground-secondary">
-                {project.description}
+                {projectData(`${project.id}.description`)}
               </p>
             </div>
 
             <div className="w-full p-4 lg:p-4.5 fhd:p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
               <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
-                Tech <span className="text-accent-primary">Stack</span>
+                {t.rich("techStack", {
+                  highlight: (chunks) => (
+                    <span className="text-accent-primary">{chunks}</span>
+                  )
+                })}
               </h1>
               <div className="grid grid-cols-4 md:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-4 fhd:grid-cols-5 gap-2 lg:gap-2.5 w-full">
                 {project.technologies.map((tech) => (
@@ -177,7 +206,7 @@ export default async function ProjectPage({
         <aside className="w-full md:w-46 2xl:w-56 fhd:w-72 md:sticky md:top-28 shrink-0">
           <div className="rounded-2xl bg-surface p-5 lg:p-6">
             <h2 className="mb-5 text-lg 2xl:text-xl fhd:text-2xl font-semibold tracking-tight">
-              On this page
+              {t("onThisPage")}
             </h2>
 
             <nav className="flex flex-col gap-3">
