@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 export function HomeSection() {
+  const t = useTranslations("Home");
   const shouldReduceMotion = useReducedMotion();
 
   const container = {
@@ -48,7 +50,7 @@ export function HomeSection() {
         </motion.div>
 
         <div className="relative max-w-275 flex flex-col items-start justify-center gap-8 text-center lg:text-start">
-          <div className="flex flex-col items-center justify-center gap-1">
+          <div className="flex flex-col items- lg:items-start justify-center gap-1">
             <motion.h1
               variants={fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl fhd:text-8xl font-bold tracking-tight text-foreground"
@@ -60,11 +62,10 @@ export function HomeSection() {
               variants={fadeUp}
               className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl fhd:text-6xl font-medium tracking-tight text-foreground-secondary"
             >
-              Final-Year{" "}
+              {t("role")}{" "}
               <span className="text-accent-primary">
-                Software Engineering
-              </span>{" "}
-              Student
+                {t("roleHighlight")}
+              </span>
             </motion.h2>
           </div>
         </div>
@@ -76,35 +77,43 @@ export function HomeSection() {
       >
         <div className="flex flex-col items-center justify-center gap-2 lg:gap-4">
           <h1 className="text-4xl lg:text-5xl 2xl:text-6xl font-bold tracking-tight text-foreground">
-            About <span className="text-accent-primary">Me</span>
+            {t("aboutTitle")}{" "}
+            <span className="text-accent-primary">
+              {t("aboutHighlight")}
+            </span>
           </h1>
 
           <div className="text-[10px] sm:text-xs lg:text-sm 2xl:text-base fhd:text-lg flex flex-wrap justify-center gap-2 lg:gap-3">
-            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">📍 Sanlúcar de Barrameda</span>
-            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">🎓 University of Seville</span>
-            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">🌍 Spanish • English</span>
-            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">💼 Open to Work</span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">
+              📍 {t("location")}
+            </span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">
+              🎓 {t("university")}
+            </span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">
+              🌍 {t("languages")}
+            </span>
+            <span className="rounded-full bg-card px-3 py-1.5 lg:px-4 lg:py-2">
+              💼 {t("openToWork")}
+            </span>
           </div>
         </div>
 
         <div className="flex flex-col items-start justify-center gap-4 text-sm md:text-base lg:text-lg 2xl:text-xl text-foreground">
           <p>
-            Hi! I&apos;m <strong>Alejandro González Macías</strong>, a final-year Software
-            Engineering student at the University of Seville (Bachelor&apos;s Thesis pending
-            defense), based in Sanlúcar de Barrameda, Spain. I love turning ideas into
-            functional, maintainable, and scalable software, and I&apos;m always exploring new
-            tools and technologies to keep growing as a developer.
+            {t.rich("bio1", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
           <p>
-            My studies gave me a solid foundation in software engineering, architecture, and
-            problem-solving, both independently and in team projects using version control and
-            agile practices. I&apos;m curious, adapt quickly to new environments, and I&apos;m
-            proficient in English for technical and international work. I&apos;m currently
-            looking for opportunities to keep growing and contribute to meaningful projects.
+            {t.rich("bio2", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
           <p>
-            Outside of code, I enjoy spending time with friends, working on personal projects,
-            going to the gym, watching films, and playing video games.
+            {t.rich("bio3", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
       </motion.div>

@@ -1,5 +1,3 @@
-"use client";
-
 import { ContactSection } from "./components/sections/ContactSection";
 import { HomeSection } from "./components/sections/HomeSection";
 import { EducationSection } from "./components/sections/EducationSection";

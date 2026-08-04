@@ -1,20 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { NavLink } from "@/[locale]/components/NavLink";
+import { useLocale, useTranslations } from "next-intl";
 
-const NAV_ITEMS = [
-  { href: "home", label: "Home" },
-  { href: "education", label: "Education" },
-  { href: "experience", label: "Experience" },
-  { href: "projects", label: "Projects" },
-  { href: "contact", label: "Contact" },
-];
+import { NavLink } from "@/app/[locale]/components/NavLink";
+import { Link, usePathname } from "../../../i18n/navigation";
 
 export function Header() {
+  const t = useTranslations("Header");
+  const locale = useLocale();
+  const pathname = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleNavClick = () => setIsOpen(false);
+
+  const NAV_ITEMS = [
+    { href: "home", label: t("home") },
+    { href: "education", label: t("education") },
+    { href: "experience", label: t("experience") },
+    { href: "projects", label: t("projects") },
+    { href: "contact", label: t("contact") },
+  ];
 
   return (
     <div className="fixed inset-x-0 top-0 h-16 lg:h-20 flex justify-between items-center text-white bg-nav font-sans px-5 z-50">
@@ -26,11 +33,37 @@ export function Header() {
         {NAV_ITEMS.map((item) => (
           <NavLink key={item.href} href={item.href} label={item.label} />
         ))}
+
+        <div className="flex rounded-full bg-card p-1">
+          <Link
+            href={pathname}
+            locale="es"
+            className={`px-3 py-1 rounded-full text-sm transition ${
+              locale === "es"
+                ? "bg-accent-primary text-background"
+                : "text-foreground-secondary hover:text-foreground"
+            }`}
+          >
+            ES
+          </Link>
+
+          <Link
+            href={pathname}
+            locale="en"
+            className={`px-3 py-1 rounded-full text-sm transition ${
+              locale === "en"
+                ? "bg-accent-primary text-background"
+                : "text-foreground-secondary hover:text-foreground"
+            }`}
+          >
+            EN
+          </Link>
+        </div>
       </nav>
 
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
+        aria-label={isOpen ? t("closeMenu") : t("openMenu")}
         aria-expanded={isOpen}
         className="lg:hidden flex flex-col items-center justify-center gap-1.5 w-8 h-8"
       >
@@ -52,7 +85,7 @@ export function Header() {
       </button>
 
       {isOpen && (
-        <nav className="lg:hidden fixed inset-x-0 top-12 flex flex-col items-center gap-2 bg-nav py-2 shadow-lg">
+        <nav className="lg:hidden fixed inset-x-0 top-16 flex flex-col items-center gap-2 bg-nav py-2 shadow-lg">
           {NAV_ITEMS.map((item) => (
             <div key={item.href} className="w-full border-b last:border-b-0">
               <div onClick={handleNavClick} className="text-center">
@@ -60,6 +93,32 @@ export function Header() {
               </div>
             </div>
           ))}
+
+          <div className="flex rounded-full bg-card p-1">
+            <Link
+              href={pathname}
+              locale="es"
+              className={`px-3 py-1 rounded-full text-sm transition ${
+                locale === "es"
+                  ? "bg-accent-primary text-background"
+                  : "text-foreground-secondary hover:text-foreground"
+              }`}
+            >
+              ES
+            </Link>
+
+            <Link
+              href={pathname}
+              locale="en"
+              className={`px-3 py-1 rounded-full text-sm transition ${
+                locale === "en"
+                  ? "bg-accent-primary text-background"
+                  : "text-foreground-secondary hover:text-foreground"
+              }`}
+            >
+              EN
+            </Link>
+          </div>
         </nav>
       )}
     </div>
