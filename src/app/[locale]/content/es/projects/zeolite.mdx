@@ -1,27 +1,27 @@
 # Zeolite
 
-Zeolite is a web application for organizing, designing, and analyzing stories and fictional universes. It combines a Python backend with a Neo4j graph database to store and connect all narrative information as a graph, alongside an interactive React frontend.
+Zeolite es una aplicación web para organizar, diseñar y analizar historias y universos ficticios. Combina un backend desarrollado en Python con una base de datos de grafos Neo4j para almacenar y conectar toda la información narrativa como un grafo, junto con un frontend interactivo desarrollado en React.
 
-One of its main features is a visual workspace that brings together scattered notes in a single place, clearly distinguishing between characters, events, and locations. Thanks to the flexibility of the graph database, users can describe each element in a clean and structured way while defining their own custom attributes to adapt the application to the needs of their fictional world.
+Una de sus principales funcionalidades es un espacio de trabajo visual que reúne en un único lugar todas las notas relacionadas con una historia, diferenciando claramente personajes, eventos y localizaciones. Gracias a la flexibilidad de la base de datos de grafos, los usuarios pueden describir cada elemento de forma estructurada y definir atributos personalizados para adaptar la aplicación a las necesidades de su universo ficticio.
 
-The platform also includes an analysis system that continuously examines the story graph to detect errors and narrative inconsistencies. Through an interactive dashboard, it alerts users to issues such as characters with no interactions, events that have no impact on the plot, or locations that have become isolated, helping writers maintain a coherent and well-connected story.
+La plataforma también incorpora un sistema de análisis que examina continuamente el grafo de la historia para detectar errores e inconsistencias narrativas. A través de un panel interactivo, alerta de problemas como personajes sin interacciones, eventos que no afectan a la trama o localizaciones aisladas, ayudando a mantener una historia coherente y bien conectada.
 
-## Key Features
+## Características principales
 
-- **Story Organization**: visual graph editor for structuring narrative elements.
-- **Entity & Relationship Creation**: define characters, events and locations with custom attributes.
-- **Consistency Analysis**: automatic detection of narrative inconsistencies through a dashboard.
-- **Quick Prototyping**: fast application development with FastAPI and React.
-- **Graph Database**: Neo4j no-sql database for storing highly connected story data.
+- **Organización de historias**: editor visual de grafos para estructurar los elementos narrativos.
+- **Creación de entidades y relaciones**: define personajes, eventos y localizaciones con atributos personalizados.
+- **Análisis de consistencia**: detección automática de inconsistencias narrativas mediante un panel de análisis.
+- **Desarrollo rápido**: creación ágil de la aplicación utilizando FastAPI y React.
+- **Base de datos de grafos**: Neo4j como base de datos NoSQL para almacenar información altamente conectada.
 
-## Demo
+## Demostración
 
-The following examples showcase some of Zeolite's core features.
+Los siguientes ejemplos muestran algunas de las funcionalidades principales de Zeolite.
 
 <div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Create Entities</h4>
+    <h4 className="text-md font-semibold">Crear entidades</h4>
     <video
       src="/videos/projects/zeolite/create_node.mp4"
       autoPlay
@@ -34,7 +34,7 @@ The following examples showcase some of Zeolite's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Create Relationships</h4>
+    <h4 className="text-md font-semibold">Crear relaciones</h4>
     <video
       src="/videos/projects/zeolite/create_edge.mp4"
       autoPlay
@@ -47,7 +47,7 @@ The following examples showcase some of Zeolite's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Edit Data</h4>
+    <h4 className="text-md font-semibold">Editar datos</h4>
     <video
       src="/videos/projects/zeolite/edit.mp4"
       autoPlay
@@ -60,7 +60,7 @@ The following examples showcase some of Zeolite's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Delete Entities & Relationships</h4>
+    <h4 className="text-md font-semibold">Eliminar entidades y relaciones</h4>
     <video
       src="/videos/projects/zeolite/delete.mp4"
       autoPlay
@@ -73,7 +73,7 @@ The following examples showcase some of Zeolite's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Customize Graph View</h4>
+    <h4 className="text-md font-semibold">Personalizar la visualización del grafo</h4>
     <video
       src="/videos/projects/zeolite/views.mp4"
       autoPlay
@@ -86,7 +86,7 @@ The following examples showcase some of Zeolite's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Real-time Analysis Dashboard</h4>
+    <h4 className="text-md font-semibold">Panel de análisis en tiempo real</h4>
     <video
       src="/videos/projects/zeolite/dashboard.mp4"
       autoPlay
@@ -99,19 +99,19 @@ The following examples showcase some of Zeolite's core features.
 
 </div>
 
-## Challenges
+## Retos
 
-Developing Zeolite involved several technical challenges:
+Desarrollar Zeolite supuso afrontar diversos retos técnicos:
 
-- Designing a structured data model that balances predefined entity types with extensibility through custom attributes.
-- Translating graph database concepts into an intuitive user interface.
-- Keeping the graph visualization responsive and readable as the number of entities and relationships grows.
-- Designing and implementing graph analysis queries in Neo4j to automatically detect narrative inconsistencies.
+- Diseñar un modelo de datos estructurado que equilibrara tipos de entidades predefinidos con la posibilidad de extenderlos mediante atributos personalizados.
+- Traducir los conceptos propios de una base de datos de grafos a una interfaz intuitiva para el usuario.
+- Mantener la visualización del grafo fluida y legible a medida que aumentaba el número de entidades y relaciones.
+- Diseñar e implementar consultas en Neo4j capaces de detectar automáticamente inconsistencias narrativas.
 
-## Lessons Learned
+## Lecciones aprendidas
 
-Zeolite introduced me to graph databases through Neo4j, giving me hands-on experience with graph modeling and NoSQL data structures. It showed me how choosing the right database can greatly simplify the representation of highly connected data.
+Zeolite me permitió introducirme en las bases de datos de grafos mediante Neo4j, adquiriendo experiencia práctica en modelado de grafos y estructuras de datos NoSQL. También me mostró cómo elegir la base de datos adecuada puede simplificar enormemente la representación de información altamente conectada.
 
-Working on the project also taught me how to quickly turn an idea into a functional application, iterating on the data model and features.
+Trabajar en este proyecto también me enseñó a convertir rápidamente una idea en una aplicación funcional, iterando continuamente sobre el modelo de datos y las funcionalidades.
 
-Finally, developing the interactive graph editor gave me practical experience building graph-based interfaces in React, including visualizing connected data and creating intuitive interactions.
+Por último, desarrollar el editor interactivo de grafos me proporcionó experiencia práctica en la creación de interfaces basadas en grafos con React, incluyendo la visualización de datos conectados y el diseño de interacciones intuitivas.

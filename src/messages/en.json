@@ -72,5 +72,12 @@
       "title": "Movie Information Retrieval",
       "description": "A collaborative information retrieval project for searching and analyzing movie reviews using Boolean and TF-IDF retrieval models."
     }
+  },
+  "Project": {
+    "viewCode": "View code",
+    "viewDemo": "View demo",
+    "summary": "Project <highlight>Summary</highlight>",
+    "techStack": "Tech <highlight>Stack</highlight>",
+    "onThisPage": "On this page"
   }
 }

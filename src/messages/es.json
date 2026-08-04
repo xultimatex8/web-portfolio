@@ -72,5 +72,12 @@
       "title": "Recuperación de la Información - Películas",
       "description": "Proyecto colaborativo de recuperación de la información para buscar y analizar reseñas de películas utilizando modelos Booleanos y TF-IDF."
     }
+  },
+  "Project": {
+    "viewCode": "Ver código",
+    "viewDemo": "Ver demo",
+    "summary": "Resumen del <highlight>Proyecto</highlight>",
+    "techStack": "<highlight>Tecnologías</highlight> utilizadas",
+    "onThisPage": "En esta página"
   }
 }

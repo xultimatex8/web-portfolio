@@ -1,30 +1,29 @@
 # UltimateWatch
 
-UltimateWatch is a web application designed to unify multimedia catalogs and make it easier for users to coordinate remote viewing sessions with friends. It connects to the public APIs of TMDb and Watchmode to provide a unified search engine where users can check movie and TV show details and instantly see which streaming platforms they're available on.
+UltimateWatch es una aplicación web diseñada para unificar catálogos multimedia y facilitar que los usuarios coordinen sesiones de visualización remotas con sus amigos. Se conecta a las APIs públicas de TMDb y Watchmode para ofrecer un buscador unificado donde consultar información sobre películas y series, además de mostrar en qué plataformas de streaming están disponibles.
 
-Its core feature is a social module that lets users create virtual rooms where multiple participants can coordinate their viewing experience through a synchronized timer controlled by the room host, alongside an interactive playlist and an integrated chat for discussing the session in real time.
+Su característica principal es un módulo social que permite crear salas virtuales en las que varios participantes pueden coordinar la experiencia mediante un temporizador sincronizado controlado por el anfitrión, junto con una lista de reproducción interactiva y un chat integrado para comentar la sesión en tiempo real.
 
+## Características principales
 
-## Key Features
+- **Búsqueda unificada**: consulta películas y series utilizando TMDb y Watchmode, mostrando su disponibilidad en plataformas de streaming en tiempo real.
+- **Sistema de amistad**: añade amigos mediante el envío y aceptación de solicitudes.
+- **Organización de eventos**: crea espacios sociales para coordinar sesiones de visualización remotas con amigos.
+- **Calendario de eventos**: consulta y gestiona fácilmente los eventos a los que te has unido.
+- **Votaciones**: organiza votaciones para decidir qué contenido ver durante un evento.
+- **Reproducción sincronizada**: temporizador controlado por el anfitrión para mantener a todos los participantes sincronizados.
+- **Lista de reproducción interactiva**: añade y organiza el contenido que se verá durante la sesión.
+- **Chat en tiempo real**: mensajería integrada para comentar la sesión mientras se desarrolla.
+- **Administración basada en roles**: gestiona permisos y accesos dentro de cada sala.
 
-- **Unified Search**: consult movies and TV shows across TMDb and Watchmode, with real-time availability by platform.
-- **Social**: make friends by sending and resolving friend requests.
-- **Organize Events**: create social spaces to coordinate viewing sessions with friends remotely.
-- **Event Calendar**: keep control of joined events with a calendar.
-- **Event Voting**: organize a votation to decide which contents to watch during an event.
-- **Synchronized Playback**: host-controlled timer to keep every participant watching in sync.
-- **Interactive Playlist**: queue and manage content to watch during a session.
-- **Real-time Chat**: integrated messaging to discuss the session as it happens.
-- **Role-based Administration**: manage permissions and access within each room.
+## Demostración
 
-## Demo
-
-The following examples showcase some of UltimateWatch's core features.
+Los siguientes ejemplos muestran algunas de las funcionalidades principales de UltimateWatch.
 
 <div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Browse Movies and Series</h4>
+    <h4 className="text-md font-semibold">Explorar películas y series</h4>
     <video
       src="/videos/projects/ultimatewatch/series.mp4"
       autoPlay
@@ -37,7 +36,7 @@ The following examples showcase some of UltimateWatch's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Organize Events</h4>
+    <h4 className="text-md font-semibold">Organizar eventos</h4>
     <video
       src="/videos/projects/ultimatewatch/organize_event.mp4"
       autoPlay
@@ -50,7 +49,7 @@ The following examples showcase some of UltimateWatch's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Join Events</h4>
+    <h4 className="text-md font-semibold">Unirse a eventos</h4>
     <video
       src="/videos/projects/ultimatewatch/join_event.mp4"
       autoPlay
@@ -63,7 +62,7 @@ The following examples showcase some of UltimateWatch's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Real-time Event Room and Statistics</h4>
+    <h4 className="text-md font-semibold">Sala del evento y estadísticas en tiempo real</h4>
     <video
       src="/videos/projects/ultimatewatch/event_room.mp4"
       autoPlay
@@ -76,7 +75,7 @@ The following examples showcase some of UltimateWatch's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Event Calendar</h4>
+    <h4 className="text-md font-semibold">Calendario de eventos</h4>
     <video
       src="/videos/projects/ultimatewatch/calendar.mp4"
       autoPlay
@@ -89,7 +88,7 @@ The following examples showcase some of UltimateWatch's core features.
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Make Friends</h4>
+    <h4 className="text-md font-semibold">Añadir amigos</h4>
     <video
       src="/videos/projects/ultimatewatch/friend.mp4"
       autoPlay
@@ -103,24 +102,24 @@ The following examples showcase some of UltimateWatch's core features.
 
 </div>
 
-## Challenges
+## Retos
 
-Developing UltimateWatch involved several technical and planning challenges:
+Desarrollar UltimateWatch supuso afrontar diversos retos tanto técnicos como de planificación:
 
-- Managing the entire project individually, from planning and estimation through development and testing, under a Scrum-based methodology.
-- Designing a database inheritance strategy that could scale efficiently.
-- Implementing low-latency, real-time communication with WebSockets to support synchronized timers, live chat, and room events.
-- Integrating and combining data from two external APIs (TMDb and Watchmode) into a single, consistent catalog, while respecting each API's usage policies.
-- Estimating and breaking down tasks accurately.
+- Gestionar el proyecto de forma individual, desde la planificación y estimación de tareas hasta el desarrollo y las pruebas, siguiendo una metodología Scrum.
+- Diseñar una estrategia de herencia en la base de datos que pudiera escalar de forma eficiente.
+- Implementar comunicación en tiempo real de baja latencia mediante WebSockets para soportar temporizadores sincronizados, chat y eventos de las salas.
+- Integrar y combinar datos procedentes de las APIs de TMDb y Watchmode en un catálogo único y consistente, respetando las limitaciones y políticas de uso de ambas.
+- Realizar estimaciones y descomponer correctamente las tareas del proyecto.
 
-## Lessons Learned
+## Lecciones aprendidas
 
-Working on UltimateWatch taught me how to manage a project of this scale on my own, applying agile practices and MVP prioritization to stay on track with sprint deadlines.
+Trabajar en UltimateWatch me enseñó a gestionar un proyecto de esta envergadura de forma completamente individual, aplicando metodologías ágiles y priorizando un MVP para cumplir los objetivos de cada sprint.
 
-Researching technologies before development, such as evaluating NestJS for its modular structure, made a noticeable difference later on, while validating both external APIs in advance helped avoid unexpected issues when extracting data.
+Investigar las tecnologías antes de comenzar el desarrollo, como evaluar NestJS por su arquitectura modular, resultó muy beneficioso durante el proyecto. Del mismo modo, validar previamente las APIs externas evitó problemas inesperados al integrar y obtener los datos.
 
-Implementing real-time features with WebSockets gave me practical experience in designing event-driven communication, handling connected clients, and keeping multiple users synchronized during collaborative sessions.
+La implementación de funcionalidades en tiempo real mediante WebSockets me permitió adquirir experiencia práctica en el diseño de sistemas orientados a eventos, la gestión de clientes conectados y la sincronización de múltiples usuarios durante sesiones colaborativas.
 
-I also learned firsthand how much database design choices matter for maintainability: switching inheritance strategies after the project was already underway was only manageable because the codebase had been kept properly cohesive and decoupled.
+También comprobé de primera mano la importancia del diseño de la base de datos para la mantenibilidad. Tener que cambiar la estrategia de herencia con el proyecto ya avanzado solo fue posible porque el código se había mantenido cohesionado y desacoplado.
 
-Finally, this project reinforced the importance of thorough task breakdown and not underestimating seemingly simple tasks.
+Por último, este proyecto reforzó la importancia de descomponer correctamente las tareas y de no subestimar el tiempo que pueden requerir funcionalidades aparentemente sencillas.
