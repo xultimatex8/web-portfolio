@@ -1,0 +1,41 @@
+# Recuperación de Información de Películas
+
+Recuperación de Información de Películas es un proyecto colaborativo centrado en la construcción y comparación de distintos modelos de recuperación de información aplicados a un corpus de reseñas de películas. Proporciona una aplicación basada en Jupyter donde los usuarios pueden buscar y analizar reseñas, explorando cómo las diferentes estrategias de recuperación afectan a los resultados.
+
+El proyecto implementa dos modelos de recuperación complementarios: un modelo Booleano, basado en la coincidencia exacta de términos y operadores lógicos, y un modelo de búsqueda libre basado en TF-IDF, que clasifica los documentos según su relevancia utilizando la frecuencia de términos y la frecuencia inversa de documentos.
+
+## Características principales
+
+- **Recuperación Booleana**: búsqueda por coincidencia exacta utilizando operadores lógicos sobre un índice invertido.
+- **Recuperación mediante TF-IDF**: búsqueda libre con resultados ordenados según la ponderación TF-IDF.
+- **Preprocesamiento de texto**: tokenización, normalización y limpieza de las reseñas de películas utilizando NLTK.
+
+## Cómo utilizarlo
+
+Si el notebook aún no se ha ejecutado, pulsa **Run** en la barra superior y selecciona **Run All Cells**. Esto ejecutará todas las celdas del notebook y, una vez finalizado el proceso, se abrirán de forma secuencial las interfaces interactivas correspondientes a cada sistema de recuperación. Cuando todas las celdas se hayan ejecutado, si deseas utilizar únicamente una interfaz concreta, sitúate en su celda y pulsa **Ctrl + Enter** para ejecutarla de nuevo.
+
+Para salir de cualquiera de las interfaces, escribe:
+
+```text
+salir
+```
+
+y pulsa **Enter**.
+
+> **Nota**: la primera ejecución puede tardar unos instantes mientras se crean los índices y se cargan los recursos necesarios.
+
+## Retos
+
+El desarrollo de Recuperación de Información de Películas supuso varios desafíos técnicos:
+
+- Diseñar una estructura de índice invertido capaz de soportar de forma eficiente tanto la recuperación Booleana como la basada en TF-IDF.
+- Preprocesar de forma consistente una gran colección de reseñas de películas, gestionando la tokenización, las stopwords y la normalización sin perder información relevante.
+- Implementar correctamente el cálculo de pesos TF-IDF y la medida de similitud, validando que el orden de los resultados coincidiera con la relevancia esperada.
+
+## Aprendizajes
+
+Este proyecto me permitió adquirir experiencia práctica en los conceptos fundamentales de la recuperación de información, pasando de la teoría a un sistema funcional capaz de indexar y consultar datos de texto reales.
+
+Comparar lado a lado la recuperación Booleana y la basada en TF-IDF me ayudó a comprender las ventajas e inconvenientes de la búsqueda por coincidencia exacta frente a la búsqueda basada en relevancia.
+
+Además, reforcé mi experiencia con el ecosistema de procesamiento de datos en Python, especialmente utilizando NLTK para el preprocesamiento de texto y Scikit-learn para la vectorización, comprobando de primera mano el impacto que tiene la calidad del preprocesamiento sobre los resultados finales de recuperación.

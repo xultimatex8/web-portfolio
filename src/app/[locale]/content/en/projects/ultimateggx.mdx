@@ -1,0 +1,94 @@
+# UltimateGGx
+
+UltimateGGx is a web application for advanced League of Legends match analysis, built on the Riot Games API and on a full reconstruction of each match's state from timeline data. The goal of the project is to go beyond flat statistics and offer a visual panel that lets users explore how a match unfolds and, eventually, simulate counterfactual scenarios — altering key events such as a kill, an objective secured, or a positioning change in a fight — to estimate how the game state would have evolved under alternative conditions.
+
+Starting from the raw API data, the application reconstructs dynamic match metrics such as gold, level, and inventory for each player at any given moment, together with the most relevant events placed at their exact point on the timeline, laying the groundwork to later compare the real match against hypothetical versions where certain events are altered or don't occur, with the aim of pinpointing the most relevant moments.
+
+## Key Features
+
+- **Summoner lookup**: search for a summoner and check their profile, rank, and recent match history across draft and ranked queues.
+- **Match details**: review the details of each match: player KDA, items, duration, damage, and other key stats.
+- **Match dimeline**: see every relevant event in the match (kills, objectives, etc.) in chronological order, with a detail view on click.
+- **Approximate dinimap**: browse a minimap with approximate player positions (with up to a 1-minute margin of error) synced to the selected event.
+- **Scoreboard replay**: scrub through the match to see gold, level, and items for each player at different moments, tied to the selected event.
+- **Error handling & responsiveness**: 404 and 500 error pages, error handling throughout the application, and a responsive design.
+
+## Demo
+
+The following examples showcase some of UltimateGGx's core features. To try it yourself, look up the summoner **Hide on Bush** with tag **61151**, or visit [its profile](https://ultimateggx.vercel.app/summoner/Hide%20on%20bush/61151).
+
+<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Summoner Lookup</h4>
+    <video
+      src="/videos/projects/ultimateggx/search_for_summoner.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Match History</h4>
+    <video
+      src="/videos/projects/ultimateggx/fetch_matches.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Match Details</h4>
+    <video
+      src="/videos/projects/ultimateggx/match_detail.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Match Timelines, Scoreboard and Minimap</h4>
+    <video
+      src="/videos/projects/ultimateggx/match_timeline.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Challenges
+
+Building UltimateGGx involved several technical and learning challenges:
+
+- Learning C#, .NET, and Angular from scratch — technologies I had no prior experience with — and applying them in a real, end-to-end project.
+- Working with Riot Games API data, which contains many nested objects within objects, so extracting only the relevant information requires good processing.
+- Deriving metrics the API doesn't expose directly from the available data. For example, computing a player's KDA in the scoreboard or timeline requires walking through every kill event the player was involved in and determining whether they acted as killer, victim, or assistant; reconstructing a player's build at a given point in time requires analyzing the full purchase history while accounting for sales, undos, and destroyed items.
+- Reconstructing the match's temporal state (gold, level, position, and inventory) from discrete timeline events, while keeping consistency across the different selectable points in time.
+- Consistently syncing the minimap, the scoreboard, and the event timeline, so that selecting an event or dragging the scrubber updates the entire interface to reflect the same moment in the match.
+- Ensuring responsiveness for an information-dense interface (minimap, timeline, and scoreboard displayed together).
+- Designing robust error handling (404/500 pages and error control throughout).
+
+## Lessons Learned
+
+This project was my first real hands-on experience with C#, .NET, and Angular, and it showed me how quickly you can become productive in a new stack when you take the time to properly understand its fundamentals before writing code.
+
+Working with the Riot Games API taught me to design clear data-transformation layers: instead of trying to consume the API's objects directly in the UI, I learned the value of building my own intermediate models that summarize and clean the data before it reaches the presentation layer.
+
+Finally, reconstructing metrics like KDA or a player's build from raw events gave me real practice in data processing and in designing algorithms that accumulate state from a list of time-ordered events.

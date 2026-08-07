@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "devicon/devicon.min.css";
+
+:root {
+  --background: #EEF0F3;
+  --surface: #D5D9E0;
+  --card: #F9FAFB;
+  --nav: #1F2937;
+  --nav-foreground: #F7F8FA;
+  --accent-primary: #D97706;
+  --accent-secondary: #93C5FD;
+  --foreground: #111827;
+  --foreground-secondary: #5B6472;
+  --done: #86EFAC;
+  --progress: #FCD34D;
+  --category: #C4B5FD;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-nav: var(--nav);
+  --color-nav-foreground: var(--nav-foreground);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-done: var(--done);
+  --color-progress: var(--progress);
+  --color-category: var(--category);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --breakpoint-qhd: 1000px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0A0E14;
+    --surface: #1D2733;
+    --card: #131A24;
+    --nav: #263241;
+    --nav-foreground: #F1EFE8;
+    --accent-primary: #C7433C;
+    --accent-secondary: #3E7CB1;
+    --foreground: #F1EFE8;
+    --foreground-secondary: #8A8A8F;
+    --done: #5C9270;
+    --progress: #C9902E;
+    --category: #9B8BC0;
+  }
+}
+
+@theme {
+  --breakpoint-fhd: 115rem;
+  --breakpoint-qhd: 155rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

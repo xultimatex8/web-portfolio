@@ -1,0 +1,125 @@
+# UltimateWatch
+
+UltimateWatch es una aplicación web diseñada para unificar catálogos multimedia y facilitar que los usuarios coordinen sesiones de visualización remotas con sus amigos. Se conecta a las APIs públicas de TMDb y Watchmode para ofrecer un buscador unificado donde consultar información sobre películas y series, además de mostrar en qué plataformas de streaming están disponibles.
+
+Su característica principal es un módulo social que permite crear salas virtuales en las que varios participantes pueden coordinar la experiencia mediante un temporizador sincronizado controlado por el anfitrión, junto con una lista de reproducción interactiva y un chat integrado para comentar la sesión en tiempo real.
+
+## Características principales
+
+- **Búsqueda unificada**: consulta películas y series utilizando TMDb y Watchmode, mostrando su disponibilidad en plataformas de streaming en tiempo real.
+- **Sistema de amistad**: añade amigos mediante el envío y aceptación de solicitudes.
+- **Organización de eventos**: crea espacios sociales para coordinar sesiones de visualización remotas con amigos.
+- **Calendario de eventos**: consulta y gestiona fácilmente los eventos a los que te has unido.
+- **Votaciones**: organiza votaciones para decidir qué contenido ver durante un evento.
+- **Reproducción sincronizada**: temporizador controlado por el anfitrión para mantener a todos los participantes sincronizados.
+- **Lista de reproducción interactiva**: añade y organiza el contenido que se verá durante la sesión.
+- **Chat en tiempo real**: mensajería integrada para comentar la sesión mientras se desarrolla.
+- **Administración basada en roles**: gestiona permisos y accesos dentro de cada sala.
+
+## Demostración
+
+Los siguientes ejemplos muestran algunas de las funcionalidades principales de UltimateWatch.
+
+<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Explorar películas y series</h4>
+    <video
+      src="/videos/projects/ultimatewatch/series.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Organizar eventos</h4>
+    <video
+      src="/videos/projects/ultimatewatch/organize_event.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Unirse a eventos</h4>
+    <video
+      src="/videos/projects/ultimatewatch/join_event.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Sala del evento y estadísticas en tiempo real</h4>
+    <video
+      src="/videos/projects/ultimatewatch/event_room.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Calendario de eventos</h4>
+    <video
+      src="/videos/projects/ultimatewatch/calendar.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Añadir amigos</h4>
+    <video
+      src="/videos/projects/ultimatewatch/friend.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Retos
+
+Desarrollar UltimateWatch supuso afrontar diversos retos tanto técnicos como de planificación:
+
+- Gestionar el proyecto de forma individual, desde la planificación y estimación de tareas hasta el desarrollo y las pruebas, siguiendo una metodología Scrum.
+- Diseñar una estrategia de herencia en la base de datos que pudiera escalar de forma eficiente.
+- Implementar comunicación en tiempo real de baja latencia mediante WebSockets para soportar temporizadores sincronizados, chat y eventos de las salas.
+- Integrar y combinar datos procedentes de las APIs de TMDb y Watchmode en un catálogo único y consistente, respetando las limitaciones y políticas de uso de ambas.
+- Realizar estimaciones y descomponer correctamente las tareas del proyecto.
+
+## Lecciones aprendidas
+
+Trabajar en UltimateWatch me enseñó a gestionar un proyecto de esta envergadura de forma completamente individual, aplicando metodologías ágiles y priorizando un MVP para cumplir los objetivos de cada sprint.
+
+Investigar las tecnologías antes de comenzar el desarrollo, como evaluar NestJS por su arquitectura modular, resultó muy beneficioso durante el proyecto. Del mismo modo, validar previamente las APIs externas evitó problemas inesperados al integrar y obtener los datos.
+
+La implementación de funcionalidades en tiempo real mediante WebSockets me permitió adquirir experiencia práctica en el diseño de sistemas orientados a eventos, la gestión de clientes conectados y la sincronización de múltiples usuarios durante sesiones colaborativas.
+
+También comprobé de primera mano la importancia del diseño de la base de datos para la mantenibilidad. Tener que cambiar la estrategia de herencia con el proyecto ya avanzado solo fue posible porque el código se había mantenido cohesionado y desacoplado.
+
+Por último, este proyecto reforzó la importancia de descomponer correctamente las tareas y de no subestimar el tiempo que pueden requerir funcionalidades aparentemente sencillas.

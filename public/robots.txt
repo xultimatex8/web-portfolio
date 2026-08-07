@@ -1,2 +1,3 @@
 User-agent: *
-Disallow: /cv-alejandro-gonzalez.pdf
+Disallow: /CV_AlejandroGonzalez_Software_ES.pdf
+Disallow: /CV_AlejandroGonzalez_Software_EN.pdf
