@@ -13,7 +13,10 @@ export const TECHNOLOGY_ICONS = {
   "Jupyter": "devicon-jupyter-plain colored",
   "Whoosh": "devicon-whoosh-plain colored",
   "NLTK": "devicon-nltk-plain colored",
-  "Scikit-learn": "devicon-scikitlearn-plain colored"
+  "Scikit-learn": "devicon-scikitlearn-plain colored",
+  "C#": "devicon-csharp-plain colored",
+  ".NET": "devicon-dotnetcore-plain colored",
+  "Angular": "devicon-angular-plain colored",
 } as const;
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;
