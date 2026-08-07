@@ -56,6 +56,10 @@
     "cvUrl": "/CV_AlejandroGonzalez_Software_EN.pdf"
   },
   "ProjectData": {
+    "ultimateggx": { 
+      "title": "UltimateGGx", 
+      "description": "A League of Legends match analysis web application that lets users explore summoner profiles, detailed match histories, interactive timelines, scoreboards, and minimap-based replays using Riot Games data."
+    },
     "ultimatewatch": {
       "title": "UltimateWatch",
       "description": "A web application that unifies streaming platform catalogs into a single search experience and allows users to host synchronized watch parties with real-time chat and shared playlists."

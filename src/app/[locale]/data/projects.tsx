@@ -15,6 +15,22 @@ import { Project } from "@/app/[locale]/types/project";
 
 export const PROJECTS: Project[] = [
   {
+    id: "ultimateggx",
+    image: "/images/projects/ultimateggx/hero_ultimateggx.jpeg",
+    status: "in-progress",
+    category: "personal",
+    technologies: [
+      "C#",
+      ".NET",
+      "PostgreSQL",
+      "TypeScript",
+      "Angular",
+      "Tailwind CSS",
+    ],
+    repoUrl: "https://github.com/xultimatex8/UltimateGGx",
+    demoUrl: "https://ultimateggx.vercel.app",
+  },
+  {
     id: "ultimatewatch",
     image: "/images/projects/ultimatewatch/hero_ultimatewatch.jpeg",
     status: "done",

@@ -1,0 +1,94 @@
+# UltimateGGx
+
+UltimateGGx es una aplicación web de análisis avanzado de partidas de League of Legends, construida sobre la API de Riot Games y sobre una reconstrucción completa del estado de cada partida a partir de datos de timeline. El objetivo del proyecto es ir más allá de las estadísticas planas y ofrecer un panel visual que permita a los usuarios explorar cómo se desarrolla una partida y, en el futuro, simular escenarios contrafactuales —alterando eventos clave como un asesinato, la obtención de un objetivo o un cambio de posición en un enfrentamiento— para estimar cómo habría evolucionado el estado del juego bajo condiciones alternativas.
+
+A partir de los datos crudos de la API, la aplicación reconstruye métricas dinámicas de la partida como el oro, el nivel y el inventario de cada jugador en cualquier momento dado, junto con los eventos más relevantes situados en su punto exacto de la línea temporal, sentando las bases para comparar más adelante la partida real con versiones hipotéticas donde ciertos eventos se alteran o no ocurren, con el objetivo de identificar los momentos más relevantes.
+
+## Key Features
+
+- **Buscar invocador**: busca a un invocador y consulta su perfil, rango e historial reciente de partidas en colas de draft y ranked.
+- **Detalles de partidas**: revisa el detalle de cada partida: KDA de los jugadores, items, duración, daño y otras estadísticas clave.
+- **Línea de piempo de partidas**: visualiza todos los eventos relevantes de la partida (asesinatos, objetivos, etc.) ordenados cronológicamente, con detalle al pulsar sobre cada uno.
+- **Minimapa pproximado**: navega un minimapa con las posiciones aproximadas de los jugadores (con un margen de error de hasta 1 minuto) sincronizado con el evento seleccionado.
+- **Marcador**: haz scrub a lo largo de la partida para ver oro, nivel e items de cada jugador en distintos momentos, ligado al evento seleccionado.
+- **Manejo de errores y responsiveness**: páginas de error 404 y 500, control de errores en toda la aplicación y un diseño responsive.
+
+## Demo
+
+Los siguientes ejemplos muestran algunas de las funcionalidades principales de UltimateGGx. Para probarlo tú mismo, busca al invocador **Hide on Bush** con tag **61151**, o visita [su perfil](https://ultimateggx.vercel.app/summoner/Hide%20on%20bush/61151).
+
+<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Summoner Lookup</h4>
+    <video
+      src="/videos/projects/ultimateggx/search_for_summoner.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Match History</h4>
+    <video
+      src="/videos/projects/ultimateggx/fetch_matches.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Match Details</h4>
+    <video
+      src="/videos/projects/ultimateggx/match_detail.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Match Timelines, Scoreboard and Minimap</h4>
+    <video
+      src="/videos/projects/ultimateggx/match_timeline.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Challenges
+
+Desarrollar UltimateGGx implicó varios retos técnicos y de aprendizaje:
+
+- Aprender desde cero C#, .NET y Angular, tecnologías que no conocía previamente, y aplicarlas en un proyecto real de principio a fin.
+- Trabajar con los datos de la API de Riot Games, la cual contiene numerosos objetos anidados dentro de otros objetos, por lo que extraer solo la información relevante requiere un buen procesamiento.
+- Derivar métricas que la API no expone directamente a partir de los datos disponibles. Por ejemplo, para calcular el KDA en el scoreboard de una partida es necesario recorrer todos los eventos de asesinato en los que ha participado el jugador y analizar si actúa como killer, victim o assistant; o para reconstruir la build de un jugador en un instante concreto, hay que analizar el histórico de items comprados teniendo en cuenta ventas, deshacer compras (undos) e ítems destruidos.
+- Reconstruir el estado temporal de la partida (oro, nivel, posición e inventario) a partir de eventos discretos de la timeline, manteniendo la coherencia entre los distintos puntos temporales seleccionables.
+- Sincronizar de forma consistente el minimapa, el scoreboard y la timeline de eventos, de modo que al seleccionar un evento o desplazar el scrubber toda la interfaz refleje el mismo instante de la partida.
+- Garantizar la responsividad de una interfaz con bastante densidad de información (minimapa, timeline y scoreboard mostrados simultáneamente).
+- Diseñar un manejo de errores robusto (páginas 404/500 y control de errores en toda la aplicación).
+
+## Lessons Learned
+
+Este proyecto fue mi primera toma de contacto real con C#, .NET y Angular, y me permitió comprobar lo rápido que se puede llegar a ser productivo en un nuevo stack cuando se dedica tiempo a entender bien sus fundamentos antes de escribir código.
+
+Trabajar con la API de Riot Games me enseñó a diseñar capas de transformación de datos claras: en lugar de intentar consumir los objetos de la API directamente en la interfaz, aprendí el valor de construir mis propios modelos intermedios que resuman y limpien la información antes de que llegue a la capa de presentación.
+
+Por último, reconstruir métricas como el KDA o la build de un jugador a partir de eventos crudos me dio práctica real en el procesamiento de datos y en el diseño de algoritmos que acumulan estado a partir de una lista de eventos ordenados en el tiempo.

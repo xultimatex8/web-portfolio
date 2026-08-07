@@ -55,7 +55,11 @@
     "cv": "Abrir CV",
     "cvUrl": "/CV_AlejandroGonzalez_Software_ES.pdf"
   },
-    "ProjectData": {
+  "ProjectData": {
+    "ultimateggx": {
+      "title": "UltimateGGx",
+      "description": "Aplicación web de análisis de League of Legends que permite consultar invocadores, historiales detallados, líneas de tiempo interactivas, marcadores y repeticiones con minimapa a partir de datos de Riot Games."
+    },
     "ultimatewatch": {
       "title": "UltimateWatch",
       "description": "Aplicación web que unifica catálogos de plataformas de streaming en un único buscador y permite organizar sesiones sincronizadas con chat en tiempo real y listas de reproducción compartidas."
