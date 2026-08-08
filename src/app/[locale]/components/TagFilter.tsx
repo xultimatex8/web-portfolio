@@ -1,5 +1,4 @@
 import { Technology } from "@/app/[locale]/types/project";
-import { Check } from "lucide-react";
 
 interface TagFilterProps {
   tags: Technology[];
@@ -10,72 +9,25 @@ interface TagFilterProps {
 export function TagFilter({ tags, selected, onToggle }: TagFilterProps) {
   const sortedTags = [...tags].sort((a, b) => a.localeCompare(b));
 
-  const midpoint = Math.ceil(sortedTags.length / 2);
-  const left = sortedTags.slice(0, midpoint);
-  const right = sortedTags.slice(midpoint);
-
-  const orderedTags: Technology[] = [];
-  for (let i = 0; i < midpoint; i++) {
-    if (left[i]) orderedTags.push(left[i]);
-    if (right[i]) orderedTags.push(right[i]);
-  }
-
   return (
-    <>
-      <div className="lg:hidden w-full -mx-3 md:-mx-1.5 px-5 flex items-center gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
-        {sortedTags.map((tag) => {
-          const isActive = selected.includes(tag);
-          return (
-            <button
-              key={tag}
-              onClick={() => onToggle(tag)}
-              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium border-2 transition-colors ${
-                isActive
-                  ? "bg-accent-primary border-accent-primary text-background"
-                  : "border-border text-foreground-secondary"
-              }`}
-            >
-              {tag}
-            </button>
-          );
-        })}
-      </div>
+    <div className="w-full -mx-5 md:mx-0 px-5 md:px-0 flex items-center gap-1.5 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
+      {sortedTags.map((tag) => {
+        const isActive = selected.includes(tag);
 
-      <div className="hidden lg:grid grid-cols-1 fhd:grid-cols-2 gap-x-6 gap-y-2.5">
-        {orderedTags.map((tag) => {
-          const isActive = selected.includes(tag);
-
-          return (
-            <button
-              key={tag}
-              onClick={() => onToggle(tag)}
-              className="flex items-center gap-2 cursor-pointer group"
-            >
-              <span
-                className={`flex items-center justify-center w-4.5 h-4.5 shrink-0 rounded-md border-2 transition-colors ${
-                  isActive
-                    ? "bg-accent-primary border-accent-primary"
-                    : "group-hover:border-accent-primary/60"
-                }`}
-              >
-                {isActive && (
-                  <Check className="w-3.5 h-3.5 text-background" strokeWidth={3} />
-                )}
-              </span>
-
-              <span
-                className={`text-base font-medium whitespace-nowrap transition-colors ${
-                  isActive
-                    ? "text-foreground"
-                    : "text-foreground-secondary group-hover:text-foreground/60"
-                }`}
-              >
-                {tag}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-    </>
+        return (
+          <button
+            key={tag}
+            onClick={() => onToggle(tag)}
+            className={`shrink-0 rounded-md border px-2.5 py-1 text-xs font-medium transition-colors cursor-pointer ${
+              isActive
+                ? "border-accent-primary text-accent-primary"
+                : "border-foreground/10 text-foreground-secondary hover:text-foreground hover:border-foreground/25"
+            }`}
+          >
+            {tag}
+          </button>
+        );
+      })}
+    </div>
   );
 }

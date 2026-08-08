@@ -6,7 +6,7 @@ interface BadgeProps {
 
 export function Badge({ label, backgroundColor, textSize = "text-sm" }: BadgeProps) {
   return (
-    <span className={`px-3 py-1 rounded-xl font-semibold text-foreground ${backgroundColor} ${textSize}`}>
+    <span className={`px-2 py-0.5 rounded-md font-medium ${backgroundColor} ${textSize}`}>
       {label}
     </span>
   );
