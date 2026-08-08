@@ -19,11 +19,14 @@ export function EducationSection() {
   return (
     <section
       id="education"
-      className="relative w-full py-10 lg:py-20 fhd:py-30 bg-surface flex flex-col lg:flex-row items-start justify-start gap-6 lg:gap-20 px-6 md:px-15"
+      className="relative w-full py-10 lg:py-16 bg-surface flex flex-col gap-6 px-5 md:px-15"
     >
-      <h1 className="w-full lg:w-xs 2xl:w-68 fhd:w-xs text-3xl md:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground lg:sticky lg:top-30">
-        {t("title")}
-      </h1>
+      <div className="flex items-center gap-2">
+        <span className="w-1 h-4 rounded-sm bg-accent-primary" />
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+          {t("title")}
+        </h1>
+      </div>
 
       <Timeline items={EDUCATION_ITEMS} />
     </section>
