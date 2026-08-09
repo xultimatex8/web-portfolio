@@ -32,7 +32,7 @@ export function EducationSection() {
       id="education"
       variants={container}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
       className="relative isolate flex w-full flex-col gap-6 bg-surface px-5 py-10 md:px-15 lg:py-16">
         <SectionBackground gridOpacity={0.015} />
 

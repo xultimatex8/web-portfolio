@@ -45,7 +45,7 @@ export function ContactSection() {
     <motion.section 
       variants={container}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
       className="relative isolate flex w-full flex-col gap-6 px-5 py-10 md:px-15 lg:py-16">
         <SectionBackground />
 

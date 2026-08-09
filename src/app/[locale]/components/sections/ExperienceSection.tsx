@@ -18,7 +18,7 @@ export function ExperienceSection() {
       id="experience"
       variants={container}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
       className="relative isolate flex w-full flex-col gap-8 px-5 py-10 md:px-15 lg:py-16" >
         <SectionBackground gridOpacity={0.03} fadeColor="var(--surface)" />
 
