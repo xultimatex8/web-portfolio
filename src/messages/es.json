@@ -43,6 +43,7 @@
     "title": "Proyectos",
     "viewCode": "Ver código",
     "viewDemo": "Ver demo",
+    "viewDetails": "Ver detalles",
     "empty": {
       "title": "Ningún proyecto coincide con estos filtros",
       "description": "Prueba a quitar algunas tecnologías para ver más resultados."

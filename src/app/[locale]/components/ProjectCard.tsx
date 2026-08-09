@@ -35,16 +35,25 @@ export function ProjectCard({ project }: ProjectCardProps) {
         title={title}
         onNavigate={() => setIsLoading(true)}
         aria-disabled={isLoading}
-        className="block overflow-hidden"
+        className={`group block ${isLoading ? "cursor-default" : "cursor-pointer"}`}
       >
-        <div className="relative aspect-video">
+        <div className="relative aspect-video overflow-hidden">
           <Image
             src={project.image}
             alt={title}
             fill
+            priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={`object-cover ${isLoading ? "opacity-70" : "opacity-100"}`}
           />
+
+          {!isLoading && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="text-sm font-medium text-white lg:text-base">
+                {tCommon("viewDetails")} - {title}
+              </span>
+            </div>
+          )}
 
           {isLoading && (
             <div className="absolute inset-0 z-30 flex items-center justify-center">

@@ -43,6 +43,7 @@
     "title": "Projects",
     "viewCode": "View code",
     "viewDemo": "View demo",
+    "viewDetails": "View details",
     "empty": {
       "title": "No projects match these filters",
       "description": "Try removing some technologies to see more results."
