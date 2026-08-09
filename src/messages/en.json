@@ -96,7 +96,9 @@
     "empty": "Ask me about Alejandro (e.g., projects and education).",
     "placeholder": "Ask your question...",
     "send": "Send",
-    "error": "Something went wrong. Please try again in a moment."
+    "error": "Something went wrong. Please try again in a moment.",
+    "privacyNotice": "Powered by AI — messages may be processed by third-party providers.",
+    "hoverHint": "Ask me anything!"
   }
 
 }

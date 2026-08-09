@@ -96,7 +96,9 @@
     "empty": "Pregúntame sobre Alejandro (p. ej., proyectos y formación).",
     "placeholder": "Escribe tu pregunta...",
     "send": "Enviar",
-    "error": "Algo salió mal. Inténtalo de nuevo en un momento."
+    "error": "Algo salió mal. Inténtalo de nuevo en un momento.",
+    "privacyNotice": "Impulsado por IA — los mensajes pueden ser procesados por proveedores externos.",
+    "hoverHint": "¡Pregúntame lo que quieras!"
   }
 
 }
