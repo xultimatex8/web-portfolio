@@ -21,9 +21,9 @@ export function HomeSection() {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="relative isolate overflow-hidden flex flex-col items-center justify-between gap-15 px-5 py-10 lg:gap-24 lg:py-20"
+      className="relative w-full isolate overflow-hidden flex flex-col items-center justify-between gap-15 px-5 py-10 lg:gap-24 lg:py-20"
     >
-      <SectionBackground />
+      <SectionBackground fadeColor="var(--surface)" />
 
       <div className="flex flex-col xl:flex-row items-center justify-start gap-6 md:gap-10">
         <motion.div variants={fadeUpVariant}>

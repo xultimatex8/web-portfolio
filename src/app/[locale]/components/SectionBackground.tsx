@@ -5,6 +5,7 @@ type SectionBackgroundProps = {
   gridOpacity?: number;
   glow?: boolean;
   bottomFade?: boolean;
+  fadeColor?: string;
   className?: string;
 };
 
@@ -13,6 +14,7 @@ export function SectionBackground({
   gridOpacity = 0.045,
   glow = true,
   bottomFade = true,
+  fadeColor = "var(--background)",
   className = "",
 }: SectionBackgroundProps) {
   return (
@@ -39,7 +41,10 @@ export function SectionBackground({
       />
 
       {bottomFade && (
-        <div className="absolute inset-x-0 bottom-0 h-4 bg-linear-to-t from-background to-transparent" />
+        <div 
+          className="absolute inset-x-0 bottom-0 h-4" 
+          style={{ background: `linear-gradient(to top, ${fadeColor}, transparent)`, }}
+          />
       )}
     </div>
   );
