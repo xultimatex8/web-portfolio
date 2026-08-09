@@ -7,6 +7,14 @@ import { routing } from "../../i18n/routing";
 import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
 import { Footer } from "./components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Alejandro González Macías | Software Developer",
+  description:
+    "Portfolio of Alejandro González Macías, showcasing software development projects, skills, and experience.",
+};
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
