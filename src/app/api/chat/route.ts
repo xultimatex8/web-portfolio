@@ -1,4 +1,3 @@
-// app/api/chat/route.ts
 import { streamText, convertToModelMessages, UIMessage } from "ai";
 import { google } from "@ai-sdk/google";
 import { Ratelimit } from "@upstash/ratelimit";
@@ -24,7 +23,7 @@ export async function POST(req: Request) {
     return new Response(
       JSON.stringify({
         error:
-          "Este asistente está muy solicitado ahora mismo. Inténtalo de nuevo en un minuto, o escríbeme directamente por email.",
+          "This assistant is in high demand right now. Please try again in a minute, or email me directly.",
       }),
       { status: 429, headers: { "Content-Type": "application/json" } }
     );
