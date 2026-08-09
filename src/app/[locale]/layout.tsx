@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
 import { Footer } from "./components/Footer";
 import { Metadata } from "next";
+import { ChatWidget } from "./components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "Alejandro González Macías | Software Developer",
@@ -60,6 +61,7 @@ export default async function RootLayout({
           <Header />
 
           <main className="mt-20 flex-1">{children}</main>
+          <ChatWidget />
 
           <Footer />
         </NextIntlClientProvider>
