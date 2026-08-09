@@ -64,12 +64,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           )}
 
-          <div className={`absolute bottom-0 left-0 flex items-center z-20 ${isLoading ? "opacity-70" : "opacity-100"}`}>
-            <span className={`px-2.5 py-1.5 text-[0.65rem] font-medium shadow-sm ${status.backgroundColor}`}>
+          <div
+            className={`absolute bottom-0 left-0 z-20 flex items-center ${
+              isLoading ? "opacity-70" : "opacity-100"
+            }`}
+          >
+            <span
+              className={`bg-linear-to-b from-white/35 via-white/5 to-black/20 px-2.5 py-1.5 text-[0.65rem] font-medium shadow-sm ${status.backgroundColor}
+              `}
+            >
               {status.label}
             </span>
 
-            <span className={`rounded-tr-lg px-2.5 py-1.5 text-[0.65rem] font-medium shadow-sm ${category.backgroundColor}`}>
+            <span
+              className={`rounded-tr-lg bg-linear-to-b from-white/35 via-white/5 to-black/20 px-2.5 py-1.5 text-[0.65rem] font-medium shadow-sm ${category.backgroundColor}`}
+            >
               {category.label}
             </span>
           </div>
@@ -121,12 +130,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {description}
         </p>
 
-        <div className="mt-auto pt-4 flex flex-wrap items-center gap-1">
+        <div className="mt-auto pt-4 flex flex-wrap items-center gap-1.5">
           {project.technologies.map((technology) => (
             <Badge
               key={technology}
               label={technology}
-              backgroundColor="bg-accent-secondary text-foreground"
               textSize="text-[0.6rem]"
             />
           ))}
