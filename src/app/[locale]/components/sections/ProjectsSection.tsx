@@ -8,6 +8,7 @@ import { Technology } from "@/app/[locale]/types/project";
 import { TagFilter } from "../TagFilter";
 import { ProjectCard } from "../ProjectCard";
 import { motion, useReducedMotion } from "motion/react";
+import { SectionBackground } from "../SectionBackground";
 
 export function ProjectsSection() {
   const t = useTranslations("Projects");
@@ -53,8 +54,10 @@ export function ProjectsSection() {
       initial="hidden"
       animate="visible"
       id="projects"
-      className="relative w-full py-10 lg:py-16 bg-surface flex flex-col gap-6 px-5 md:px-15"
+      className="relative isolate w-full py-10 lg:py-16 bg-surface flex flex-col gap-6 px-5 md:px-15"
     >
+      <SectionBackground />
+      
       <motion.div variants={fadeUp} className="flex items-center gap-2">
         <span className="w-1 h-4 rounded-sm bg-accent-primary" />
         <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
