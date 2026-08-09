@@ -6,11 +6,15 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { PROJECTS } from "@/app/[locale]/data/projects";
 import { notFound } from "next/navigation";
 import { TECHNOLOGY_ICONS } from "@/app/[locale]/types/project";
-import { CATEGORY_STYLES, STATUS_STYLES } from "@/app/[locale]/helpers/projectStyles";
-import { Badge } from "@/app/[locale]/components/Badge";
+import {
+  CATEGORY_STYLES,
+  STATUS_STYLES,
+} from "@/app/[locale]/helpers/projectStyles";
 import { ScrollToTop } from "@/app/[locale]/components/ScrollToTop";
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import { SectionBackground } from "../../components/SectionBackground";
+import { TableOfContents } from "../../components/TableOfContents";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -47,13 +51,15 @@ export default async function ProjectPage({
   params,
 }: {
   params: Promise<{
-  locale: (typeof routing.locales)[number];
-  slug: string;
-}>;
+    locale: (typeof routing.locales)[number];
+    slug: string;
+  }>;
 }) {
   const { locale, slug } = await params;
+
   const t = await getTranslations("Project");
   const projectData = await getTranslations("ProjectData");
+
   const project = PROJECTS.find((p) => p.id === slug);
 
   if (!project) notFound();
@@ -71,6 +77,7 @@ export default async function ProjectPage({
     "projects",
     `${slug}.mdx`
   );
+
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { content } = matter(fileContent);
   const headings = extractHeadings(content);
@@ -79,7 +86,7 @@ export default async function ProjectPage({
     h1: ({ children }: { children: string }) => (
       <h1
         id={slugify(children)}
-        className="mb-2 text-2xl lg:text-3xl 2xl:text-4xl fhd:text-5xl font-bold tracking-tight"
+        className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight"
       >
         {children}
       </h1>
@@ -88,7 +95,7 @@ export default async function ProjectPage({
     h2: ({ children }: { children: string }) => (
       <h2
         id={slugify(children)}
-        className="mb-3 text-xl lg:text-2xl 2xl:text-3xl fhd:text-4xl font-semibold tracking-tight"
+        className="mb-2.5 text-lg lg:text-xl font-semibold tracking-tight"
       >
         {children}
       </h2>
@@ -97,7 +104,7 @@ export default async function ProjectPage({
     h3: ({ children }: { children: string }) => (
       <h3
         id={slugify(children)}
-        className="mb-3 text-lg lg:text-xl 2xl:text-2xl fhd:text-3xl font-semibold"
+        className="mb-2 text-base lg:text-lg font-semibold"
       >
         {children}
       </h3>
@@ -105,36 +112,26 @@ export default async function ProjectPage({
   };
 
   return (
-    <article className="relative w-full px-6 lg:px-15 pt-2 pb-8 lg:py-8 flex flex-col items-start justify-start gap-8 lg:gap-10">
+    <article className="relative w-full lg:px-15 pt-2 pb-8 lg:py-14 flex flex-col items-center gap-8 lg:gap-10">
+      <SectionBackground />
       <ScrollToTop />
-      <div className="w-full flex flex-col items-start justify-start gap-5">
-        <div className="w-full flex flex-col md:flex-row items-start md:justify-between gap-4">
-          <div className="flex flex-col items-start gap-3">
-            <h1 className="text-4xl 2xl:text-5xl fhd:text-6xl qhd:text-7xl font-bold tracking-tight text-foreground">
-              {projectData(`${project.id}.title`)}
-            </h1>
 
-            <div className="flex items-center gap-2">
-              <Badge
-                label={status.label}
-                backgroundColor={status.backgroundColor}
-                textSize="text-xs 2xl:text-sm"
-              />
-              <Badge
-                label={category.label}
-                backgroundColor={category.backgroundColor}
-                textSize="text-xs 2xl:text-sm"
-              />
-            </div>
+      <div className="w-[83.5vw] sm:w-[85vw] flex flex-col items-start justify-start gap-4">
+        <div className="w-full flex flex-col md:flex-row items-start md:justify-between gap-3">
+          <div className="flex flex-col items-start gap-2">
+            <h1 className="font-display text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
+              {projectData(`${project.id}.title`)}
+              <span className="mt-2 block h-1 w-12 rounded-full bg-accent-primary" />
+            </h1>
           </div>
 
-          <div className="flex items-center gap-3 lg:gap-4 text-sm 2xl:text-base fhd:text-lg">
+          <div className="flex items-center gap-2 text-xs lg:text-sm">
             {project.repoUrl && (
               <a
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 fhd:px-5 py-2 fhd:py-3 rounded-2xl border-2 border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
+                className="px-2.5 py-1.5 rounded-lg border border-border text-foreground font-semibold hover:border-accent-primary transition-colors"
               >
                 {t("viewCode")}
               </a>
@@ -145,7 +142,7 @@ export default async function ProjectPage({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 fhd:px-5 py-2 fhd:py-3 rounded-2xl bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
+                className="px-2.5 py-1.5 rounded-lg bg-accent-primary text-background font-semibold hover:opacity-90 transition-opacity"
               >
                 {t("viewDemo")}
               </a>
@@ -153,45 +150,69 @@ export default async function ProjectPage({
           </div>
         </div>
 
-        <div className="w-full flex flex-col 2xl:flex-row items-start justify-start gap-6 lg:gap-8">
+        <div className="w-full flex flex-col 2xl:flex-row items-start justify-start gap-5 lg:gap-6">
           <Image
             src={project.image}
             alt={projectData(`${project.id}.title`)}
             width={1500}
             height={350}
-            className="w-full 2xl:w-3/5 qhd:w-2/3 h-auto rounded-2xl object-cover border-6 border-surface shadow-sm"
+            className="w-full 2xl:w-2/3 h-auto rounded-xl object-cover border-2 border-surface shadow-sm"
           />
 
-          <div className="flex-1 flex flex-col items-start justify-start gap-5 fhd:gap-10">
-            <div className="flex flex-col items-start gap-3">
-              <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
+          <div className="flex-1 flex flex-col items-start justify-start gap-4">
+            <div className="flex flex-col items-start gap-2">
+              <h2 className="text-xl lg:text-2xl font-semibold tracking-tight text-foreground">
                 {t.rich("summary", {
                   highlight: (chunks) => (
                     <span className="text-accent-primary">{chunks}</span>
-                  )
+                  ),
                 })}
-              </h1>
-              <p className="text-base lg:text-lg 2xl:text-xl qhd:text-2xl text-foreground-secondary">
+              </h2>
+
+              <p className="text-sm lg:text-base text-foreground-secondary leading-relaxed">
                 {projectData(`${project.id}.description`)}
               </p>
             </div>
 
-            <div className="w-full p-4 lg:p-4.5 fhd:p-6 flex flex-col items-start justify-start gap-4 bg-surface rounded-2xl">
-              <h1 className="text-2xl lg:text-3xl 2xl:text-4xl qhd:text-5xl font-semibold tracking-tight text-foreground">
-                {t.rich("techStack", {
-                  highlight: (chunks) => (
-                    <span className="text-accent-primary">{chunks}</span>
-                  )
-                })}
-              </h1>
-              <div className="grid grid-cols-4 md:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-4 fhd:grid-cols-5 gap-2 lg:gap-2.5 w-full">
+            <div className="flex items-center gap-2 text-xs font-medium">
+              <span
+                className={`rounded-sm bg-linear-to-b from-white/35 via-white/5 to-black/20 px-2.5 py-1.5 shadow-sm ${status.backgroundColor}
+                `}
+              >
+                {status.label}
+              </span>
+
+              <span
+                className={`rounded-sm bg-linear-to-b from-white/35 via-white/5 to-black/20 px-2.5 py-1.5 shadow-sm ${category.backgroundColor}`}
+              >
+                {category.label}
+              </span>
+            </div>
+
+            <div className="mt-3 md:mt-6 relative w-full overflow-hidden">
+              <div className="relative z-10 mb-4 flex items-center justify-between gap-3">
+                <h2 className="text-xl font-semibold tracking-tight text-foreground lg:text-2xl">
+                  {t.rich("techStack", {
+                    highlight: (chunks) => (
+                      <span className="text-accent-primary">{chunks}</span>
+                    ),
+                  })}
+                </h2>
+              </div>
+
+              <div className="relative z-10 grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
                 {project.technologies.map((tech) => (
                   <div
                     key={tech}
-                    className="flex flex-col items-center justify-center gap-2 pt-4 pb-2 rounded-xl bg-card"
+                    className="group flex items-center gap-3 rounded-xl border-2 border-surface bg-card px-1.5 py-1 md:px-2 md:py-1.5 lg:px-3 lg:py-2.5 2xl:px-1.5 2xl:py-1 fhd:px-3 fhd:py-2.5 transition-all duration-200 hover:border-accent-primary/30 hover:bg-card/80"
                   >
-                    <i className={`${TECHNOLOGY_ICONS[tech]} text-3xl lg:text-4xl qhd:text-5xl text-foreground`} />
-                    <span className="text-center text-xs lg:text-sm qhd:text-base font-mono text-foreground-secondary">
+                    <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-surface">
+                      <i
+                        className={`${TECHNOLOGY_ICONS[tech]} text-xl text-foreground transition-colors duration-200 group-hover:text-accent-primary`}
+                      />
+                    </div>
+
+                    <span className="truncate text-xs lg:text-sm 2xl:text-xs  fhd:text-sm font-medium font-mono text-foreground-secondary transition-colors duration-200 group-hover:text-foreground">
                       {tech}
                     </span>
                   </div>
@@ -202,38 +223,16 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row items-start justify-start gap-8 lg:gap-12">
-        <aside className="w-full md:w-46 2xl:w-56 fhd:w-72 md:sticky md:top-28 shrink-0">
-          <div className="rounded-2xl bg-surface p-5 lg:p-6">
-            <h2 className="mb-5 text-lg 2xl:text-xl fhd:text-2xl font-semibold tracking-tight">
-              {t("onThisPage")}
-            </h2>
-
-            <nav className="flex flex-col gap-3">
-              {headings.map((heading) => (
-                <a
-                  key={heading.id}
-                  href={`#${heading.id}`}
-                  className={`text-sm fhd:text-base transition-colors hover:text-accent-primary ${
-                    heading.level === 1
-                      ? "font-semibold text-foreground"
-                      : heading.level === 2
-                      ? "pl-4 text-foreground-secondary"
-                      : "pl-8 text-xs fhd:text-sm text-foreground-secondary"
-                  }`}
-                >
-                  {heading.text}
-                </a>
-              ))}
-            </nav>
-          </div>
+      <div className="w-[83.5vw] sm:w-[85vw] flex flex-col md:flex-row items-start justify-start gap-6 lg:gap-8 mt-8">
+        <aside className="hidden md:flex w-full md:w-48 2xl:w-56 md:sticky md:top-24 shrink-0">
+          <TableOfContents title={t("onThisPage")} headings={headings} />
         </aside>
 
         <div
           className="
             prose
-            prose-base
-            lg:prose-lg
+            prose-sm
+            lg:prose-base
             max-w-none
             flex-1
             w-full

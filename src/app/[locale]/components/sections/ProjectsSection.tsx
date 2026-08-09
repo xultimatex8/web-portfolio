@@ -2,14 +2,21 @@
 
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import { motion, useReducedMotion } from "motion/react";
 
 import { PROJECTS } from "@/app/[locale]/data/projects";
 import { Technology } from "@/app/[locale]/types/project";
 import { TagFilter } from "../TagFilter";
 import { ProjectCard } from "../ProjectCard";
+import { fadeUp, staggerContainer } from "../../lib/motion";
+import { SectionBackground } from "../SectionBackground";
 
 export function ProjectsSection() {
   const t = useTranslations("Projects");
+  const shouldReduceMotion = useReducedMotion();
+
+  const container = staggerContainer(shouldReduceMotion);
+  const fadeUpVariant = fadeUp(shouldReduceMotion);
 
   const [selectedTags, setSelectedTags] = useState<Technology[]>([]);
 
@@ -32,40 +39,48 @@ export function ProjectsSection() {
   };
 
   return (
-    <section
+    <motion.section
       id="projects"
-      className="relative w-full py-10 lg:py-20 fhd:py-30 bg-surface flex flex-col lg:flex-row items-start justify-start gap-4 lg:gap-20 px-6 md:px-15"
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      className="relative isolate flex w-full flex-col sm:items-center gap-6 bg-surface px-5 py-10 md:px-15 sm:pb-16 md:pb-17 lg:pt-16 lg:pb-21"
     >
-      <div className="w-full lg:w-47 2xl:w-52 fhd:w-xs flex flex-col items-start gap-4 lg:gap-8 lg:sticky lg:top-30">
-        <h1 className="text-3xl md:text-4xl 2xl:text-5xl fhd:text-6xl font-bold tracking-tight text-foreground">
-          {t("title")}
-        </h1>
+      <SectionBackground />
 
-        <TagFilter
-          tags={allTags}
-          selected={selectedTags}
-          onToggle={toggleTag}
-        />
-      </div>
+      <div className="relative sm:w-[85vw] qhd:w-[75vw] flex flex-col gap-8">
+        <motion.div variants={fadeUpVariant} className="flex items-center gap-2">
+          <span className="w-1 h-4 rounded-sm bg-accent-primary" />
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+            {t("title")}
+          </h1>
+        </motion.div>
 
-      <div className="flex-1 flex flex-col gap-10 w-full">
+          <motion.div variants={fadeUpVariant}>
+            <TagFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />
+          </motion.div>
+
         {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 qhd:grid-cols-4 items-start justify-center gap-8 sm:gap-5 lg:gap-14 xl:gap-10 2xl:gap-15 fhd:gap-13 qhd:gap-15">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <motion.div 
+            variants={fadeUpVariant}
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10">
+              {filteredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+          </motion.div>
         ) : (
-          <div className="w-full flex flex-col items-center justify-center gap-3 text-center">
-            <p className="text-xl 2xl:text-2xl font-semibold text-foreground">
-              {t("empty.title")}
-            </p>
-            <p className="text-base 2xl:text-lg text-foreground-secondary">
-              {t("empty.description")}
-            </p>
-          </div>
+          <motion.div 
+            variants={fadeUpVariant}
+            className="w-full flex flex-col items-center justify-center gap-2 text-center py-12">
+              <p className="text-lg font-semibold text-foreground">
+                {t("empty.title")}
+              </p>
+              <p className="text-sm text-foreground-secondary">
+                {t("empty.description")}
+              </p>
+          </motion.div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 }

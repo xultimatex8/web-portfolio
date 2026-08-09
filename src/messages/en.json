@@ -17,8 +17,7 @@
     "aboutTitle": "About",
     "aboutHighlight": "Me",
     "bio1": "Hi! I'm <strong>Alejandro González Macías</strong>, a Software Engineering graduate from the University of Seville. I enjoy turning ideas into functional, maintainable, and scalable software, and I'm always interested in exploring new tools and technologies to continue growing as a developer.",
-    "bio2": "My academic background has provided me with a solid foundation in software engineering, software architecture, and problem-solving, both through independent work and collaborative projects using version control and agile methodologies. I'm curious, adapt quickly to new environments, and have a strong command of English for technical and international contexts. I'm currently looking for opportunities to grow professionally and contribute to meaningful projects.",
-    "bio3": "Outside of coding, I enjoy spending time with friends, working on personal projects, going to the gym, watching films, and playing video games.",
+    "bio2": "My academic background has provided me with a solid foundation in software engineering, software architecture, and problem-solving. I'm curious, adapt quickly to new environments, and have a strong command of English. I'm currently looking for opportunities to grow professionally and contribute to meaningful projects.",
     "location": "Sanlúcar de Barrameda",
     "university": "University of Seville",
     "languages": "Spanish • English",
@@ -28,11 +27,11 @@
     "title": "Education",
     "highSchool": {
       "title": "Francisco Pacheco High School",
-      "subtitle": "Science Track — 2020–2022"
+      "subtitle": "Science Track"
     },
     "university": {
       "title": "University of Seville",
-      "subtitle": "Bachelor's Degree in Software Engineering — 2022–2026"
+      "subtitle": "Bachelor's Degree in Software Engineering"
     }
   },
   "Experience": {
@@ -44,6 +43,7 @@
     "title": "Projects",
     "viewCode": "View code",
     "viewDemo": "View demo",
+    "viewDetails": "View details",
     "empty": {
       "title": "No projects match these filters",
       "description": "Try removing some technologies to see more results."
