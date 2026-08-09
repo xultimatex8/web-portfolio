@@ -39,7 +39,7 @@ export function SectionBackground({
       />
 
       {bottomFade && (
-        <div className="absolute inset-x-0 bottom-0 h-6 bg-linear-to-t from-background to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-4 bg-linear-to-t from-background to-transparent" />
       )}
     </div>
   );
