@@ -2,10 +2,11 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/Header";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { routing } from "../../i18n/routing";
 import { notFound } from "next/navigation";
 import { Analytics } from "@vercel/analytics/next";
+import { Footer } from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,6 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
-  const t = await getTranslations("Layout");
 
   return (
     <html
@@ -47,18 +47,7 @@ export default async function RootLayout({
 
           <main className="mt-20 flex-1">{children}</main>
 
-          <footer className="w-full py-8 lg:py-10 px-6 lg:px-15 flex flex-col lg:flex-row items-center justify-between gap-3 bg-nav text-nav-foreground text-sm md:text-base fhd:text-lg text-center">
-            <p>© {new Date().getFullYear()} Alejandro González Macías</p>
-
-            <a
-              href="https://github.com/xultimatex8/web-portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 decoration-nav-foreground/40 hover:decoration-accent-primary hover:text-accent-primary transition-colors"
-            >
-              {t("sourceCode")}
-            </a>
-          </footer>
+          <Footer />
         </NextIntlClientProvider>
 
         <Analytics />
