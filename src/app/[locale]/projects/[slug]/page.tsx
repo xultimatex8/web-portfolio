@@ -116,7 +116,7 @@ export default async function ProjectPage({
       <SectionBackground />
       <ScrollToTop />
 
-      <div className="w-75 sm:w-[85vw] flex flex-col items-start justify-start gap-4">
+      <div className="w-[83.5vw] sm:w-[85vw] flex flex-col items-start justify-start gap-4">
         <div className="w-full flex flex-col md:flex-row items-start md:justify-between gap-3">
           <div className="flex flex-col items-start gap-2">
             <h1 className="font-display text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
@@ -223,7 +223,7 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <div className="w-75 sm:w-[85vw] flex flex-col md:flex-row items-start justify-start gap-6 lg:gap-8 mt-8">
+      <div className="w-[83.5vw] sm:w-[85vw] flex flex-col md:flex-row items-start justify-start gap-6 lg:gap-8 mt-8">
         <aside className="hidden md:flex w-full md:w-48 2xl:w-56 md:sticky md:top-24 shrink-0">
           <TableOfContents title={t("onThisPage")} headings={headings} />
         </aside>

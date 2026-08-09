@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <motion.footer
       initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.8, 1, 0.6, 1] }}
       className="relative w-full overflow-hidden border-t border-white/10 bg-nav px-6 py-8 text-nav-foreground lg:px-15 lg:py-10"

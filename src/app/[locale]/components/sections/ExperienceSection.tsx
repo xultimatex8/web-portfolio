@@ -19,31 +19,33 @@ export function ExperienceSection() {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="relative isolate flex w-full flex-col gap-8 px-5 py-10 md:px-15 lg:py-16" >
+      className="relative isolate flex w-full flex-col sm:items-center px-5 py-10 md:px-15 sm:pb-16 md:pb-17 lg:pt-16 lg:pb-21" >
         <SectionBackground gridOpacity={0.03} fadeColor="var(--surface)" />
+          <div className="relative sm:w-[85vw] qhd:w-[75vw] flex flex-col gap-8">
+            <motion.div
+              variants={fadeUpVariant}
+              className="flex items-center gap-2"
+            >
+              <span className="h-4 w-1 rounded-sm bg-accent-primary" />
 
-        <motion.div
-          variants={fadeUpVariant}
-          className="flex items-center gap-2"
-        >
-          <span className="h-4 w-1 rounded-sm bg-accent-primary" />
+              <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                {t("title")}
+              </h2>
+            </motion.div>
 
-          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-            {t("title")}
-          </h2>
-        </motion.div>
+            <motion.div
+              variants={fadeUpVariant}
+              className="flex flex-col self-start"
+            >
+              <p className="text-base md:text-lg xl:text-xl font-medium leading-snug text-foreground">
+                {t("text1")}
+              </p>
 
-        <motion.div
-          variants={fadeUpVariant}
-        >
-          <p className="text-lg font-medium leading-snug text-foreground md:text-xl xl:text-2xl">
-            {t("text1")}
-          </p>
-
-          <p className="mt-4 text-sm leading-relaxed text-foreground-secondary xl:text-base">
-            {t("text2")}
-          </p>
-        </motion.div>
+              <p className="mt-4 2xl:mt-1 text-xs md:text-sm xl:text-base leading-relaxed text-foreground-secondary">
+                {t("text2")}
+              </p>
+            </motion.div>
+          </div>
     </motion.section>
   );
 }

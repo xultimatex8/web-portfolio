@@ -44,40 +44,43 @@ export function ProjectsSection() {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="relative isolate flex w-full flex-col gap-6 bg-surface px-5 py-10 md:px-15 lg:py-16"
+      className="relative isolate flex w-full flex-col sm:items-center gap-6 bg-surface px-5 py-10 md:px-15 sm:pb-16 md:pb-17 lg:pt-16 lg:pb-21"
     >
       <SectionBackground />
-      <motion.div variants={fadeUpVariant} className="flex items-center gap-2">
-        <span className="w-1 h-4 rounded-sm bg-accent-primary" />
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-          {t("title")}
-        </h1>
-      </motion.div>
 
-        <motion.div variants={fadeUpVariant}>
-          <TagFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />
+      <div className="relative sm:w-[85vw] qhd:w-[75vw] flex flex-col gap-8">
+        <motion.div variants={fadeUpVariant} className="flex items-center gap-2">
+          <span className="w-1 h-4 rounded-sm bg-accent-primary" />
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+            {t("title")}
+          </h1>
         </motion.div>
 
-      {filteredProjects.length > 0 ? (
-        <motion.div 
-          variants={fadeUpVariant}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-        </motion.div>
-      ) : (
-        <motion.div 
-          variants={fadeUpVariant}
-          className="w-full flex flex-col items-center justify-center gap-2 text-center py-12">
-            <p className="text-lg font-semibold text-foreground">
-              {t("empty.title")}
-            </p>
-            <p className="text-sm text-foreground-secondary">
-              {t("empty.description")}
-            </p>
-        </motion.div>
-      )}
+          <motion.div variants={fadeUpVariant}>
+            <TagFilter tags={allTags} selected={selectedTags} onToggle={toggleTag} />
+          </motion.div>
+
+        {filteredProjects.length > 0 ? (
+          <motion.div 
+            variants={fadeUpVariant}
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10">
+              {filteredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+          </motion.div>
+        ) : (
+          <motion.div 
+            variants={fadeUpVariant}
+            className="w-full flex flex-col items-center justify-center gap-2 text-center py-12">
+              <p className="text-lg font-semibold text-foreground">
+                {t("empty.title")}
+              </p>
+              <p className="text-sm text-foreground-secondary">
+                {t("empty.description")}
+              </p>
+          </motion.div>
+        )}
+      </div>
     </motion.section>
   );
 }

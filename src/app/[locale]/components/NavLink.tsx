@@ -15,7 +15,7 @@ export function NavLink({ href, label }: NavLinkProps) {
   return (
     <a
       href={target}
-      className="text-lg fhd:text-xl font-semibold tracking-tight transition-colors hover:text-foreground-secondary"
+      className="text-lg lg:text-base 2xl:text-lg font-semibold tracking-tight transition-colors hover:text-foreground-secondary"
     >
       {label}
     </a>
