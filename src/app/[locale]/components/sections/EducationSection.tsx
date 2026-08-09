@@ -1,34 +1,55 @@
+"use client";
+
 import { useTranslations } from "next-intl";
+import { motion, useReducedMotion } from "motion/react";
 
 import { Timeline } from "../Timeline";
+import { SectionBackground } from "../SectionBackground";
+import { fadeUp, staggerContainer } from "../../lib/motion";
 
 export function EducationSection() {
   const t = useTranslations("Education");
+  const shouldReduceMotion = useReducedMotion();
+
+  const container = staggerContainer(shouldReduceMotion);
+  const fadeUpVariant = fadeUp(shouldReduceMotion);
 
   const EDUCATION_ITEMS = [
     {
+      period: "2020 - 2022",
       title: t("highSchool.title"),
       subtitle: t("highSchool.subtitle"),
     },
     {
+      period: "2022 - 2026",
       title: t("university.title"),
       subtitle: t("university.subtitle"),
     },
   ];
 
   return (
-    <section
+    <motion.section
       id="education"
-      className="relative w-full py-10 lg:py-16 bg-surface flex flex-col gap-6 px-5 md:px-15"
-    >
-      <div className="flex items-center gap-2">
-        <span className="w-1 h-4 rounded-sm bg-accent-primary" />
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-          {t("title")}
-        </h1>
-      </div>
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="relative isolate flex w-full flex-col gap-6 bg-surface px-5 py-10 md:px-15 lg:py-16">
+        <SectionBackground gridOpacity={0.015} />
 
-      <Timeline items={EDUCATION_ITEMS} />
-    </section>
+        <div className="relative w-full">
+          <motion.div
+            variants={fadeUpVariant}
+            className="mb-12 flex items-center gap-2"
+          >
+            <span className="h-4 w-1 rounded-sm bg-accent-primary" />
+
+            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              {t("title")}
+            </h2>
+          </motion.div>
+
+          <Timeline items={EDUCATION_ITEMS} />
+        </div>
+    </motion.section>
   );
 }

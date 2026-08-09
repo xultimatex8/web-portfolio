@@ -1,13 +1,39 @@
+import type { TimelineItemData } from "./Timeline";
+
 interface TimelineItemProps {
-  title: string;
-  subtitle: string;
+  item: TimelineItemData;
+  index: number;
 }
 
-export function TimelineItem({ title, subtitle }: TimelineItemProps) {
+export function TimelineItem({
+  item,
+  index,
+}: TimelineItemProps) {
   return (
-    <div className="w-full max-w-2xl border-l-2 border-accent-primary/40 pl-4 py-1 transition-colors hover:border-accent-primary">
-      <h2 className="text-lg md:text-xl font-semibold text-foreground">{title}</h2>
-      <p className="text-sm md:text-base text-foreground-secondary">{subtitle}</p>
-    </div>
+    <article className="relative pl-8 lg:pl-0 lg:pt-8">
+      <span className="absolute left-0 top-0 h-4 w-4 rounded-full border-2 border-accent-primary bg-background lg:top-0" />
+
+      <div className="flex flex-col gap-3">
+        <span className="font-mono text-xs tracking-[0.2em] text-foreground-secondary">
+          {item.period}
+        </span>
+
+        <div className="flex items-start gap-4">
+          <span className="hidden text-5xl font-light leading-none text-foreground/20 sm:block">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <div className="flex flex-col gap-1">
+            <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-foreground xl:text-2xl">
+              {item.title}
+            </h3>
+
+            <p className="text-xs sm:text-sm leading-relaxed text-foreground-secondary xl:text-base">
+              {item.subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }
