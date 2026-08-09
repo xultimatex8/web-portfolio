@@ -17,7 +17,7 @@
     "aboutTitle": "Sobre",
     "aboutHighlight": "Mí",
     "bio1": "¡Hola! Soy <strong>Alejandro González Macías</strong>, graduado en Ingeniería del Software por la Universidad de Sevilla. Disfruto convirtiendo ideas en software funcional, mantenible y escalable, y me interesa explorar nuevas herramientas y tecnologías para seguir creciendo como desarrollador.",
-    "bio2": "Mi formación académica me ha proporcionado una base sólida en ingeniería del software, arquitectura de software y resolución de problemas. Soy curioso, me adapto rápidamente a nuevos entornos y tengo un buen dominio del inglés. Actualmente busco oportunidades para crecer profesionalmente y contribuir a proyectos significativos.",
+    "bio2": "Mi formación académica me ha proporcionado una base sólida en ingeniería del software, arquitectura de software y resolución de problemas. Soy curioso, me adapto rápidamente a nuevos entornos y tengo un nivel C1 de inglés y el español como lengua nativa. Actualmente busco oportunidades para crecer profesionalmente y contribuir a proyectos significativos.",
     "location": "Sanlúcar de Barrameda",
     "university": "Universidad de Sevilla",
     "languages": "Español • Inglés",
@@ -88,5 +88,17 @@
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o fue movida a otro lugar.",
     "cta": "Volver al inicio"
+  },
+  "Chat": {
+    "title": "Pregúntale a mi IA, Peter P.",
+    "close": "Cerrar chat",
+    "open": "Abrir chat",
+    "empty": "Pregúntame sobre Alejandro (p. ej., proyectos y formación).",
+    "placeholder": "Escribe tu pregunta...",
+    "send": "Enviar",
+    "error": "Algo salió mal. Inténtalo de nuevo en un momento.",
+    "privacyNotice": "Impulsado por IA — los mensajes pueden ser procesados por proveedores externos.",
+    "hoverHint": "¡Pregúntame lo que quieras!"
   }
+
 }
