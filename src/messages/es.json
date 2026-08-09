@@ -83,5 +83,10 @@
     "summary": "Resumen del <highlight>Proyecto</highlight>",
     "techStack": "Stack <highlight>Tecnológico</highlight>",
     "onThisPage": "En esta página"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida a otro lugar.",
+    "cta": "Volver al inicio"
   }
 }
