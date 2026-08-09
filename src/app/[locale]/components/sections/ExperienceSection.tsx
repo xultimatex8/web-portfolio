@@ -1,30 +1,49 @@
-import { getTranslations } from "next-intl/server";
+"use client";
 
-export async function ExperienceSection() {
-  const t = await getTranslations("Experience");
+import { useTranslations } from "next-intl";
+import { motion, useReducedMotion } from "motion/react";
+
+import { fadeUp, staggerContainer } from "../../lib/motion";
+import { SectionBackground } from "../SectionBackground";
+
+export function ExperienceSection() {
+  const t = useTranslations("Experience");
+  const shouldReduceMotion = useReducedMotion();
+
+  const container = staggerContainer(shouldReduceMotion);
+  const fadeUpVariant = fadeUp(shouldReduceMotion);
 
   return (
-    <section
+    <motion.section
       id="experience"
-      className="relative w-full py-10 lg:py-16 flex flex-col gap-6 px-5 md:px-15"
-    >
-      <div className="flex items-center gap-2">
-        <span className="w-1 h-4 rounded-sm bg-accent-primary" />
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-          {t("title")}
-        </h1>
-      </div>
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="relative isolate flex w-full flex-col gap-8 px-5 py-10 md:px-15 lg:py-16" >
+        <SectionBackground gridOpacity={0.03} />
 
-      {/* Update this section with actual experience items using the Timeline component when any experience is acquired */}
+        <motion.div
+          variants={fadeUpVariant}
+          className="flex items-center gap-2"
+        >
+          <span className="h-4 w-1 rounded-sm bg-accent-primary" />
 
-      <div className="max-w-2xl flex flex-col items-start justify-center gap-3">
-        <p className="text-base md:text-lg text-foreground">
-          {t("text1")}
-        </p>
-        <p className="text-sm md:text-base text-foreground-secondary">
-          {t("text2")}
-        </p>
-      </div>
-    </section>
+          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            {t("title")}
+          </h2>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUpVariant}
+        >
+          <p className="text-lg font-medium leading-snug text-foreground md:text-xl xl:text-2xl">
+            {t("text1")}
+          </p>
+
+          <p className="mt-4 text-sm leading-relaxed text-foreground-secondary xl:text-base">
+            {t("text2")}
+          </p>
+        </motion.div>
+    </motion.section>
   );
 }
