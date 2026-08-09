@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "../../../i18n/navigation";
 
 interface NavLinkProps {
   href: string;
@@ -9,15 +9,22 @@ interface NavLinkProps {
 
 export function NavLink({ href, label }: NavLinkProps) {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
-  const target = pathname === "/" ? `#${href}` : `/#${href}`;
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHome) {
+      e.preventDefault();
+      document.getElementById(href)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <a
-      href={target}
+    <Link
+      href={isHome ? `#${href}` : `/#${href}`}
+      onClick={handleClick}
       className="text-lg lg:text-base 2xl:text-lg font-semibold tracking-tight transition-colors hover:text-foreground-secondary"
     >
       {label}
-    </a>
+    </Link>
   );
 }

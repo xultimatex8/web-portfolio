@@ -33,10 +33,10 @@ export function Header() {
         </div>
 
         <div className="relative z-10 flex h-full items-center justify-between px-5 font-sans text-white">
-          <h1 className="flex items-center gap-2.5 text-lg md:text-xl lg:text-xl xl:text-2xl font-bold tracking-tight truncate">
+          <Link href="/" className="flex items-center gap-2.5 text-lg md:text-xl lg:text-xl xl:text-2xl font-bold tracking-tight truncate">
             <span className="h-4 w-1 rounded-sm bg-accent-primary" aria-hidden="true" />
             Alejandro González Macías
-          </h1>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
