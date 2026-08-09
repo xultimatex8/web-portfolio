@@ -16,9 +16,8 @@
     "roleHighlight": "Ingeniería del Software",
     "aboutTitle": "Sobre",
     "aboutHighlight": "Mí",
-    "bio1": "¡Hola! Soy <strong>Alejandro González Macías</strong>, graduado en Ingeniería del Software por la Universidad de Sevilla. Disfruto el hecho de transformar ideas en software funcional, mantenible y escalable, y me interesa nuevas herramientas y tecnologías para seguir creciendo como desarrollador.",
-    "bio2": "Mi formación me ha proporcionado una base sólida en ingeniería del software, arquitectura y resolución de problemas, tanto trabajando de forma individual como en equipo utilizando control de versiones y metodologías ágiles. Soy una persona curiosa, me adapto con rapidez a nuevos entornos y tengo un buen dominio del inglés para desenvolverme en contextos técnicos e internacionales. Actualmente busco oportunidades para crecer y aportar valor en proyectos con impacto.",
-    "bio3": "Además de codeando, disfruto pasando tiempo con mis amigos, desarrollando proyectos personales, yendo al gimnasio, viendo películas y jugando a videojuegos.",
+    "bio1": "¡Hola! Soy <strong>Alejandro González Macías</strong>, graduado en Ingeniería del Software por la Universidad de Sevilla. Disfruto convirtiendo ideas en software funcional, mantenible y escalable, y me interesa explorar nuevas herramientas y tecnologías para seguir creciendo como desarrollador.",
+    "bio2": "Mi formación académica me ha proporcionado una base sólida en ingeniería del software, arquitectura de software y resolución de problemas. Soy curioso, me adapto rápidamente a nuevos entornos y tengo un nivel C1 de inglés y el español como lengua nativa. Actualmente busco oportunidades para crecer profesionalmente y contribuir a proyectos significativos.",
     "location": "Sanlúcar de Barrameda",
     "university": "Universidad de Sevilla",
     "languages": "Español • Inglés",
@@ -28,11 +27,11 @@
     "title": "Educación",
     "highSchool": {
       "title": "IES Francisco Pacheco",
-      "subtitle": "Bachillerato de Ciencias — 2020–2022"
+      "subtitle": "Bachillerato de Ciencias"
     },
     "university": {
       "title": "Universidad de Sevilla",
-      "subtitle": "Grado en Ingeniería del Software — 2022–2026"
+      "subtitle": "Grado en Ingeniería del Software"
     }
   },
   "Experience": {
@@ -44,6 +43,7 @@
     "title": "Proyectos",
     "viewCode": "Ver código",
     "viewDemo": "Ver demo",
+    "viewDetails": "Ver detalles",
     "empty": {
       "title": "Ningún proyecto coincide con estos filtros",
       "description": "Prueba a quitar algunas tecnologías para ver más resultados."
@@ -81,7 +81,24 @@
     "viewCode": "Ver código",
     "viewDemo": "Ver demo",
     "summary": "Resumen del <highlight>Proyecto</highlight>",
-    "techStack": "<highlight>Tecnologías</highlight> utilizadas",
+    "techStack": "Stack <highlight>Tecnológico</highlight>",
     "onThisPage": "En esta página"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida a otro lugar.",
+    "cta": "Volver al inicio"
+  },
+  "Chat": {
+    "title": "Pregúntale a mi IA, Peter P.",
+    "close": "Cerrar chat",
+    "open": "Abrir chat",
+    "empty": "Pregúntame sobre Alejandro (p. ej., proyectos y formación).",
+    "placeholder": "Escribe tu pregunta...",
+    "send": "Enviar",
+    "error": "Algo salió mal. Inténtalo de nuevo en un momento.",
+    "privacyNotice": "Impulsado por IA — los mensajes pueden ser procesados por proveedores externos.",
+    "hoverHint": "¡Pregúntame lo que quieras!"
   }
+
 }

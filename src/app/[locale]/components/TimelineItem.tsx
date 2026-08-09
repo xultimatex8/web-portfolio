@@ -1,18 +1,47 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
+import type { TimelineItemData } from "./Timeline";
+import { fadeUp } from "../lib/motion";
+
 interface TimelineItemProps {
-  title: string;
-  subtitle: string;
+  item: TimelineItemData;
+  index: number;
 }
 
-export function TimelineItem({ title, subtitle }: TimelineItemProps) {
-  return (
-    <div className="relative w-full sm:w-xl md:w-2xl xl:w-4xl fhd:w-7xl">
-      <div className="absolute top-1/2 -translate-x-3/7 -translate-y-1/2 w-4 h-4 rounded-full bg-accent-primary border-5 border-surface" />
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-0.5 bg-accent-primary" />
+export function TimelineItem({ item, index }: TimelineItemProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const variants = fadeUp(shouldReduceMotion);
 
-      <div className="ml-10 h-28 fhd:h-32 bg-card rounded-2xl p-6 flex flex-col justify-center">
-        <h2 className="text-lg md:text-xl 2xl:text-2xl font-semibold text-foreground">{title}</h2>
-        <p className="text-sm md:text-base 2xl:text-lg text-foreground-secondary">{subtitle}</p>
+  return (
+    <motion.article
+      variants={variants}
+      className="relative pl-8 lg:pl-0 lg:pt-8"
+    >
+      <span className="absolute left-0 top-0 h-4 w-4 rounded-full border-2 border-accent-primary bg-background lg:top-0" />
+
+      <div className="flex flex-col gap-3">
+        <span className="font-mono text-xs tracking-[0.2em] text-foreground-secondary">
+          {item.period}
+        </span>
+
+        <div className="flex items-start gap-4">
+          <span className="hidden text-5xl font-light leading-none text-foreground/20 sm:block">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <div className="flex flex-col gap-1">
+            <h3 className="text-base sm:text-lg xl:text-xl font-semibold tracking-tight text-foreground">
+              {item.title}
+            </h3>
+
+            <p className="text-xs md:text-sm leading-relaxed text-foreground-secondary xl:text-base">
+              {item.subtitle}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    </motion.article>
   );
 }

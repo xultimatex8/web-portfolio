@@ -1,6 +1,12 @@
-import { TimelineItem } from "./TimelineItem";
+"use client";
 
-interface TimelineItemData {
+import { motion, useReducedMotion } from "motion/react";
+
+import { TimelineItem } from "./TimelineItem";
+import { staggerContainer } from "../lib/motion";
+
+export interface TimelineItemData {
+  period: string;
   title: string;
   subtitle: string;
 }
@@ -10,12 +16,22 @@ interface TimelineProps {
 }
 
 export function Timeline({ items }: TimelineProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const container = staggerContainer(shouldReduceMotion);
+
   return (
-    <div className="relative flex flex-col items-start justify-start gap-10 2xl:gap-13 fhd:gap-15">
-      <div className="absolute left-0 top-6 bottom-6 w-0.75 bg-accent-primary z-10" />
-      {items.map((item) => (
-        <TimelineItem key={item.title} title={item.title} subtitle={item.subtitle} />
-      ))}
+    <div className="relative w-full">
+      <div className="absolute left-0 right-0 top-2 hidden h-px bg-foreground/10 lg:block" />
+      <div className="absolute bottom-0 left-2 top-0 w-px bg-foreground/10 lg:hidden" />
+
+      <motion.div
+        variants={container}
+        className="grid grid-cols-1 gap-10 lg:grid-cols-2"
+      >
+        {items.map((item, index) => (
+          <TimelineItem key={item.title} item={item} index={index} />
+        ))}
+      </motion.div>
     </div>
   );
 }
