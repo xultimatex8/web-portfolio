@@ -4,7 +4,6 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { PORTFOLIO_CONTEXT } from "@/app/[locale]/lib/portfolio-context";
 
-
 export const runtime = "edge";
 
 const ratelimit = new Ratelimit({
@@ -35,7 +34,7 @@ export async function POST(req: Request) {
   const lastText = lastMessage?.parts?.find((p) => p.type === "text")?.text ?? "";
   if (lastText.length > MAX_MESSAGE_LENGTH) {
     return new Response(
-      JSON.stringify({ error: "Mensaje demasiado largo." }),
+      JSON.stringify({ error: "Message too long." }),
       { status: 400, headers: { "Content-Type": "application/json" } }
     );
   }
