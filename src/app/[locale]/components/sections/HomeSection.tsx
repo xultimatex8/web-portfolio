@@ -21,7 +21,7 @@ export function HomeSection() {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="relative w-full isolate overflow-hidden flex flex-col items-center justify-between gap-15 px-5 pt-10 pb-16 lg:gap-24 lg:py-20 lg:pb-24"
+      className="relative w-full isolate overflow-hidden flex flex-col items-center justify-between gap-15 px-5 pt-10 pb-16 lg:gap-24 lg:py-20 lg:pb-24 scroll-mt-6"
     >
       <SectionBackground fadeColor="var(--surface)" />
 

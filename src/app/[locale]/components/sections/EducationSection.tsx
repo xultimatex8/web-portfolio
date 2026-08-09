@@ -33,7 +33,7 @@ export function EducationSection() {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      className="relative isolate flex w-full flex-col sm:items-center gap-6 bg-surface px-5 py-10 md:px-15 sm:pb-16 md:pb-17 lg:pt-16 lg:pb-21">
+      className="relative isolate flex w-full flex-col sm:items-center gap-6 bg-surface px-5 py-10 md:px-15 sm:pb-16 md:pb-17 lg:pt-16 lg:pb-21 scroll-mt-6">
         <SectionBackground gridOpacity={0.015} />
 
         <div className="relative sm:w-[85vw] qhd:w-[75vw]">
