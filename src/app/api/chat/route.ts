@@ -14,6 +14,9 @@ const ratelimit = new Ratelimit({
 
 const MAX_MESSAGE_LENGTH = 500;
 
+const PRIMARY_MODEL = "gemini-3.5-flash-lite";
+const FALLBACK_MODEL = "gemini-3.1-flash-lite";
+
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for") ?? "anonymous";
   const { success, remaining } = await ratelimit.limit(ip);
@@ -39,15 +42,88 @@ export async function POST(req: Request) {
     );
   }
 
-  const result = streamText({
-    model: google("gemini-flash-latest"),
-    system: PORTFOLIO_CONTEXT,
-    messages: await convertToModelMessages(messages),
-    maxOutputTokens: 2048,
-    temperature: 0.3,
-  });
+  const modelMessages = await convertToModelMessages(messages);
 
-  return result.toUIMessageStreamResponse({
-    headers: { "X-RateLimit-Remaining": String(remaining) },
-  });
+  try {
+    const result = streamText({
+      model: google(PRIMARY_MODEL),
+      system: PORTFOLIO_CONTEXT,
+      messages: modelMessages,
+      maxOutputTokens: 2048,
+      temperature: 0.3,
+    });
+
+    return result.toUIMessageStreamResponse({
+      headers: {
+        "X-RateLimit-Remaining": String(remaining),
+        "X-AI-Model": PRIMARY_MODEL,
+      },
+    });
+  } catch (error) {
+    if (!isRateLimitError(error)) {
+      console.error("AI provider error:", error);
+
+      return new Response(
+        JSON.stringify({
+          error: "Something went wrong. Please try again later.",
+        }),
+        {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+  }
+
+  try {
+    const result = streamText({
+      model: google(FALLBACK_MODEL),
+      system: PORTFOLIO_CONTEXT,
+      messages: modelMessages,
+      maxOutputTokens: 2048,
+      temperature: 0.3,
+    });
+
+    return result.toUIMessageStreamResponse({
+      headers: {
+        "X-RateLimit-Remaining": String(remaining),
+        "X-AI-Model": FALLBACK_MODEL,
+      },
+    });
+  } catch (error) {
+    console.error("AI fallback error:", error);
+
+    return new Response(
+      JSON.stringify({
+        error:
+          "The assistant is temporarily unavailable. Please try again later.",
+      }),
+      {
+        status: 503,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+}
+
+function isRateLimitError(error: unknown): boolean {
+  if (!error) return false;
+
+  const message =
+    error instanceof Error
+      ? error.message.toLowerCase()
+      : String(error).toLowerCase();
+
+  return (
+    message.includes("429") ||
+    message.includes("rate limit") ||
+    message.includes("rate_limit") ||
+    message.includes("quota") ||
+    message.includes("too many requests") ||
+    message.includes("resource exhausted")
+  );
 }
