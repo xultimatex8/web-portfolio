@@ -1,0 +1,139 @@
+# Ukinory
+
+Ukinory is a web platform for personalized movie recommendations based on Letterboxd data. The project allows users to import their movie history, enrich that data through multiple external sources, and build a taste profile that serves as the foundation for personalized recommendations.
+
+The system combines semantic embeddings, vector search, and collaborative filtering to build a pool of unseen movie candidates. Recommendations progressively adapt to each user's preferences through their ratings and interactions with recommended movies, while an LLM generates a short personalized explanation for each recommendation.
+
+The application also supports guest sessions, allowing users to start using it without creating an account and later convert their guest session into a permanent account without losing their existing data.
+
+## Key Features
+
+- **Guest sessions & registration**: start using the application without creating an account and later convert the guest session into a permanent account while preserving all existing data.
+- **Letterboxd import**: upload a ZIP archive or individual CSV files exported from Letterboxd and transform their contents into structured records associated with the current user.
+- **Movie enrichment**: match imported movies against TMDb and retrieve additional metadata from Wikidata, including title, release year, description, runtime, original language, directors, and genres.
+- **Movie catalog**: maintain a catalog of movies periodically fetched from TMDb so that recommendations are available even when a user has not imported enough data yet.
+- **Taste profile**: build a semantic representation of a user's preferences from the movies they have watched and rated.
+- **Personalized recommendations**: build a pool of unseen movies from both the global catalog and movies contributed by other users, then rank them based on their similarity to the user's taste profile.
+- **Hybrid recommendation system**: combine content-based similarity through embeddings with information from user ratings and interactions.
+- **Preference adaptation**: use the user's ratings and swipe actions to progressively adjust the selection and ranking of future recommendations.
+- **Personalized explanations**: generate a short explanation for each recommendation using Gemini, with the user's actual rating history as context.
+- **Swipe system**: skip recommendations or add them to the watchlist, while recording these actions to avoid repeatedly recommending the same movies.
+- **Letterboxd export**: generate a Letterboxd-compatible CSV from movies added to the watchlist through the recommendation system.
+- **Data export**: download all stored account data as a JSON file.
+- **Privacy & account management**: log out or delete an account and all associated data, with automatic cleanup of abandoned guest sessions.
+- **Error handling**: handle import errors and failures from external services, including rate limits and transient errors, through retries, backoff, and a consistent error response format.
+
+## Demo
+
+The following examples showcase some of Ukinory's core features.
+
+<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Guest and User Authentication</h4>
+    <video
+      src="/videos/projects/ukinory/auth_screen.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Letterboxd Data Import</h4>
+    <video
+      src="/videos/projects/ukinory/import_export.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Creating a Recommendation Session & Swiping</h4>
+    <video
+      src="/videos/projects/ukinory/swipe_session.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Justification, Rating & Watchlist Export</h4>
+    <video
+      src="/videos/projects/ukinory/swipe_features.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+<div className="space-y-2">
+    <h4 className="text-md font-semibold">Guest profile</h4>
+    <video
+      src="/videos/projects/ukinory/profile_guest.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+<div className="space-y-2">
+    <h4 className="text-md font-semibold">User profile</h4>
+    <video
+      src="/videos/projects/ukinory/profile_registered.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Challenges
+
+Building Ukinory involved several technical and learning challenges:
+
+- Designing an authentication system that allows users to start as guests and later convert their session into a permanent account while preserving all associated data.
+- Building an import pipeline capable of processing the different CSV files included in a Letterboxd export and transforming them into structured records.
+- Matching Letterboxd movies against TMDb while handling ambiguous titles, unmatched movies, and differences in release years.
+- Integrating multiple external data sources with different models and purposes. TMDb is used to identify movies, while Wikidata provides the descriptive metadata used by the recommendation system.
+- Reducing the number of requests to external services through caching, batching, request pacing, and retries for rate limits and transient failures.
+- Generating embeddings from heterogeneous movie information and using vector search to build taste profiles and candidate pools.
+- Designing a hybrid recommendation system that combines semantic similarity through embeddings with information from user ratings and interactions.
+- Making recommendations adapt to the preferences expressed through ratings and swipe actions rather than relying exclusively on the user's initial Letterboxd history.
+- Generating personalized explanations through an LLM using real information from the user's rating history, rather than producing generic descriptions of recommended movies.
+- Designing a movie catalog that provides enough candidates for new users by combining movies fetched directly from TMDb with movies already registered by other users.
+- Keeping the two types of data export separate: JSON represents a complete account data export, while the Letterboxd CSV is specifically designed to be imported back into Letterboxd.
+- Maintaining a consistent error response format throughout the API, regardless of whether the error originates within the application or from one of its external services.
+
+## Lessons Learned
+
+Ukinory allowed me to explore recommendation systems in greater depth, particularly the processing and combination of data from multiple external sources. One of the main challenges was not simply generating a recommendation, but building the entire pipeline required to make the data used by the system consistent, reusable, and sufficiently rich.
+
+Working with Letterboxd, TMDb, and Wikidata taught me the importance of clearly separating the different stages of the pipeline: import, identifier resolution, enrichment, storage, embedding generation, and recommendation. Keeping these responsibilities separated makes it easier to reuse processed data while also handling errors and external API limits.
+
+Working with embeddings and vector search also gave me practical experience with semantic representations of content. Rather than limiting recommendations to direct matches based on genres or other individual attributes, the system can compare semantic representations of movies and build a taste profile from the content of the movies a user has watched and rated.
+
+Another important lesson was designing a system that can adapt to user interaction. The preferences initially obtained from Letterboxd provide a starting point, but ratings and swipe actions performed within Ukinory provide additional information that can be used to adjust future recommendations.
+
+Finally, working with external services such as TMDb, Wikidata, and Gemini gave me practical experience designing systems that depend on third-party APIs, particularly around caching, rate limiting, retries, batching, and failure handling.

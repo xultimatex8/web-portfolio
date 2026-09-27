@@ -14,6 +14,23 @@ import { Project } from "@/app/[locale]/types/project";
 */
 
 export const PROJECTS: Project[] = [
+    {
+    id: "ukinory",
+    image: "/images/projects/ukinory/hero_ukinory.jpeg",
+    status: "in-progress",
+    category: "personal",
+    technologies: [
+      "Python",
+      "Django",
+      "Redis",
+      "PostgreSQL",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+    ],
+    repoUrl: "https://github.com/xultimatex8/ukinory",
+    demoUrl: "https://ukinory.vercel.app",
+  },
   {
     id: "ultimateggx",
     image: "/images/projects/ultimateggx/hero_ultimateggx.jpeg",
