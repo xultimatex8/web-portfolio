@@ -1,7 +1,9 @@
 export const TECHNOLOGY_ICONS = {
   "Python": "devicon-python-plain colored",
+  "Django": "devicon-django-plain colored",
   "FastAPI": "devicon-fastapi-plain colored",
   "Neo4j": "devicon-neo4j-plain colored",
+  "Redis": "devicon-redis-plain colored",
   "React": "devicon-react-original colored",
   "TypeScript": "devicon-typescript-plain colored",
   "Java": "devicon-java-plain colored",
