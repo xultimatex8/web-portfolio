@@ -23,7 +23,7 @@ export const TECHNOLOGY_ICONS = {
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;
 
-export type ProjectStatus = "done" | "in-progress";
+export type ProjectStatus = "live" | "offline";
 export type ProjectCategory = "personal" | "academic" | "professional";
 
 export interface Project {
