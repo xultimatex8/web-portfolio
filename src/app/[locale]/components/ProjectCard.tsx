@@ -65,19 +65,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
 
           <div
-            className={`absolute bottom-0 left-0 z-20 flex items-center ${
+            className={`absolute bottom-3 left-3 z-20 flex items-center gap-1.5 ${
               isLoading ? "opacity-70" : "opacity-100"
             }`}
           >
             <span
-              className={`bg-linear-to-b from-white/35 via-white/5 to-black/20 px-2.5 py-1.5 text-[0.65rem] font-medium shadow-sm ${status.backgroundColor}
-              `}
+              className={`flex items-center gap-1.5 rounded-sm px-2.5 py-1.25 text-[0.65rem] font-semibold text-white ${status.backgroundColor}`}
             >
+              <span className="h-1.5 w-1.5 rounded-full bg-white" />
               {status.label}
             </span>
 
             <span
-              className={`rounded-tr-lg bg-linear-to-b from-white/35 via-white/5 to-black/20 px-2.5 py-1.5 text-[0.65rem] font-medium shadow-sm ${category.backgroundColor}`}
+              className={`rounded-sm border border-white/20 bg-black/65 px-2 py-1 text-[0.65rem] font-medium text-white ${category.backgroundColor}`}
             >
               {category.label}
             </span>
