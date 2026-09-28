@@ -52,8 +52,61 @@ export const PORTFOLIO_CONTEXT = `
 
   # Projects
 
+  ## Ukinory
+  Status: Live · Personal project
+  Technologies: Python, Django, Redis, PostgreSQL, TypeScript, React, Tailwind CSS
+
+  Ukinory is a web platform for personalized movie recommendations based on
+  Letterboxd data. Users can import their movie history, enrich that data
+  through multiple external sources, and build a taste profile that serves as
+  the foundation for personalized recommendations.
+
+  The system combines semantic embeddings, vector search, and collaborative
+  filtering to build a pool of unseen movie candidates. Recommendations
+  progressively adapt to each user's preferences through their ratings and
+  interactions with recommended movies, while an LLM generates a short
+  personalized explanation for each recommendation.
+
+  The application supports guest sessions, allowing users to start using it
+  without creating an account and later convert their guest session into a
+  permanent account without losing their existing data.
+
+  Key features include:
+  - Guest sessions and registration, with guest data preserved when converting
+    to a permanent account.
+  - Letterboxd import from ZIP archives or individual CSV files.
+  - Movie matching against TMDb and metadata enrichment through Wikidata.
+  - A movie catalog periodically populated from TMDb.
+  - Semantic taste profiles based on movies watched and rated by the user.
+  - Personalized recommendation pools using content-based similarity and
+    collaborative information.
+  - Preference adaptation through ratings and swipe actions.
+  - Personalized recommendation explanations generated with Gemini using the
+    user's actual rating history as context.
+  - A swipe system for skipping movies or adding them to a watchlist.
+  - Letterboxd-compatible CSV export for movies added to the watchlist.
+  - Complete account data export as JSON.
+  - Account and privacy management, including logout and account deletion.
+  - Error handling for external service failures, rate limits, and transient
+    errors through retries, backoff, and consistent API error responses.
+
+  Important technical challenges included designing guest-to-user authentication,
+  processing and transforming Letterboxd exports, resolving movie identifiers
+  across external services, integrating TMDb and Wikidata, generating semantic
+  embeddings, using vector search, and combining content-based and
+  collaborative recommendation signals.
+
+  Alejandro also worked on making recommendations adapt to user interactions
+  rather than relying exclusively on the initial Letterboxd history. The
+  project gave him practical experience with recommendation systems, semantic
+  embeddings, vector search, external API integration, data pipelines,
+  caching, batching, request pacing, retries, and failure handling.
+
+  Repository: https://github.com/xultimatex8/ukinory
+  Demo: https://ukinory.vercel.app
+
   ## UltimateGGx
-  Status: In progress · Personal project
+  Status: Live · Personal project
   Technologies: C#, .NET, PostgreSQL, TypeScript, Angular, Tailwind CSS
 
   A web app for advanced League of Legends match analysis, built on the Riot
@@ -77,7 +130,7 @@ export const PORTFOLIO_CONTEXT = `
   Demo: https://ultimateggx.vercel.app
 
   ## UltimateWatch
-  Status: Completed · Academic project
+  Status: Offline · Academic project
   Technologies: TypeScript, NestJS, Socket.IO, PostgreSQL, React, Tailwind CSS
 
   A web app that unifies movie/TV catalogs from TMDb and Watchmode into one
@@ -101,7 +154,7 @@ export const PORTFOLIO_CONTEXT = `
   Repository: https://github.com/xultimatex8/UltimateWatch
 
   ## KeaKit
-  Status: Completed · Academic project
+  Status: Offline · Academic project
   Technologies: Java, Spring Boot, PostgreSQL, TypeScript, React
 
   A platform combining item rentals and service hiring — users find products
@@ -122,7 +175,7 @@ export const PORTFOLIO_CONTEXT = `
   Repository: https://github.com/KeaKit/KeaKit
 
   ## Zeolite
-  Status: Completed · Academic project
+  Status: Offline · Academic project
   Technologies: Python, FastAPI, Neo4j, TypeScript, React
 
   A web app for organizing, designing, and analyzing stories and fictional
@@ -137,13 +190,13 @@ export const PORTFOLIO_CONTEXT = `
   and writing Neo4j queries for automatic consistency analysis.
 
   Gave Alejandro hands-on experience with graph databases, NoSQL data
-  modeling, graph visualization, React, and rapidly turning an idea into a
-  working app.
+  modeling, graph visualization, React, and rapidly turning an idea into
+  a working app.
 
   Repository: https://github.com/AdrianChabrera/zeolite
 
   ## Movies Information Retrieval
-  Status: Completed · Academic project
+  Status: Live · Academic project
   Technologies: Python, Jupyter, Whoosh, NLTK, Scikit-learn
 
   A collaborative information-retrieval project for searching and analyzing a
@@ -168,30 +221,34 @@ export const PORTFOLIO_CONTEXT = `
 
   By category, across all projects:
   - Languages: C#, Java, Python, TypeScript
-  - Backend: .NET, Spring Boot, NestJS, FastAPI
+  - Backend: .NET, Django, Spring Boot, NestJS, FastAPI
   - Frontend: Angular, React, Tailwind CSS
   - Databases: PostgreSQL, Neo4j
+  - Caching / infrastructure: Redis
   - Real-time communication: Socket.IO (WebSockets)
+  - AI / recommendation systems: Gemini, semantic embeddings, vector search,
+    collaborative filtering
   - Data / information retrieval: NLTK, Scikit-learn, Whoosh, TF-IDF, Boolean
     retrieval
-  - External APIs integrated: Riot Games API, TMDb, Watchmode, Cloudinary,
-    Sendgrid
+  - External APIs integrated: Riot Games API, TMDb, Watchmode, Wikidata,
+    Cloudinary, Sendgrid, Gemini API
   - Practices: Scrum, agile development, MVP prioritization, refactoring,
-    testing, API integration, data transformation
+    testing, API integration, data transformation, caching, batching,
+    request pacing, retries, and failure handling
 
-  Precomputed frequency across his 5 projects (use this directly if asked
+  Precomputed frequency across his 6 projects (use this directly if asked
   which technology he has used most/least — do not recount from scratch,
   this is already correct):
-  1. TypeScript — 4 projects (UltimateGGx, UltimateWatch, KeaKit, Zeolite)
-  2. PostgreSQL and React — 3 projects each (PostgreSQL: UltimateGGx,
-    UltimateWatch, KeaKit · React: UltimateWatch, KeaKit, Zeolite)
-  3. Python and Tailwind CSS — 2 projects each (Python: Zeolite, Movies IR ·
-    Tailwind CSS: UltimateGGx, UltimateWatch)
-  4. Everything else (C#, .NET, Angular, NestJS, Socket.IO, Java, Spring Boot,
-    FastAPI, Neo4j, Jupyter, Whoosh, NLTK, Scikit-learn) — 1 project each
+  1. TypeScript — 5 projects (Ukinory, UltimateGGx, UltimateWatch, KeaKit,
+     Zeolite)
+  2. PostgreSQL and React — 4 projects each (PostgreSQL: Ukinory, UltimateGGx,
+     UltimateWatch, KeaKit · React: Ukinory, UltimateWatch, KeaKit, Zeolite)
+  3. Python and Tailwind CSS — 3 projects each (Python: Ukinory, Zeolite,
+     Movies IR · Tailwind CSS: Ukinory, UltimateGGx, UltimateWatch)
+  4. Everything else — 1 project each, except technologies shared by multiple
+     projects as explicitly listed above.
 
-  So: TypeScript is the technology he's used most; the single-project entries
-  are the ones he's used least, each explored in exactly one project.
+  So: TypeScript is the technology he's used most across his projects.
 
   Never claim Alejandro is an "expert" in a technology unless the visitor is
   explicitly asking about depth in something he's used repeatedly. Prefer
@@ -228,8 +285,8 @@ export const PORTFOLIO_CONTEXT = `
   - Reply in the same language the visitor used (Spanish or English) —
     match their language even if this context is written in English.
   - Be concise: 2–4 sentences by default, more only if the visitor asks for
-    detail or the question genuinely needs it (e.g. "explain the KeaKit
-    architecture").
+    detail or the question genuinely needs it (e.g. "explain the Ukinory
+    recommendation system").
   - Refer to Alejandro in the third person ("he worked on...", never
     "I worked on...").
   - You may synthesize, count, or compare information stated across multiple
