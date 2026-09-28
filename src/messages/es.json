@@ -56,6 +56,10 @@
     "cvUrl": "/CV_AlejandroGonzalez_Software_ES.pdf"
   },
   "ProjectData": {
+    "ukinory": { 
+      "title": "Ukinory", 
+      "description": "Plataforma full-stack de recomendación de películas que importa datos de Letterboxd para generar recomendaciones personalizadas mediante filtrado híbrido, caché con Redis y explicaciones generadas por LLM."
+    },
     "ultimateggx": {
       "title": "UltimateGGx",
       "description": "Aplicación web de análisis de League of Legends que permite consultar invocadores, historiales detallados, líneas de tiempo interactivas, marcadores y repeticiones con minimapa a partir de datos de Riot Games."

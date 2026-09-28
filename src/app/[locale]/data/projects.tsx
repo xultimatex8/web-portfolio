@@ -14,10 +14,27 @@ import { Project } from "@/app/[locale]/types/project";
 */
 
 export const PROJECTS: Project[] = [
+    {
+    id: "ukinory",
+    image: "/images/projects/ukinory/hero_ukinory.jpeg",
+    status: "live",
+    category: "personal",
+    technologies: [
+      "Python",
+      "Django",
+      "Redis",
+      "PostgreSQL",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+    ],
+    repoUrl: "https://github.com/xultimatex8/ukinory",
+    demoUrl: "https://ukinory.vercel.app",
+  },
   {
     id: "ultimateggx",
     image: "/images/projects/ultimateggx/hero_ultimateggx.jpeg",
-    status: "in-progress",
+    status: "live",
     category: "personal",
     technologies: [
       "C#",
@@ -33,7 +50,7 @@ export const PROJECTS: Project[] = [
   {
     id: "ultimatewatch",
     image: "/images/projects/ultimatewatch/hero_ultimatewatch.jpeg",
-    status: "done",
+    status: "offline",
     category: "academic",
     technologies: [
       "TypeScript",
@@ -48,7 +65,7 @@ export const PROJECTS: Project[] = [
   {
     id: "keakit",
     image: "/images/projects/keakit/hero_keakit.jpeg",
-    status: "done",
+    status: "offline",
     category: "academic",
     technologies: [
       "Java",
@@ -62,7 +79,7 @@ export const PROJECTS: Project[] = [
   {
     id: "zeolite",
     image: "/images/projects/zeolite/hero_zeolite.jpeg",
-    status: "done",
+    status: "offline",
     category: "academic",
     technologies: ["Python", "FastAPI", "Neo4j", "TypeScript", "React"],
     repoUrl: "https://github.com/AdrianChabrera/zeolite",
@@ -70,7 +87,7 @@ export const PROJECTS: Project[] = [
   {
     id: "movies-ir",
     image: "/images/projects/movies-ir/hero_movies-ir.jpeg",
-    status: "done",
+    status: "live",
     category: "academic",
     technologies: [
       "Python",

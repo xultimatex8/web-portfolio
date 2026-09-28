@@ -1,0 +1,139 @@
+# Ukinory
+
+Ukinory es una plataforma web de recomendación personalizada de películas basada en datos de Letterboxd. El proyecto permite importar el historial de películas de un usuario, enriquecer esos datos mediante distintas fuentes externas y construir un perfil de gustos que sirve como base para generar recomendaciones personalizadas.
+
+El sistema combina embeddings semánticos, búsqueda vectorial y filtrado colaborativo para construir un conjunto de candidatos no vistos por el usuario. Las recomendaciones se adaptan progresivamente a las preferencias de cada usuario a partir de sus valoraciones y de las acciones realizadas sobre las recomendaciones, mientras que un LLM genera una breve explicación personalizada para cada película recomendada.
+
+La aplicación también permite comenzar a utilizarla como invitado y convertir posteriormente esa sesión en una cuenta permanente, conservando los datos existentes.
+
+## Características principales
+
+- **Sesión de invitado y registro**: comienza a utilizar la aplicación sin crear una cuenta y convierte posteriormente la sesión de invitado en una cuenta permanente conservando todos sus datos.
+- **Importación de Letterboxd**: importa un archivo ZIP o los CSV individuales exportados desde Letterboxd y transforma su contenido en registros estructurados asociados al usuario.
+- **Enriquecimiento de películas**: relaciona las películas importadas con TMDb y obtiene metadatos adicionales mediante Wikidata, incluyendo título, año, descripción, duración, idioma original, directores y géneros.
+- **Catálogo de películas**: mantiene un catálogo de películas obtenido periódicamente desde TMDb para disponer de candidatos incluso cuando un usuario todavía no tiene suficientes películas importadas.
+- **Perfil de gustos**: genera una representación semántica de los gustos del usuario a partir de las películas de su historial y de sus valoraciones.
+- **Recomendaciones personalizadas**: construye un conjunto de películas no vistas combinando películas del catálogo global con películas aportadas por otros usuarios, y las ordena según su similitud con el perfil del usuario.
+- **Sistema híbrido de recomendación**: combina similitud basada en contenido mediante embeddings con información procedente de las valoraciones y acciones de otros usuarios.
+- **Adaptación a las preferencias**: utiliza las valoraciones y los swipes realizados por el usuario para mejorar progresivamente la selección y el orden de los candidatos.
+- **Explicaciones personalizadas**: genera mediante Gemini una breve justificación para cada recomendación, utilizando como contexto el historial real de valoraciones del usuario.
+- **Sistema de swipes**: permite descartar recomendaciones o añadirlas a la watchlist, registrando las acciones realizadas para evitar recomendar repetidamente las mismas películas.
+- **Exportación a Letterboxd**: genera un CSV compatible con Letterboxd a partir de las películas añadidas a la watchlist mediante el sistema de recomendaciones.
+- **Exportación de datos**: permite descargar todos los datos almacenados de una cuenta en formato JSON.
+- **Privacidad y gestión de cuentas**: permite cerrar sesión y eliminar la cuenta junto con todos sus datos asociados, además de gestionar automáticamente las sesiones de invitado abandonadas.
+- **Manejo de errores**: gestiona errores de importación y de servicios externos, incluyendo rate limits y fallos transitorios, mediante reintentos, backoff y un formato de error consistente.
+
+## Demostración
+
+Los siguientes ejemplos muestran algunas de las funcionalidades principales de Ukinory.
+
+<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Autenticación como invitado y usuario</h4>
+    <video
+      src="/videos/projects/ukinory/auth_screen.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Importación de datos de Letterboxd</h4>
+    <video
+      src="/videos/projects/ukinory/import_export.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Crear sesión y swipes de recomendaciones</h4>
+    <video
+      src="/videos/projects/ukinory/swipe_session.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Jusificaión, valoración y exportación de Watchlist</h4>
+    <video
+      src="/videos/projects/ukinory/swipe_features.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+<div className="space-y-2">
+    <h4 className="text-md font-semibold">Perfil de inivitado</h4>
+    <video
+      src="/videos/projects/ukinory/profile_guest.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+<div className="space-y-2">
+    <h4 className="text-md font-semibold">Perfil de usuario</h4>
+    <video
+      src="/videos/projects/ukinory/profile_registered.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="w-full rounded-xl border shadow-sm"
+    />
+  </div>
+
+</div>
+
+## Retos
+
+Desarrollar Ukinory implicó varios retos técnicos y de aprendizaje:
+
+- Diseñar un sistema de autenticación que permitiera utilizar la aplicación como invitado sin perder la posibilidad de convertir posteriormente esa sesión en una cuenta permanente, manteniendo todos los datos asociados al mismo usuario.
+- Diseñar un pipeline de importación capaz de procesar los diferentes archivos CSV incluidos en una exportación de Letterboxd y convertirlos en información estructurada.
+- Resolver la correspondencia entre las películas de Letterboxd y TMDb, teniendo que gestionar títulos ambiguos, películas sin coincidencia y diferencias derivadas del año de lanzamiento.
+- Integrar varias fuentes externas con modelos de datos y características diferentes. TMDb se utiliza para identificar películas, mientras que Wikidata proporciona el enriquecimiento descriptivo utilizado posteriormente por el sistema.
+- Reducir el número de peticiones a servicios externos mediante caché, agrupación de consultas, pacing y reintentos ante rate limits y errores transitorios.
+- Generar embeddings a partir de información heterogénea de cada película y utilizarlos mediante búsqueda vectorial para construir perfiles de gustos y conjuntos de candidatos.
+- Diseñar un sistema de recomendación híbrido que combine similitud semántica mediante embeddings con información procedente de las valoraciones e interacciones de los usuarios.
+- Conseguir que las recomendaciones puedan adaptarse a las preferencias que el usuario va mostrando mediante sus valoraciones y acciones de swipe, en lugar de depender únicamente del historial inicial importado desde Letterboxd.
+- Generar explicaciones personalizadas mediante un LLM utilizando información real del historial del usuario, evitando que las recomendaciones se limiten a una lista de películas similares.
+- Diseñar un sistema de catálogo que permita disponer de suficientes candidatos incluso para usuarios nuevos, combinando películas obtenidas directamente desde TMDb con películas ya registradas por otros usuarios.
+- Mantener separados los dos tipos de exportación de datos: el JSON representa una exportación completa de los datos de la cuenta, mientras que el CSV de Letterboxd está diseñado específicamente para volver a importar la watchlist en Letterboxd.
+- Mantener una respuesta de error consistente en toda la API, independientemente de si el error procede de la aplicación o de uno de los servicios externos utilizados.
+
+## Lecciones aprendidas
+
+Ukinory me permitió profundizar especialmente en el diseño de sistemas de recomendación y en el procesamiento de datos procedentes de diferentes fuentes. Una de las principales dificultades no estuvo únicamente en generar una recomendación, sino en construir todo el pipeline necesario para que los datos utilizados por el sistema fueran consistentes, reutilizables y suficientemente ricos.
+
+El trabajo con Letterboxd, TMDb y Wikidata me enseñó la importancia de separar claramente las diferentes etapas del procesamiento: importación, resolución de identificadores, enriquecimiento, almacenamiento, generación de embeddings y recomendación. Mantener estas responsabilidades separadas facilita tanto la reutilización de datos como la gestión de errores y los límites de las APIs externas.
+
+La incorporación de embeddings y búsqueda vectorial también me permitió trabajar con representaciones semánticas de contenido. En lugar de limitar las recomendaciones a coincidencias directas por género u otros atributos concretos, el sistema puede comparar representaciones de películas y construir un perfil de gustos a partir del contenido de las películas que el usuario ha visto y valorado.
+
+Otro aprendizaje importante fue el diseño de un sistema que pueda adaptarse a la interacción del usuario. Las preferencias iniciales obtenidas de Letterboxd constituyen el punto de partida, pero las valoraciones y swipes realizados dentro de Ukinory proporcionan información adicional que puede utilizarse para ajustar las recomendaciones posteriores.
+
+Por último, trabajar con servicios externos como TMDb, Wikidata y Gemini me permitió adquirir experiencia en el diseño de sistemas que dependen de APIs externas, especialmente en aspectos como caché, rate limiting, reintentos, procesamiento por lotes y gestión de fallos.
