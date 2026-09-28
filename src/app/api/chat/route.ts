@@ -25,7 +25,8 @@ export async function POST(req: Request) {
     );
   }
 
-  const modelMessages = await convertToModelMessages(messages);
+  const recentMessages = messages.slice(-6);
+  const modelMessages = await convertToModelMessages(recentMessages);
 
   try {
     const result = streamText({
