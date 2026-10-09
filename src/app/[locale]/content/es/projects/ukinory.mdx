@@ -6,6 +6,8 @@ El sistema combina embeddings semánticos, búsqueda vectorial y filtrado colabo
 
 La aplicación también permite comenzar a utilizarla como invitado y convertir posteriormente esa sesión en una cuenta permanente, conservando los datos existentes.
 
+Además, dos usuarios pueden comparar sus gustos uniéndose a una sala compartida mediante un enlace de invitación, obteniendo métricas de compatibilidad, un resumen de los gustos de cada uno escrito por IA y recomendaciones conjuntas para ambos.
+
 ## Características principales
 
 - **Sesión de invitado y registro**: comienza a utilizar la aplicación sin crear una cuenta y convierte posteriormente la sesión de invitado en una cuenta permanente conservando todos sus datos.
@@ -18,9 +20,11 @@ La aplicación también permite comenzar a utilizarla como invitado y convertir 
 - **Adaptación a las preferencias**: utiliza las valoraciones y los swipes realizados por el usuario para mejorar progresivamente la selección y el orden de los candidatos.
 - **Explicaciones personalizadas**: genera mediante Gemini una breve justificación para cada recomendación, utilizando como contexto el historial real de valoraciones del usuario.
 - **Sistema de swipes**: permite descartar recomendaciones o añadirlas a la watchlist, registrando las acciones realizadas para evitar recomendar repetidamente las mismas películas.
-- **Exportación a Letterboxd**: genera un CSV compatible con Letterboxd a partir de las películas añadidas a la watchlist mediante el sistema de recomendaciones.
+- **Comparación de gustos**: compara las bibliotecas de dos usuarios en una sala compartida, con una puntuación de compatibilidad, favoritas en común, divergencias, un resumen de los gustos de cada uno escrito por un LLM y recomendaciones conjuntas que ninguno ha visto.
+- **Invitaciones y salas en tiempo real**: invita a un amigo mediante un enlace de un solo uso y corta duración (también como invitado), con notificaciones por WebSocket que mantienen la sala sincronizada cuando el amigo se une y se genera la comparación, y polling como alternativa.
+- **Exportación a Letterboxd**: genera un CSV compatible con Letterboxd a partir de las películas añadidas a la watchlist mediante el sistema de recomendaciones o guardadas desde una comparación.
 - **Exportación de datos**: permite descargar todos los datos almacenados de una cuenta en formato JSON.
-- **Privacidad y gestión de cuentas**: permite cerrar sesión y eliminar la cuenta junto con todos sus datos asociados, además de gestionar automáticamente las sesiones de invitado abandonadas.
+- **Privacidad y gestión de cuentas**: permite cerrar sesión y eliminar la cuenta junto con todos sus datos asociados, además de gestionar automáticamente las sesiones de invitado abandonadas y las salas inactivas.
 - **Manejo de errores**: gestiona errores de importación y de servicios externos, incluyendo rate limits y fallos transitorios, mediante reintentos, backoff y un formato de error consistente.
 
 ## Demostración
@@ -69,7 +73,7 @@ Los siguientes ejemplos muestran algunas de las funcionalidades principales de U
   </div>
 
   <div className="space-y-2">
-    <h4 className="text-md font-semibold">Jusificaión, valoración y exportación de Watchlist</h4>
+    <h4 className="text-md font-semibold">Jusificación, valoración y exportación de Watchlist</h4>
     <video
       src="/videos/projects/ukinory/swipe_features.mp4"
       autoPlay
@@ -81,10 +85,10 @@ Los siguientes ejemplos muestran algunas de las funcionalidades principales de U
     />
   </div>
 
-<div className="space-y-2">
-    <h4 className="text-md font-semibold">Perfil de inivitado</h4>
+  <div className="space-y-2">
+    <h4 className="text-md font-semibold">Comparación de gustos</h4>
     <video
-      src="/videos/projects/ukinory/profile_guest.mp4"
+      src="/videos/projects/ukinory/taste_comparison.mp4"
       autoPlay
       loop
       muted
@@ -94,7 +98,7 @@ Los siguientes ejemplos muestran algunas de las funcionalidades principales de U
     />
   </div>
 
-<div className="space-y-2">
+  <div className="space-y-2">
     <h4 className="text-md font-semibold">Perfil de usuario</h4>
     <video
       src="/videos/projects/ukinory/profile_registered.mp4"
@@ -123,6 +127,8 @@ Desarrollar Ukinory implicó varios retos técnicos y de aprendizaje:
 - Conseguir que las recomendaciones puedan adaptarse a las preferencias que el usuario va mostrando mediante sus valoraciones y acciones de swipe, en lugar de depender únicamente del historial inicial importado desde Letterboxd.
 - Generar explicaciones personalizadas mediante un LLM utilizando información real del historial del usuario, evitando que las recomendaciones se limiten a una lista de películas similares.
 - Diseñar un sistema de catálogo que permita disponer de suficientes candidatos incluso para usuarios nuevos, combinando películas obtenidas directamente desde TMDb con películas ya registradas por otros usuarios.
+- Diseñar el ciclo de vida de una sala compartida entre dos usuarios (invitaciones, espera, generación y salas abandonadas) de forma que se mantenga consistente ante acciones concurrentes y ambos clientes permanezcan sincronizados mediante WebSockets con polling como alternativa.
+- Combinar métricas cuantitativas de compatibilidad con texto generado por un LLM que ambos usuarios pueden leer, anonimizando a los participantes en el prompt y cacheando los resultados mediante un hash de ambas bibliotecas para evitar regenerarlos innecesariamente.
 - Mantener separados los dos tipos de exportación de datos: el JSON representa una exportación completa de los datos de la cuenta, mientras que el CSV de Letterboxd está diseñado específicamente para volver a importar la watchlist en Letterboxd.
 - Mantener una respuesta de error consistente en toda la API, independientemente de si el error procede de la aplicación o de uno de los servicios externos utilizados.
 
@@ -135,5 +141,7 @@ El trabajo con Letterboxd, TMDb y Wikidata me enseñó la importancia de separar
 La incorporación de embeddings y búsqueda vectorial también me permitió trabajar con representaciones semánticas de contenido. En lugar de limitar las recomendaciones a coincidencias directas por género u otros atributos concretos, el sistema puede comparar representaciones de películas y construir un perfil de gustos a partir del contenido de las películas que el usuario ha visto y valorado.
 
 Otro aprendizaje importante fue el diseño de un sistema que pueda adaptarse a la interacción del usuario. Las preferencias iniciales obtenidas de Letterboxd constituyen el punto de partida, pero las valoraciones y swipes realizados dentro de Ukinory proporcionan información adicional que puede utilizarse para ajustar las recomendaciones posteriores.
+
+La función de comparación me mostró lo distinto que es diseñar pensando en dos usuarios a la vez. El estado debe compartirse y mantenerse consistente, el trabajo largo, como la llamada al LLM, no debe ejecutarse dos veces, y decidir qué puede ver cada persona de la otra pasa a ser una decisión de privacidad tanto como técnica.
 
 Por último, trabajar con servicios externos como TMDb, Wikidata y Gemini me permitió adquirir experiencia en el diseño de sistemas que dependen de APIs externas, especialmente en aspectos como caché, rate limiting, reintentos, procesamiento por lotes y gestión de fallos.

@@ -33,17 +33,22 @@ and personal projects.
 
 ## Ukinory
 Status: Live · Personal
-Stack: Python, Django, Redis, PostgreSQL, TypeScript, React, Tailwind CSS
+Stack: Python, Django, Redis, PostgreSQL, TypeScript, React, Tailwind CSS, WebSockets
 Description: Movie recommendation platform based on Letterboxd data. Users import
 their history, enrich movie data from external sources, build a taste profile,
-and receive personalized recommendations.
+and receive personalized recommendations. Two users can also compare their taste
+in a shared room opened through an invite link.
 Technical: Semantic embeddings, vector search, collaborative filtering, hybrid
 recommendations, adaptive preferences, Gemini-generated recommendation explanations,
 TMDb/Wikidata integration, guest-to-user authentication, Letterboxd import/export,
 JSON data export, watchlists, swipe interactions, caching, batching, retries and
-external API failure handling.
+external API failure handling. Taste comparison between two users through
+invite-based rooms updated in real time over WebSockets, with compatibility metrics,
+Gemini-generated summaries of each person's taste, joint recommendations, and
+results cached by a hash of both libraries.
 Key challenge: Combining external movie data, semantic representations and
-collaborative signals into an adaptive recommendation system.
+collaborative signals into an adaptive recommendation system, and keeping a shared
+two-user comparison room consistent and in sync.
 Repository: https://github.com/xultimatex8/ukinory
 Demo: https://ukinory.vercel.app
 
@@ -119,6 +124,7 @@ PostgreSQL: 4
 React: 4
 Python: 3
 Tailwind CSS: 3
+WebSockets: 2 (UltimateWatch, Ukinory)
 All other listed technologies: 1 project unless stated otherwise.
 Therefore, TypeScript is Alejandro's most-used technology by project count.
 
