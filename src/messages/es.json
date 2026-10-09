@@ -58,7 +58,7 @@
   "ProjectData": {
     "ukinory": { 
       "title": "Ukinory", 
-      "description": "Plataforma full-stack de recomendación de películas que importa datos de Letterboxd para generar recomendaciones personalizadas mediante filtrado híbrido, caché con Redis y explicaciones generadas por LLM."
+      "description": "Plataforma full-stack de recomendación de películas que importa datos de Letterboxd para crear perfiles de gustos y generar recomendaciones personalizadas mediante filtrado híbrido, embeddings semánticos y explicaciones generadas con Gemini."
     },
     "ultimateggx": {
       "title": "UltimateGGx",
