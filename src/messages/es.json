@@ -37,7 +37,14 @@
   "Experience": {
     "title": "Experiencia",
     "text1": "Me he graduado recientemente en Ingeniería del Software y actualmente busco mi primera oportunidad profesional en el sector.",
-    "text2": "Aunque todavía no cuento con experiencia laboral formal, he construido una sólida base técnica a través de los proyectos personales y académicos que muestro a continuación."
+    "text2": "Aunque todavía no cuento con experiencia laboral formal, he construido una sólida base técnica a través de los proyectos personales y académicos que muestro a continuación.",
+    "empty": {
+      "cta": "Ver mis proyectos",
+      "projects": "proyectos",
+      "technologies": "tecnologías",
+      "demos": "con demo online",
+      "topTech": "Tecnologías más usadas en mis proyectos"
+    }
   },
   "Projects": {
     "title": "Proyectos",
@@ -47,7 +54,10 @@
     "empty": {
       "title": "Ningún proyecto coincide con estos filtros",
       "description": "Prueba a quitar algunas tecnologías para ver más resultados."
-    }
+    },
+    "total": "{total} proyectos",
+    "results": "{count} de {total} proyectos",
+    "clear": "Limpiar filtros"
   },
   "Contact": {
     "title": "Contacto",
@@ -86,7 +96,11 @@
     "viewDemo": "Ver demo",
     "summary": "Resumen del <highlight>Proyecto</highlight>",
     "techStack": "Stack <highlight>Tecnológico</highlight>",
-    "onThisPage": "En esta página"
+    "onThisPage": "En esta página",
+    "back": "Volver a proyectos",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "moreProjects": "Más proyectos"
   },
   "NotFound": {
     "title": "Página no encontrada",

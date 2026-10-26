@@ -5,9 +5,11 @@ import { Link, usePathname } from "../../../i18n/navigation";
 interface NavLinkProps {
   href: string;
   label: string;
+  className?: string;
+  active?: boolean;
 }
 
-export function NavLink({ href, label }: NavLinkProps) {
+export function NavLink({ href, label, className, active }: NavLinkProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -22,7 +24,8 @@ export function NavLink({ href, label }: NavLinkProps) {
     <Link
       href={isHome ? `#${href}` : `/#${href}`}
       onClick={handleClick}
-      className="text-lg lg:text-base 2xl:text-lg font-semibold tracking-tight transition-colors hover:text-foreground-secondary"
+      aria-current={active ? "location" : undefined}
+      className={className}
     >
       {label}
     </Link>

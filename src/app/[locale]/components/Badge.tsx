@@ -3,12 +3,11 @@ interface BadgeProps {
   textSize?: string;
 }
 
-export function Badge({
-  label,
-  textSize = "text-sm",
-}: BadgeProps) {
+export function Badge({ label, textSize = "text-sm" }: BadgeProps) {
   return (
-    <span className={`inline-flex items-center rounded-md border border-foreground/10 bg-accent-secondary px-2 py-1 font-medium text-foreground transition-colors duration-200 ${textSize}`}>
+    <span
+      className={`inline-flex items-center rounded-full border border-current/25 px-2.5 py-0.5 font-medium opacity-80 ${textSize}`}
+    >
       {label}
     </span>
   );

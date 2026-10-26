@@ -37,7 +37,14 @@
   "Experience": {
     "title": "Experience",
     "text1": "I recently graduated in Software Engineering and I'm currently looking for my first professional opportunity in the field.",
-    "text2": "Although I don't have formal work experience yet, I've built a solid technical foundation through the personal and academic projects showcased below."
+    "text2": "Although I don't have formal work experience yet, I've built a solid technical foundation through the personal and academic projects showcased below.",
+    "empty": {
+      "cta": "View my projects",
+      "projects": "projects",
+      "technologies": "technologies",
+      "demos": "with live demos",
+      "topTech": "Most used technologies across my projects"
+    }
   },
   "Projects": {
     "title": "Projects",
@@ -47,7 +54,10 @@
     "empty": {
       "title": "No projects match these filters",
       "description": "Try removing some technologies to see more results."
-    }
+    },
+    "total": "{total} projects",
+    "results": "{count} of {total} projects",
+    "clear": "Clear filters"
   },
   "Contact": {
     "title": "Contact",
@@ -86,7 +96,11 @@
     "viewDemo": "View demo",
     "summary": "Project <highlight>Summary</highlight>",
     "techStack": "Tech <highlight>Stack</highlight>",
-    "onThisPage": "On this page"
+    "onThisPage": "On this page",
+    "back": "Back to projects",
+    "previous": "Previous",
+    "next": "Next",
+    "moreProjects": "More projects"
   },
   "NotFound": {
     "title": "Page not found",
