@@ -1,21 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, LoaderCircle } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, ExternalLink, LoaderCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Project } from "@/app/[locale]/types/project";
+import { Project, Technology } from "@/app/[locale]/types/project";
 import { Badge } from "./Badge";
 import {
   STATUS_STYLES,
   CATEGORY_STYLES,
 } from "@/app/[locale]/helpers/projectStyles";
-import { useState } from "react";
+
+const MAX_BADGES = 6;
 
 interface ProjectCardProps {
   project: Project;
+  /** Tecnologías seleccionadas en el filtro: se resaltan y van primero */
+  highlighted?: Technology[];
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, highlighted = [] }: ProjectCardProps) {
   const t = useTranslations("ProjectData");
   const tCommon = useTranslations("Projects");
 
@@ -26,10 +32,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const status = STATUS_STYLES[project.status];
   const category = CATEGORY_STYLES[project.category];
-  
+
+  // Las tecnologías que coinciden con el filtro van primero (sort es estable)
+  const sortedTechs = [...project.technologies].sort(
+    (a, b) => Number(highlighted.includes(b)) - Number(highlighted.includes(a))
+  );
+  const visibleTechs = sortedTechs.slice(0, MAX_BADGES);
+  const hiddenCount = sortedTechs.length - visibleTechs.length;
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-card shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:border-white/15 hover:bg-card/30 hover:shadow-xl">
+    <article
+      className="group/card relative flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-card shadow-lg transition-[scale,border-color,box-shadow] duration-300 ease-out hover:z-10 hover:scale-[1.04] hover:border-white/20 hover:shadow-2xl"
+    >
       <Link
         href={`/projects/${project.id}`}
         title={title}
@@ -42,14 +56,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
             src={project.image}
             alt={title}
             fill
-            priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className={`object-cover ${isLoading ? "opacity-70" : "opacity-100"}`}
+            className={`object-cover transition-transform duration-700 ease-out group-hover:scale-102 ${
+              isLoading ? "opacity-70" : "opacity-100"
+            }`}
           />
 
           {!isLoading && (
             <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span className="text-sm font-medium text-white lg:text-base">
+              <span className="translate-y-3 text-sm font-medium text-white transition-transform duration-300 group-hover:translate-y-0 lg:text-base">
                 {tCommon("viewDetails")} - {title}
               </span>
             </div>
@@ -57,15 +72,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           {isLoading && (
             <div className="absolute inset-0 z-30 flex items-center justify-center">
-              <LoaderCircle
-                aria-hidden="true"
-                className="h-6 w-6 animate-spin"
-              />
+              <LoaderCircle aria-hidden="true" className="h-6 w-6 animate-spin" />
             </div>
           )}
 
           <div
-            className={`absolute bottom-3 left-3 z-20 flex items-center gap-1.5 ${
+            className={`absolute bottom-3 left-3 z-20 flex items-center gap-1.5 transition-transform duration-300 group-hover:-translate-y-1 ${
               isLoading ? "opacity-70" : "opacity-100"
             }`}
           >
@@ -86,58 +98,74 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </Link>
 
       <div className={`flex flex-1 flex-col p-4 ${isLoading ? "opacity-70" : "opacity-100"}`}>
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <Link
             href={`/projects/${project.id}`}
-            className={`min-w-0 text-sm font-semibold tracking-tight text-foreground hover:text-accent lg:text-base ${isLoading ? "cursor-default" : "cursor-pointer"}`}
+            className={`min-w-0 text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-accent-primary lg:text-base ${isLoading ? "cursor-default" : "cursor-pointer"}`}
           >
             {title}
           </Link>
 
-          <div className="flex shrink-0 items-center gap-1.5">
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={tCommon("viewCode")}
-                title={tCommon("viewCode")}
-                className="relative top-0.5 text-foreground-secondary hover:text-foreground"
-              >
-                <i
-                  aria-hidden="true"
-                  className="devicon-github-original text-[15px]"
-                />
-              </a>
-            )}
-
+          <div className="relative z-50 flex shrink-0 items-center gap-2">
             {project.demoUrl && (
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={tCommon("viewDemo")}
-                title={tCommon("viewDemo")}
-                className="text-foreground-secondary hover:text-foreground"
+                className="inline-flex items-center gap-1.5 rounded-md border border-accent-primary/40 px-2.5 py-1 text-xs font-medium text-accent-primary transition-colors hover:bg-accent-primary/10"
               >
-                <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+                {tCommon("viewDemo")}
+              </a>
+            )}
+
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-md border border-foreground/15 px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
+              >
+                <i aria-hidden="true" className="devicon-github-original text-[13px]" />
+                {tCommon("viewCode")}
               </a>
             )}
           </div>
         </div>
 
-        <p className="mt-1.5 text-xs leading-relaxed text-foreground-secondary lg:text-sm">
+        <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-foreground-secondary lg:text-sm">
           {description}
         </p>
 
+        <Link
+          href={`/projects/${project.id}`}
+          onNavigate={() => setIsLoading(true)}
+          className="group/link mt-3 inline-flex w-fit items-center gap-1.5 text-xs font-medium text-accent-primary lg:hidden"
+        >
+          {tCommon("viewDetails")}
+          <ArrowRight
+            aria-hidden="true"
+            className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1"
+          />
+        </Link>
+
         <div className="mt-auto pt-4 flex flex-wrap items-center gap-1.5">
-          {project.technologies.map((technology) => (
+          {visibleTechs.map((technology) => (
             <Badge
               key={technology}
               label={technology}
-              textSize="text-[0.6rem]"
+              textSize="text-xs"
+              highlighted={highlighted.includes(technology)}
             />
           ))}
+          {hiddenCount > 0 && (
+            <span
+              title={sortedTechs.slice(MAX_BADGES).join(", ")}
+              className="px-1 text-xs font-medium text-foreground-secondary"
+            >
+              +{hiddenCount}
+            </span>
+          )}
         </div>
       </div>
     </article>

@@ -1,14 +1,18 @@
 interface BadgeProps {
   label: string;
   textSize?: string;
+  highlighted?: boolean;
 }
 
-export function Badge({
-  label,
-  textSize = "text-sm",
-}: BadgeProps) {
+export function Badge({ label, textSize = "text-sm", highlighted = false }: BadgeProps) {
   return (
-    <span className={`inline-flex items-center rounded-md border border-foreground/10 bg-accent-secondary px-2 py-1 font-medium text-foreground transition-colors duration-200 ${textSize}`}>
+    <span
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 font-medium ${textSize} ${
+        highlighted
+          ? "border-accent-primary bg-accent-primary/10 text-accent-primary"
+          : "border-current/25 opacity-80"
+      }`}
+    >
       {label}
     </span>
   );

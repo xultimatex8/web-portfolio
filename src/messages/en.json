@@ -12,12 +12,12 @@
     "closeMenu": "Close menu"
   },
   "Home": {
-    "role": "Software Engineering",
-    "roleHighlight": "Graduate",
+    "role": "Junior Backend / Full-Stack",
+    "roleHighlight": "Developer",
     "aboutTitle": "About",
     "aboutHighlight": "Me",
-    "bio1": "Hi! I'm <strong>Alejandro González Macías</strong>, a Software Engineering graduate from the University of Seville. I enjoy turning ideas into functional, maintainable, and scalable software, and I'm always interested in exploring new tools and technologies to continue growing as a developer.",
-    "bio2": "My academic background has provided me with a solid foundation in software engineering, software architecture, and problem-solving. I'm curious, adapt quickly to new environments, and have a C1 level of English and Spanish as my native language. I'm currently looking for opportunities to grow professionally and contribute to meaningful projects.",
+    "bio1": "Hi! I'm <strong>Alejandro González Macías</strong>, a Software Engineering graduate from the University of Seville, with a final degree project graded 9.4/10. Through my degree and personal projects I've built REST APIs, real-time features with WebSockets, and recommendation systems using embeddings and LLMs.",
+    "bio2": "I've worked with Python/Django, Java/Spring Boot, C#/.NET and NestJS, using Docker and CI/CD, and I've practiced Scrum in a university project with a team of 20+ people. I'm looking for my first role in software development, where I can contribute to a team and keep learning. English C1, native Spanish.",
     "location": "Sanlúcar de Barrameda",
     "university": "University of Seville",
     "languages": "Spanish • English",
@@ -32,12 +32,24 @@
     "university": {
       "title": "University of Seville",
       "subtitle": "Bachelor's Degree in Software Engineering"
+    },
+    "master": {
+      "now": "Present",
+      "title": "University Alfonso X el Sabio",
+      "subtitle": "Master's Degree in Cybersecurity"
     }
   },
   "Experience": {
     "title": "Experience",
     "text1": "I recently graduated in Software Engineering and I'm currently looking for my first professional opportunity in the field.",
-    "text2": "Although I don't have formal work experience yet, I've built a solid technical foundation through the personal and academic projects showcased below."
+    "text2": "Although I don't have formal work experience yet, I've built a solid technical foundation through the personal and academic projects showcased below.",
+    "empty": {
+      "cta": "View my projects",
+      "projects": "projects",
+      "technologies": "technologies",
+      "demos": "with live demos",
+      "topTech": "Most used technologies across my projects"
+    }
   },
   "Projects": {
     "title": "Projects",
@@ -47,6 +59,13 @@
     "empty": {
       "title": "No projects match these filters",
       "description": "Try removing some technologies to see more results."
+    },
+    "total": "{total} projects",
+    "results": "{count} of {total} projects",
+    "clear": "Clear filters",
+    "filters": { 
+      "demo": "Live demo",
+      "code": "Public code"
     }
   },
   "Contact": {
@@ -86,7 +105,12 @@
     "viewDemo": "View demo",
     "summary": "Project <highlight>Summary</highlight>",
     "techStack": "Tech <highlight>Stack</highlight>",
-    "onThisPage": "On this page"
+    "highlights": "Key <highlight>highlights</highlight>",
+    "onThisPage": "On this page",
+    "back": "Back to projects",
+    "previous": "Previous",
+    "next": "Next",
+    "moreProjects": "More projects"
   },
   "NotFound": {
     "title": "Page not found",

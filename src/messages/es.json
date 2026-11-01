@@ -12,12 +12,12 @@
     "closeMenu": "Cerrar menú"
   },
   "Home": {
-    "role": "Graduado en",
-    "roleHighlight": "Ingeniería del Software",
+    "role": "Junior Backend / Full-Stack",
+    "roleHighlight": "Developer",
     "aboutTitle": "Sobre",
     "aboutHighlight": "Mí",
-    "bio1": "¡Hola! Soy <strong>Alejandro González Macías</strong>, graduado en Ingeniería del Software por la Universidad de Sevilla. Disfruto convirtiendo ideas en software funcional, mantenible y escalable, y me interesa explorar nuevas herramientas y tecnologías para seguir creciendo como desarrollador.",
-    "bio2": "Mi formación académica me ha proporcionado una base sólida en ingeniería del software, arquitectura de software y resolución de problemas. Soy curioso, me adapto rápidamente a nuevos entornos y tengo un nivel C1 de inglés y el español como lengua nativa. Actualmente busco oportunidades para crecer profesionalmente y contribuir a proyectos significativos.",
+    "bio1": "¡Hola! Soy <strong>Alejandro González Macías</strong>, graduado en Ingeniería del Software por la Universidad de Sevilla, con un TFG calificado con un 9,4/10. A través de la carrera y de proyectos personales he desarrollado APIs REST, funcionalidades en tiempo real con WebSockets y sistemas de recomendación con embeddings y LLMs.",
+    "bio2": "He trabajado con Python/Django, Java/Spring Boot, C#/.NET y NestJS, usando Docker y CI/CD, y he practicado Scrum en un proyecto universitario con un equipo de más de 20 personas. Busco mi primer rol profesional en desarrollo de software, donde pueda aportar al equipo y seguir aprendiendo. Inglés C1 y español como lengua nativa.",
     "location": "Sanlúcar de Barrameda",
     "university": "Universidad de Sevilla",
     "languages": "Español • Inglés",
@@ -32,12 +32,24 @@
     "university": {
       "title": "Universidad de Sevilla",
       "subtitle": "Grado en Ingeniería del Software"
+    },
+    "master": {
+      "now": "Presente",
+      "title": "University Alfonso X el Sabio",
+      "subtitle": "Máster en Ciberseguridad"
     }
   },
   "Experience": {
     "title": "Experiencia",
     "text1": "Me he graduado recientemente en Ingeniería del Software y actualmente busco mi primera oportunidad profesional en el sector.",
-    "text2": "Aunque todavía no cuento con experiencia laboral formal, he construido una sólida base técnica a través de los proyectos personales y académicos que muestro a continuación."
+    "text2": "Aunque todavía no cuento con experiencia laboral formal, he construido una sólida base técnica a través de los proyectos personales y académicos que muestro a continuación.",
+    "empty": {
+      "cta": "Ver mis proyectos",
+      "projects": "proyectos",
+      "technologies": "tecnologías",
+      "demos": "con demo online",
+      "topTech": "Tecnologías más usadas en mis proyectos"
+    }
   },
   "Projects": {
     "title": "Proyectos",
@@ -47,6 +59,13 @@
     "empty": {
       "title": "Ningún proyecto coincide con estos filtros",
       "description": "Prueba a quitar algunas tecnologías para ver más resultados."
+    },
+    "total": "{total} proyectos",
+    "results": "{count} de {total} proyectos",
+    "clear": "Limpiar filtros",
+    "filters": { 
+      "demo": "Demo en vivo",
+      "code": "Código público"
     }
   },
   "Contact": {
@@ -86,7 +105,12 @@
     "viewDemo": "Ver demo",
     "summary": "Resumen del <highlight>Proyecto</highlight>",
     "techStack": "Stack <highlight>Tecnológico</highlight>",
-    "onThisPage": "En esta página"
+    "highlights": "Puntos <highlight>clave</highlight>",
+    "onThisPage": "En esta página",
+    "back": "Volver a proyectos",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "moreProjects": "Más proyectos"
   },
   "NotFound": {
     "title": "Página no encontrada",

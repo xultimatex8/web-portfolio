@@ -1,147 +1,118 @@
-# Ukinory
+---
+metrics:
+  - value: "2.828"
+    label: "Tests (backend 2.083 · frontend 745)"
+  - value: "86,5 %"
+    label: "Cobertura"
+  - value: "OK"
+    label: "Quality Gate"
+  - value: "0"
+    label: "Bugs y vulnerabilidades"
+  - value: "0"
+    label: "Code smells"
+  - value: "18.185"
+    label: "Líneas de código"
+---
 
-Ukinory es una plataforma web de recomendación personalizada de películas basada en datos de Letterboxd. El proyecto permite importar el historial de películas de un usuario, enriquecer esos datos mediante distintas fuentes externas y construir un perfil de gustos que sirve como base para generar recomendaciones personalizadas.
+Ukinory es una aplicación web que recomienda películas a partir de tu historial de Letterboxd y ayuda a dos personas a elegir qué ver juntas. Importas tus datos, obtienes un perfil de gustos y haces swipe sobre recomendaciones que se adaptan a medida que valoras. Un LLM explica cada recomendación usando tu propio historial de valoraciones.
 
-El sistema combina embeddings semánticos, búsqueda vectorial y filtrado colaborativo para construir un conjunto de candidatos no vistos por el usuario. Las recomendaciones se adaptan progresivamente a las preferencias de cada usuario a partir de sus valoraciones y de las acciones realizadas sobre las recomendaciones, mientras que un LLM genera una breve explicación personalizada para cada película recomendada.
+## Cómo funciona
 
-La aplicación también permite comenzar a utilizarla como invitado y convertir posteriormente esa sesión en una cuenta permanente, conservando los datos existentes.
+<ol className="not-prose my-4 flex list-none flex-wrap items-center gap-2 p-0">
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Importación de Letterboxd</li>
+  <li aria-hidden="true" className="text-lg font-bold text-accent-primary">→</li>
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Correspondencia con TMDb</li>
+  <li aria-hidden="true" className="text-lg font-bold text-accent-primary">→</li>
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Enriquecimiento con Wikidata</li>
+  <li aria-hidden="true" className="text-lg font-bold text-accent-primary">→</li>
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Embeddings</li>
+  <li aria-hidden="true" className="text-lg font-bold text-accent-primary">→</li>
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Búsqueda vectorial + filtrado colaborativo</li>
+  <li aria-hidden="true" className="text-lg font-bold text-accent-primary">→</li>
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Ranking</li>
+  <li aria-hidden="true" className="text-lg font-bold text-accent-primary">→</li>
+  <li className="rounded-lg border-2 border-foreground/20 bg-card px-3 py-1.5 text-sm font-semibold text-foreground">Explicación con Gemini</li>
+</ol>
 
-Además, dos usuarios pueden comparar sus gustos uniéndose a una sala compartida mediante un enlace de invitación, obteniendo métricas de compatibilidad, un resumen de los gustos de cada uno escrito por IA y recomendaciones conjuntas para ambos.
+Cada etapa está separada, de modo que los datos procesados se pueden reutilizar y los fallos de servicios externos quedan acotados.
 
-## Características principales
+## Funcionalidades
 
-- **Sesión de invitado y registro**: comienza a utilizar la aplicación sin crear una cuenta y convierte posteriormente la sesión de invitado en una cuenta permanente conservando todos sus datos.
-- **Importación de Letterboxd**: importa un archivo ZIP o los CSV individuales exportados desde Letterboxd y transforma su contenido en registros estructurados asociados al usuario.
-- **Enriquecimiento de películas**: relaciona las películas importadas con TMDb y obtiene metadatos adicionales mediante Wikidata, incluyendo título, año, descripción, duración, idioma original, directores y géneros.
-- **Catálogo de películas**: mantiene un catálogo de películas obtenido periódicamente desde TMDb para disponer de candidatos incluso cuando un usuario todavía no tiene suficientes películas importadas.
-- **Perfil de gustos**: genera una representación semántica de los gustos del usuario a partir de las películas de su historial y de sus valoraciones.
-- **Recomendaciones personalizadas**: construye un conjunto de películas no vistas combinando películas del catálogo global con películas aportadas por otros usuarios, y las ordena según su similitud con el perfil del usuario.
-- **Sistema híbrido de recomendación**: combina similitud basada en contenido mediante embeddings con información procedente de las valoraciones y acciones de otros usuarios.
-- **Adaptación a las preferencias**: utiliza las valoraciones y los swipes realizados por el usuario para mejorar progresivamente la selección y el orden de los candidatos.
-- **Explicaciones personalizadas**: genera mediante Gemini una breve justificación para cada recomendación, utilizando como contexto el historial real de valoraciones del usuario.
-- **Sistema de swipes**: permite descartar recomendaciones o añadirlas a la watchlist, registrando las acciones realizadas para evitar recomendar repetidamente las mismas películas.
-- **Comparación de gustos**: compara las bibliotecas de dos usuarios en una sala compartida, con una puntuación de compatibilidad, favoritas en común, divergencias, un resumen de los gustos de cada uno escrito por un LLM y recomendaciones conjuntas que ninguno ha visto.
-- **Invitaciones y salas en tiempo real**: invita a un amigo mediante un enlace de un solo uso y corta duración (también como invitado), con notificaciones por WebSocket que mantienen la sala sincronizada cuando el amigo se une y se genera la comparación, y polling como alternativa.
-- **Exportación a Letterboxd**: genera un CSV compatible con Letterboxd a partir de las películas añadidas a la watchlist mediante el sistema de recomendaciones o guardadas desde una comparación.
-- **Exportación de datos**: permite descargar todos los datos almacenados de una cuenta en formato JSON.
-- **Privacidad y gestión de cuentas**: permite cerrar sesión y eliminar la cuenta junto con todos sus datos asociados, además de gestionar automáticamente las sesiones de invitado abandonadas y las salas inactivas.
-- **Manejo de errores**: gestiona errores de importación y de servicios externos, incluyendo rate limits y fallos transitorios, mediante reintentos, backoff y un formato de error consistente.
+- **Importación y enriquecimiento**: sube el ZIP o los CSV de Letterboxd, relaciona las películas con TMDb y enriquécelas con Wikidata (descripción, duración, idioma, directores, géneros).
+- **Perfil de gustos y recomendaciones**: perfil semántico construido a partir de las películas vistas y valoradas, usado para ordenar candidatas no vistas del catálogo global de TMDb y de películas aportadas por otros usuarios.
+- **Ranking híbrido adaptativo**: similitud de contenido mediante embeddings combinada con valoraciones e interacciones; las valoraciones y swipes ajustan progresivamente los resultados.
+- **Explicaciones personalizadas**: una breve justificación de Gemini por recomendación, basada en el historial real de valoraciones del usuario.
+- **Sistema de swipes**: descartar o añadir a la watchlist, registrando las acciones para no repetir recomendaciones.
+- **Comparación de gustos**: únete a una sala compartida con un enlace de invitación de un solo uso y corta duración (también como invitado) y obtén una puntuación de compatibilidad, favoritas en común, divergencias, un resumen de los gustos de cada uno escrito por IA y recomendaciones conjuntas que ninguno ha visto.
+- **Swipes en pareja**: ambos usuarios hacen swipe sobre las mismas recomendaciones conjuntas, y las películas que los dos quieren ver pasan a ser sus coincidencias.
+- **Salas en tiempo real**: los WebSockets mantienen sincronizados ambos clientes cuando el amigo se une y se genera la comparación, con polling como alternativa.
+- **Exportaciones**: CSV compatible con Letterboxd para la watchlist y exportación completa de los datos de la cuenta en JSON.
+- **Privacidad**: cerrar sesión, eliminar la cuenta con todos sus datos y limpieza automática de sesiones de invitado abandonadas y salas inactivas.
+- **Integraciones resilientes**: reintentos, backoff y un formato de error consistente ante errores de importación, rate limits y fallos transitorios.
 
 ## Demostración
 
-Los siguientes ejemplos muestran algunas de las funcionalidades principales de Ukinory.
+<div className="grid items-start gap-x-4 gap-y-0 grid-cols-1 2xl:grid-cols-2">
 
-<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Autenticación como invitado y usuario</h4>
-    <video
-      src="/videos/projects/ukinory/auth_screen.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Sesión de recomendaciones y swipes</h4>
+    <LazyVideo src="/videos/projects/ukinory/swipe_session.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Importación de datos de Letterboxd</h4>
-    <video
-      src="/videos/projects/ukinory/import_export.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Justificación, valoración y exportación de watchlist</h4>
+    <LazyVideo src="/videos/projects/ukinory/swipe_features.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Crear sesión y swipes de recomendaciones</h4>
-    <video
-      src="/videos/projects/ukinory/swipe_session.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Comparación de gustos</h4>
+    <LazyVideo src="/videos/projects/ukinory/taste_comparison.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Jusificación, valoración y exportación de Watchlist</h4>
-    <video
-      src="/videos/projects/ukinory/swipe_features.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Comparación de gustos</h4>
-    <video
-      src="/videos/projects/ukinory/taste_comparison.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Perfil de usuario</h4>
-    <video
-      src="/videos/projects/ukinory/profile_registered.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Swipes en pareja</h4>
+    <LazyVideo src="/videos/projects/ukinory/paired_swipe.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
 </div>
 
-## Retos
+<details className="mt-4 rounded-xl border-2 border-foreground/20 bg-card px-4 py-3">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground marker:text-accent-primary">Más demos: autenticación, importación y perfil</summary>
 
-Desarrollar Ukinory implicó varios retos técnicos y de aprendizaje:
+  <div className="mt-4 grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
 
-- Diseñar un sistema de autenticación que permitiera utilizar la aplicación como invitado sin perder la posibilidad de convertir posteriormente esa sesión en una cuenta permanente, manteniendo todos los datos asociados al mismo usuario.
-- Diseñar un pipeline de importación capaz de procesar los diferentes archivos CSV incluidos en una exportación de Letterboxd y convertirlos en información estructurada.
-- Resolver la correspondencia entre las películas de Letterboxd y TMDb, teniendo que gestionar títulos ambiguos, películas sin coincidencia y diferencias derivadas del año de lanzamiento.
-- Integrar varias fuentes externas con modelos de datos y características diferentes. TMDb se utiliza para identificar películas, mientras que Wikidata proporciona el enriquecimiento descriptivo utilizado posteriormente por el sistema.
-- Reducir el número de peticiones a servicios externos mediante caché, agrupación de consultas, pacing y reintentos ante rate limits y errores transitorios.
-- Generar embeddings a partir de información heterogénea de cada película y utilizarlos mediante búsqueda vectorial para construir perfiles de gustos y conjuntos de candidatos.
-- Diseñar un sistema de recomendación híbrido que combine similitud semántica mediante embeddings con información procedente de las valoraciones e interacciones de los usuarios.
-- Conseguir que las recomendaciones puedan adaptarse a las preferencias que el usuario va mostrando mediante sus valoraciones y acciones de swipe, en lugar de depender únicamente del historial inicial importado desde Letterboxd.
-- Generar explicaciones personalizadas mediante un LLM utilizando información real del historial del usuario, evitando que las recomendaciones se limiten a una lista de películas similares.
-- Diseñar un sistema de catálogo que permita disponer de suficientes candidatos incluso para usuarios nuevos, combinando películas obtenidas directamente desde TMDb con películas ya registradas por otros usuarios.
-- Diseñar el ciclo de vida de una sala compartida entre dos usuarios (invitaciones, espera, generación y salas abandonadas) de forma que se mantenga consistente ante acciones concurrentes y ambos clientes permanezcan sincronizados mediante WebSockets con polling como alternativa.
-- Combinar métricas cuantitativas de compatibilidad con texto generado por un LLM que ambos usuarios pueden leer, anonimizando a los participantes en el prompt y cacheando los resultados mediante un hash de ambas bibliotecas para evitar regenerarlos innecesariamente.
-- Mantener separados los dos tipos de exportación de datos: el JSON representa una exportación completa de los datos de la cuenta, mientras que el CSV de Letterboxd está diseñado específicamente para volver a importar la watchlist en Letterboxd.
-- Mantener una respuesta de error consistente en toda la API, independientemente de si el error procede de la aplicación o de uno de los servicios externos utilizados.
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Autenticación como invitado y usuario</h4>
+      <LazyVideo src="/videos/projects/ukinory/auth_screen.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
 
-## Lecciones aprendidas
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Importación de datos de Letterboxd</h4>
+      <LazyVideo src="/videos/projects/ukinory/import_export.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
 
-Ukinory me permitió profundizar especialmente en el diseño de sistemas de recomendación y en el procesamiento de datos procedentes de diferentes fuentes. Una de las principales dificultades no estuvo únicamente en generar una recomendación, sino en construir todo el pipeline necesario para que los datos utilizados por el sistema fueran consistentes, reutilizables y suficientemente ricos.
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Perfil de usuario</h4>
+      <LazyVideo src="/videos/projects/ukinory/profile_registered.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
 
-El trabajo con Letterboxd, TMDb y Wikidata me enseñó la importancia de separar claramente las diferentes etapas del procesamiento: importación, resolución de identificadores, enriquecimiento, almacenamiento, generación de embeddings y recomendación. Mantener estas responsabilidades separadas facilita tanto la reutilización de datos como la gestión de errores y los límites de las APIs externas.
+  </div>
+</details>
 
-La incorporación de embeddings y búsqueda vectorial también me permitió trabajar con representaciones semánticas de contenido. En lugar de limitar las recomendaciones a coincidencias directas por género u otros atributos concretos, el sistema puede comparar representaciones de películas y construir un perfil de gustos a partir del contenido de las películas que el usuario ha visto y valorado.
+## Retos técnicos
 
-Otro aprendizaje importante fue el diseño de un sistema que pueda adaptarse a la interacción del usuario. Las preferencias iniciales obtenidas de Letterboxd constituyen el punto de partida, pero las valoraciones y swipes realizados dentro de Ukinory proporcionan información adicional que puede utilizarse para ajustar las recomendaciones posteriores.
+- Convertir una sesión de invitado en una cuenta permanente manteniendo todos los registros asociados al mismo usuario.
+- Relacionar películas de Letterboxd con TMDb pese a títulos ambiguos, películas sin coincidencia y diferencias de año, con Wikidata aportando los metadatos descriptivos. Caché, agrupación de consultas, pacing y reintentos mantienen bajo control los rate limits.
+- Generar embeddings a partir de información heterogénea y usar búsqueda vectorial para perfiles y conjuntos de candidatos, combinando después similitud con valoraciones y swipes para no depender solo de la importación inicial. El catálogo combina TMDb con películas de otros usuarios para que un usuario nuevo tenga candidatos desde el primer momento.
+- Dar al LLM el historial real de valoraciones del usuario, para que las explicaciones sean concretas en lugar de una lista de títulos parecidos.
+- Mantener consistente una sala compartida: un ciclo de vida (invitación, espera, generación, abandono) que aguante acciones concurrentes, una llamada al LLM que no debe ejecutarse dos veces y una decisión clara sobre qué ve cada persona de la otra.
+- Devolver un único formato de error en toda la API, venga el fallo de la aplicación o de un servicio externo, y mantener separadas las dos exportaciones (JSON completo frente a CSV listo para Letterboxd).
 
-La función de comparación me mostró lo distinto que es diseñar pensando en dos usuarios a la vez. El estado debe compartirse y mantenerse consistente, el trabajo largo, como la llamada al LLM, no debe ejecutarse dos veces, y decidir qué puede ver cada persona de la otra pasa a ser una decisión de privacidad tanto como técnica.
+## Aprendizajes
 
-Por último, trabajar con servicios externos como TMDb, Wikidata y Gemini me permitió adquirir experiencia en el diseño de sistemas que dependen de APIs externas, especialmente en aspectos como caché, rate limiting, reintentos, procesamiento por lotes y gestión de fallos.
+- Lo difícil fue el pipeline de datos (importación, resolución de identificadores, enriquecimiento, almacenamiento, embeddings, recomendación), no generar una recomendación.
+- Comparar embeddings de películas captura mejor el gusto que coincidir por género o atributos aislados.
+- El historial importado es solo el punto de partida; las valoraciones y swipes dentro de la app mantienen el sistema relevante.
+- Diseñar para dos usuarios cambia la forma de construir: estado compartido, trabajo que debe ejecutarse una sola vez y límites de privacidad.
+- Trabajar con TMDb, Wikidata y Gemini me dio experiencia práctica en caché, rate limiting, reintentos, procesamiento por lotes y gestión de fallos.
+- Con APIs de terceros, un LLM y dos usuarios actuando a la vez, los tests son lo que me permite cambiar el pipeline sin romperlo.

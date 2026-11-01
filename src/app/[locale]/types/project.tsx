@@ -19,6 +19,12 @@ export const TECHNOLOGY_ICONS = {
   "C#": "devicon-csharp-plain colored",
   ".NET": "devicon-dotnetcore-plain colored",
   "Angular": "devicon-angular-plain colored",
+  "Docker": "devicon-docker-plain colored",
+  "GitHub Actions": "devicon-githubactions-plain colored",
+  "pytest": "devicon-pytest-plain colored",
+  "xUnit": "devicon-xunit-plain colored",
+  "Jest": "devicon-jest-plain colored",
+  "JUnit": "devicon-junit-plain colored",
 } as const;
 
 export type Technology = keyof typeof TECHNOLOGY_ICONS;
