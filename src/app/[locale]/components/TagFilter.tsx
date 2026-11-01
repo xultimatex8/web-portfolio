@@ -43,9 +43,9 @@ export function TagFilter({ tags, selected, available, counts, onToggle }: TagFi
             onClick={() => onToggle(tag)}
             aria-pressed={isActive}
             disabled={isDisabled}
-            className={`shrink-0 rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
+            className={`shrink-0 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
               isDisabled
-                ? "cursor-not-allowed border-foreground/10 text-foreground-secondary opacity-35"
+                ? "cursor-not-allowed border-dashed border-foreground/10 bg-foreground/5 text-foreground/30 line-through decoration-1"
                 : "cursor-pointer"
             } ${
               isActive
@@ -56,7 +56,7 @@ export function TagFilter({ tags, selected, available, counts, onToggle }: TagFi
             }`}
           >
             {tag}
-            <span className="ml-1.5 tabular-nums opacity-60">{counts[tag] ?? 0}</span>
+            <span className="ml-1.5 tabular-nums opacity-60">{isDisabled ? 0 : (counts[tag] ?? 0)}</span>
           </motion.button>
         );
       })}

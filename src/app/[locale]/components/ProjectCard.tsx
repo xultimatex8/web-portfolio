@@ -6,18 +6,22 @@ import { useState } from "react";
 import { ArrowRight, ExternalLink, LoaderCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { Project } from "@/app/[locale]/types/project";
+import { Project, Technology } from "@/app/[locale]/types/project";
 import { Badge } from "./Badge";
 import {
   STATUS_STYLES,
   CATEGORY_STYLES,
 } from "@/app/[locale]/helpers/projectStyles";
 
+const MAX_BADGES = 6;
+
 interface ProjectCardProps {
   project: Project;
+  /** Tecnologías seleccionadas en el filtro: se resaltan y van primero */
+  highlighted?: Technology[];
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, highlighted = [] }: ProjectCardProps) {
   const t = useTranslations("ProjectData");
   const tCommon = useTranslations("Projects");
 
@@ -29,6 +33,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const status = STATUS_STYLES[project.status];
   const category = CATEGORY_STYLES[project.category];
 
+  // Las tecnologías que coinciden con el filtro van primero (sort es estable)
+  const sortedTechs = [...project.technologies].sort(
+    (a, b) => Number(highlighted.includes(b)) - Number(highlighted.includes(a))
+  );
+  const visibleTechs = sortedTechs.slice(0, MAX_BADGES);
+  const hiddenCount = sortedTechs.length - visibleTechs.length;
 
   return (
     <article
@@ -88,7 +98,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </Link>
 
       <div className={`flex flex-1 flex-col p-4 ${isLoading ? "opacity-70" : "opacity-100"}`}>
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <Link
             href={`/projects/${project.id}`}
             className={`min-w-0 text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-accent-primary lg:text-base ${isLoading ? "cursor-default" : "cursor-pointer"}`}
@@ -96,39 +106,34 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {title}
           </Link>
 
-          <div className="relative z-50 flex shrink-0 items-center gap-1.5">
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={tCommon("viewCode")}
-                title={tCommon("viewCode")}
-                className="relative top-0.5 text-foreground-secondary transition-all duration-200 hover:-rotate-12 hover:scale-125 hover:text-foreground"
-              >
-                <i
-                  aria-hidden="true"
-                  className="devicon-github-original text-[15px]"
-                />
-              </a>
-            )}
-
+          <div className="relative z-50 flex shrink-0 items-center gap-2">
             {project.demoUrl && (
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={tCommon("viewDemo")}
-                title={tCommon("viewDemo")}
-                className="text-foreground-secondary transition-all duration-200 hover:-translate-y-0.5 hover:translate-x-0.5 hover:scale-110 hover:text-foreground"
+                className="inline-flex items-center gap-1.5 rounded-md border border-accent-primary/40 px-2.5 py-1 text-xs font-medium text-accent-primary transition-colors hover:bg-accent-primary/10"
               >
-                <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+                {tCommon("viewDemo")}
+              </a>
+            )}
+
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-md border border-foreground/15 px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-foreground/5"
+              >
+                <i aria-hidden="true" className="devicon-github-original text-[13px]" />
+                {tCommon("viewCode")}
               </a>
             )}
           </div>
         </div>
 
-        <p className="mt-1.5 text-xs leading-relaxed text-foreground-secondary lg:text-sm">
+        <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-foreground-secondary lg:text-sm">
           {description}
         </p>
 
@@ -145,13 +150,22 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </Link>
 
         <div className="mt-auto pt-4 flex flex-wrap items-center gap-1.5">
-          {project.technologies.map((technology) => (
+          {visibleTechs.map((technology) => (
             <Badge
               key={technology}
               label={technology}
-              textSize="text-[0.6rem]"
+              textSize="text-xs"
+              highlighted={highlighted.includes(technology)}
             />
           ))}
+          {hiddenCount > 0 && (
+            <span
+              title={sortedTechs.slice(MAX_BADGES).join(", ")}
+              className="px-1 text-xs font-medium text-foreground-secondary"
+            >
+              +{hiddenCount}
+            </span>
+          )}
         </div>
       </div>
     </article>

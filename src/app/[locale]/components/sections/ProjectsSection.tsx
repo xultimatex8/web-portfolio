@@ -12,6 +12,32 @@ import { fadeUp, staggerContainer } from "../../lib/motion";
 import { SectionBackground } from "../SectionBackground";
 import { SectionTitle } from "../SectionTitle";
 
+interface FilterToggleProps {
+  label: string;
+  count: number;
+  active: boolean;
+  onClick: () => void;
+}
+
+/** Filtro tipo "solo los que tienen X", con el mismo estilo que los tags. */
+function FilterToggle({ label, count, active, onClick }: FilterToggleProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`cursor-pointer rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
+        active
+          ? "border-accent-primary bg-accent-primary/10 text-accent-primary"
+          : "border-foreground/10 text-foreground-secondary hover:border-foreground/25 hover:text-foreground"
+      }`}
+    >
+      {label}
+      <span className="ml-1.5 tabular-nums opacity-60">{count}</span>
+    </button>
+  );
+}
+
 export function ProjectsSection() {
   const t = useTranslations("Projects");
   const shouldReduceMotion = useReducedMotion();
@@ -20,6 +46,8 @@ export function ProjectsSection() {
   const fadeUpVariant = fadeUp(shouldReduceMotion);
 
   const [selectedTags, setSelectedTags] = useState<Technology[]>([]);
+  const [onlyDemo, setOnlyDemo] = useState(false);
+  const [onlyCode, setOnlyCode] = useState(false);
 
   const allTags = useMemo(
     () => [...new Set(PROJECTS.flatMap((p) => p.technologies))],
@@ -36,19 +64,26 @@ export function ProjectsSection() {
     return result;
   }, []);
 
-  const filteredProjects = useMemo(() => {
-    if (selectedTags.length === 0) return PROJECTS;
-    return PROJECTS.filter((p) =>
-      selectedTags.every((tag) => p.technologies.includes(tag))
-    );
-  }, [selectedTags]);
+  const demoCount = useMemo(() => PROJECTS.filter((p) => p.demoUrl).length, []);
+  const codeCount = useMemo(() => PROJECTS.filter((p) => p.repoUrl).length, []);
+
+  const filteredProjects = useMemo(
+    () =>
+      PROJECTS.filter(
+        (p) =>
+          selectedTags.every((tag) => p.technologies.includes(tag)) &&
+          (!onlyDemo || Boolean(p.demoUrl)) &&
+          (!onlyCode || Boolean(p.repoUrl))
+      ),
+    [selectedTags, onlyDemo, onlyCode]
+  );
 
   const available = useMemo(
     () => new Set<Technology>(filteredProjects.flatMap((p) => p.technologies)),
     [filteredProjects]
   );
 
-  const isFiltering = selectedTags.length > 0;
+  const isFiltering = selectedTags.length > 0 || onlyDemo || onlyCode;
 
   const toggleTag = (tag: Technology) => {
     setSelectedTags((prev) =>
@@ -56,7 +91,11 @@ export function ProjectsSection() {
     );
   };
 
-  const clearTags = () => setSelectedTags([]);
+  const clearAll = () => {
+    setSelectedTags([]);
+    setOnlyDemo(false);
+    setOnlyCode(false);
+  };
 
   return (
     <motion.section
@@ -81,11 +120,21 @@ export function ProjectsSection() {
             onToggle={toggleTag}
           />
 
-          <div
-            aria-live="polite"
-            className="flex min-h-5 items-center justify-between gap-4 text-xs text-foreground-secondary"
-          >
-            <span>
+          <div className="flex min-h-6 flex-wrap items-center gap-2 text-xs text-foreground-secondary">
+            <FilterToggle
+              label={t("filters.demo")}
+              count={demoCount}
+              active={onlyDemo}
+              onClick={() => setOnlyDemo((v) => !v)}
+            />
+            <FilterToggle
+              label={t("filters.code")}
+              count={codeCount}
+              active={onlyCode}
+              onClick={() => setOnlyCode((v) => !v)}
+            />
+
+            <span aria-live="polite" className="ml-2">
               {isFiltering
                 ? t("results", { count: filteredProjects.length, total: PROJECTS.length })
                 : t("total", { total: PROJECTS.length })}
@@ -93,8 +142,8 @@ export function ProjectsSection() {
 
             {isFiltering && (
               <button
-                onClick={clearTags}
-                className="cursor-pointer font-medium text-accent-primary underline-offset-4 hover:underline"
+                onClick={clearAll}
+                className="ml-auto cursor-pointer font-medium text-accent-primary underline-offset-4 hover:underline"
               >
                 {t("clear")}
               </button>
@@ -105,7 +154,7 @@ export function ProjectsSection() {
         {filteredProjects.length > 0 ? (
           <motion.div
             variants={fadeUpVariant}
-            className="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-8 sm:gap-y-10">
+            className="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-8">
               <AnimatePresence mode="popLayout">
                 {filteredProjects.map((project, index) => (
                   <motion.div
@@ -127,7 +176,7 @@ export function ProjectsSection() {
                     }}
                     className="h-full"
                   >
-                    <ProjectCard project={project} />
+                    <ProjectCard project={project} highlighted={selectedTags} />
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -143,7 +192,7 @@ export function ProjectsSection() {
                 {t("empty.description")}
               </p>
               <button
-                onClick={clearTags}
+                onClick={clearAll}
                 className="mt-3 cursor-pointer rounded-full border border-accent-primary/40 px-4 py-1.5 text-sm font-medium text-accent-primary transition-colors hover:bg-accent-primary/10"
               >
                 {t("clear")}
