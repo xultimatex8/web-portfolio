@@ -1,117 +1,68 @@
-# Zeolite
+Zeolite is a web app for organizing, designing and analyzing stories and fictional universes. It combines a Python backend with a Neo4j graph database that stores and connects all narrative information as a graph, alongside an interactive React frontend.
 
-Zeolite is a web application for organizing, designing, and analyzing stories and fictional universes. It combines a Python backend with a Neo4j graph database to store and connect all narrative information as a graph, alongside an interactive React frontend.
+A visual workspace brings scattered notes together in one place, clearly distinguishing characters, events and locations, and lets users define their own custom attributes to fit their fictional world. An analysis system continuously examines the story graph and alerts users, through an interactive dashboard, to issues such as characters with no interactions, events with no impact on the plot or isolated locations.
 
-One of its main features is a visual workspace that brings together scattered notes in a single place, clearly distinguishing between characters, events, and locations. Thanks to the flexibility of the graph database, users can describe each element in a clean and structured way while defining their own custom attributes to adapt the application to the needs of their fictional world.
+## Features
 
-The platform also includes an analysis system that continuously examines the story graph to detect errors and narrative inconsistencies. Through an interactive dashboard, it alerts users to issues such as characters with no interactions, events that have no impact on the plot, or locations that have become isolated, helping writers maintain a coherent and well-connected story.
-
-## Key Features
-
-- **Story Organization**: visual graph editor for structuring narrative elements.
-- **Entity & Relationship Creation**: define characters, events and locations with custom attributes.
-- **Consistency Analysis**: automatic detection of narrative inconsistencies through a dashboard.
-- **Quick Prototyping**: fast application development with FastAPI and React.
-- **Graph Database**: Neo4j no-sql database for storing highly connected story data.
+- **Story organization**: visual graph editor for structuring narrative elements.
+- **Entity & relationship creation**: define characters, events and locations with custom attributes.
+- **Consistency analysis**: automatic detection of narrative inconsistencies through a dashboard.
+- **Graph database**: Neo4j (NoSQL) to store highly connected story data.
+- **Quick prototyping**: fast application development with FastAPI and React.
 
 ## Demo
 
-The following examples showcase some of Zeolite's core features.
+<div className="grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
 
-<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Create Entities</h4>
-    <video
-      src="/videos/projects/zeolite/create_node.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Create entities</h4>
+    <LazyVideo src="/videos/projects/zeolite/create_node.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Create Relationships</h4>
-    <video
-      src="/videos/projects/zeolite/create_edge.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Create relationships</h4>
+    <LazyVideo src="/videos/projects/zeolite/create_edge.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Edit Data</h4>
-    <video
-      src="/videos/projects/zeolite/edit.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Real-time analysis dashboard</h4>
+    <LazyVideo src="/videos/projects/zeolite/dashboard.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Delete Entities & Relationships</h4>
-    <video
-      src="/videos/projects/zeolite/delete.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Customize Graph View</h4>
-    <video
-      src="/videos/projects/zeolite/views.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Real-time Analysis Dashboard</h4>
-    <video
-      src="/videos/projects/zeolite/dashboard.mp4"
-      autoPlay
-      loop
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Customize graph view</h4>
+    <LazyVideo src="/videos/projects/zeolite/views.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
 </div>
 
-## Challenges
+<details className="mt-4 rounded-xl border-2 border-foreground/20 bg-card px-4 py-3">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground marker:text-accent-primary">More demos: editing and deleting data</summary>
 
-Developing Zeolite involved several technical challenges:
+  <div className="mt-4 grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
+
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Edit data</h4>
+      <LazyVideo src="/videos/projects/zeolite/edit.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
+
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Delete entities & relationships</h4>
+      <LazyVideo src="/videos/projects/zeolite/delete.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
+
+  </div>
+</details>
+
+## Technical challenges
 
 - Designing a structured data model that balances predefined entity types with extensibility through custom attributes.
 - Translating graph database concepts into an intuitive user interface.
 - Keeping the graph visualization responsive and readable as the number of entities and relationships grows.
 - Designing and implementing graph analysis queries in Neo4j to automatically detect narrative inconsistencies.
 
-## Lessons Learned
+## Takeaways
 
-Zeolite introduced me to graph databases through Neo4j, giving me hands-on experience with graph modeling and NoSQL data structures. It showed me how choosing the right database can greatly simplify the representation of highly connected data.
-
-Working on the project also taught me how to quickly turn an idea into a functional application, iterating on the data model and features.
-
-Finally, developing the interactive graph editor gave me practical experience building graph-based interfaces in React, including visualizing connected data and creating intuitive interactions.
+- Neo4j gave me hands-on experience with graph modeling and NoSQL data structures, and showed how the right database can greatly simplify representing highly connected data.
+- Quickly turning an idea into a functional application, iterating on the data model and features.
+- Building the interactive graph editor gave me practical experience with graph-based interfaces in React, including visualizing connected data and designing intuitive interactions.
