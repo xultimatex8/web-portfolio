@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react";
 import { TimelineItem } from "./TimelineItem";
 import { staggerContainer } from "../lib/motion";
 import { EASE } from "../lib/animations";
+import { CSSProperties } from "react";
 
 export interface TimelineItemData {
   period: string;
@@ -44,7 +45,8 @@ export function Timeline({ items }: TimelineProps) {
 
       <motion.div
         variants={container}
-        className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10"
+        style={{ "--cols": items.length } as CSSProperties}
+        className="grid grid-cols-1 gap-8 lg:gap-10 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
       >
         {items.map((item, index) => (
           <TimelineItem
