@@ -1,117 +1,68 @@
-# Zeolite
+Zeolite es una aplicación web para organizar, diseñar y analizar historias y universos ficticios. Combina un backend en Python con una base de datos de grafos Neo4j que almacena y conecta toda la información narrativa como un grafo, junto con un frontend interactivo en React.
 
-Zeolite es una aplicación web para organizar, diseñar y analizar historias y universos ficticios. Combina un backend desarrollado en Python con una base de datos de grafos Neo4j para almacenar y conectar toda la información narrativa como un grafo, junto con un frontend interactivo desarrollado en React.
+Un espacio de trabajo visual reúne las notas dispersas en un único lugar, diferenciando claramente personajes, eventos y localizaciones, y permite definir atributos personalizados para adaptarlo al universo de cada historia. Un sistema de análisis examina continuamente el grafo y alerta, mediante un panel interactivo, de problemas como personajes sin interacciones, eventos sin impacto en la trama o localizaciones aisladas.
 
-Una de sus principales funcionalidades es un espacio de trabajo visual que reúne en un único lugar todas las notas relacionadas con una historia, diferenciando claramente personajes, eventos y localizaciones. Gracias a la flexibilidad de la base de datos de grafos, los usuarios pueden describir cada elemento de forma estructurada y definir atributos personalizados para adaptar la aplicación a las necesidades de su universo ficticio.
-
-La plataforma también incorpora un sistema de análisis que examina continuamente el grafo de la historia para detectar errores e inconsistencias narrativas. A través de un panel interactivo, alerta de problemas como personajes sin interacciones, eventos que no afectan a la trama o localizaciones aisladas, ayudando a mantener una historia coherente y bien conectada.
-
-## Características principales
+## Funcionalidades
 
 - **Organización de historias**: editor visual de grafos para estructurar los elementos narrativos.
 - **Creación de entidades y relaciones**: define personajes, eventos y localizaciones con atributos personalizados.
 - **Análisis de consistencia**: detección automática de inconsistencias narrativas mediante un panel de análisis.
-- **Desarrollo rápido**: creación ágil de la aplicación utilizando FastAPI y React.
-- **Base de datos de grafos**: Neo4j como base de datos NoSQL para almacenar información altamente conectada.
+- **Base de datos de grafos**: Neo4j (NoSQL) para almacenar información altamente conectada.
+- **Desarrollo rápido**: creación ágil de la aplicación con FastAPI y React.
 
 ## Demostración
 
-Los siguientes ejemplos muestran algunas de las funcionalidades principales de Zeolite.
+<div className="grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
 
-<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Crear entidades</h4>
-    <video
-      src="/videos/projects/zeolite/create_node.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Crear entidades</h4>
+    <LazyVideo src="/videos/projects/zeolite/create_node.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Crear relaciones</h4>
-    <video
-      src="/videos/projects/zeolite/create_edge.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Crear relaciones</h4>
+    <LazyVideo src="/videos/projects/zeolite/create_edge.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Editar datos</h4>
-    <video
-      src="/videos/projects/zeolite/edit.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Panel de análisis en tiempo real</h4>
+    <LazyVideo src="/videos/projects/zeolite/dashboard.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Eliminar entidades y relaciones</h4>
-    <video
-      src="/videos/projects/zeolite/delete.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Personalizar la visualización del grafo</h4>
-    <video
-      src="/videos/projects/zeolite/views.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Panel de análisis en tiempo real</h4>
-    <video
-      src="/videos/projects/zeolite/dashboard.mp4"
-      autoPlay
-      loop
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Personalizar la visualización del grafo</h4>
+    <LazyVideo src="/videos/projects/zeolite/views.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
 </div>
 
-## Retos
+<details className="mt-4 rounded-xl border-2 border-foreground/20 bg-card px-4 py-3">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground marker:text-accent-primary">Más demos: edición y borrado de datos</summary>
 
-Desarrollar Zeolite supuso afrontar diversos retos técnicos:
+  <div className="mt-4 grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
+
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Editar datos</h4>
+      <LazyVideo src="/videos/projects/zeolite/edit.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
+
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Eliminar entidades y relaciones</h4>
+      <LazyVideo src="/videos/projects/zeolite/delete.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
+
+  </div>
+</details>
+
+## Retos técnicos
 
 - Diseñar un modelo de datos estructurado que equilibrara tipos de entidades predefinidos con la posibilidad de extenderlos mediante atributos personalizados.
-- Traducir los conceptos propios de una base de datos de grafos a una interfaz intuitiva para el usuario.
+- Traducir los conceptos propios de una base de datos de grafos a una interfaz intuitiva.
 - Mantener la visualización del grafo fluida y legible a medida que aumentaba el número de entidades y relaciones.
-- Diseñar e implementar consultas en Neo4j capaces de detectar automáticamente inconsistencias narrativas.
+- Diseñar e implementar consultas de análisis en Neo4j capaces de detectar automáticamente inconsistencias narrativas.
 
-## Lecciones aprendidas
+## Aprendizajes
 
-Zeolite me permitió introducirme en las bases de datos de grafos mediante Neo4j, adquiriendo experiencia práctica en modelado de grafos y estructuras de datos NoSQL. También me mostró cómo elegir la base de datos adecuada puede simplificar enormemente la representación de información altamente conectada.
-
-Trabajar en este proyecto también me enseñó a convertir rápidamente una idea en una aplicación funcional, iterando continuamente sobre el modelo de datos y las funcionalidades.
-
-Por último, desarrollar el editor interactivo de grafos me proporcionó experiencia práctica en la creación de interfaces basadas en grafos con React, incluyendo la visualización de datos conectados y el diseño de interacciones intuitivas.
+- Neo4j me dio experiencia práctica en modelado de grafos y estructuras NoSQL, y me mostró cómo la base de datos adecuada simplifica mucho la representación de información altamente conectada.
+- Convertir rápidamente una idea en una aplicación funcional, iterando sobre el modelo de datos y las funcionalidades.
+- Desarrollar el editor interactivo de grafos me dio experiencia práctica en interfaces basadas en grafos con React, incluyendo la visualización de datos conectados y el diseño de interacciones intuitivas.

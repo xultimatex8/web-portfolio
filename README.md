@@ -21,7 +21,6 @@ Personal portfolio built with Next.js, showcasing my background, academic projec
 - **Content:** MDX for individual project pages
 - **Internationalization:** [next-intl](https://next-intl.dev/) — English and Spanish
 - **AI chat:** [Vercel AI SDK](https://sdk.vercel.ai/) + [Google Gemini](https://ai.google.dev/) (via `@ai-sdk/google`), streamed from an Edge Function
-- **Rate limiting:** [Upstash Redis](https://upstash.com/) (`@upstash/ratelimit`)
 - **Deployment:** [Vercel](https://vercel.com/)
 
 ## Getting Started
@@ -42,8 +41,6 @@ The AI chat assistant needs the following in `.env.local` (see `.env.example`):
 
 ```bash
 GOOGLE_GENERATIVE_AI_API_KEY=   # Google AI Studio API key (free tier)
-UPSTASH_REDIS_REST_URL=         # Upstash Redis REST URL, used for rate limiting
-UPSTASH_REDIS_REST_TOKEN=       # Upstash Redis REST token
 ```
 
 Without these, the rest of the site works fine — only the chat widget will fail.
@@ -80,5 +77,5 @@ Personal content (photos, videos, CV, resume, biographical text, and project wri
 ## Contact
 
 - **Email:** alegonzmac@gmail.com
-- **LinkedIn:** [linkedin.com/in/alejandro-gonzalez-macias-agm](https://linkedin.com/in/alejandro-gonzalez-macias-agm)
+- **LinkedIn:** [linkedin.com/in/alejandro-gonzalez-macias-agm](https://linkedin.com/in/alejandro-gonzalez-macias-agm/)
 - **GitHub:** [github.com/xultimatex8](https://github.com/xultimatex8)

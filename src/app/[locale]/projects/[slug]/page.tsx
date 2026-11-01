@@ -14,12 +14,14 @@ import {
   STATUS_STYLES,
 } from "@/app/[locale]/helpers/projectStyles";
 import { ScrollToTop } from "@/app/[locale]/components/ScrollToTop";
+import { LazyVideo } from "@/app/[locale]/components/LazyVideo";
 import { routing } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { SectionBackground } from "../../components/SectionBackground";
 import { TableOfContents } from "../../components/TableOfContents";
 import { Reveal } from "../../components/Reveal";
+import { TechIcon } from "../../components/TechIcon";
 
 type PageParams = {
   locale: (typeof routing.locales)[number];
@@ -54,6 +56,8 @@ export async function generateMetadata({
 
 const slugify = (text: string) =>
   text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, "")
@@ -122,7 +126,13 @@ export default async function ProjectPage({
   if (!fs.existsSync(filePath)) notFound();
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(fileContent);
+  const { content, data } = matter(fileContent);
+  const metrics: { value: string; label: string }[] = Array.isArray(data.metrics)
+    ? data.metrics.filter(
+        (m): m is { value: string; label: string } =>
+          m && typeof m.value === "string" && typeof m.label === "string"
+      )
+    : [];
   const headings = extractHeadings(content);
 
   const hasSiblings = PROJECTS.length > 1;
@@ -130,10 +140,12 @@ export default async function ProjectPage({
   const nextProject = PROJECTS[(projectIndex + 1) % PROJECTS.length];
 
   const components = {
+    LazyVideo,
+
     h1: ({ children }: { children?: ReactNode }) => (
       <h1
         id={slugify(toText(children))}
-        className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight"
+        className="mb-4 scroll-mt-24 text-2xl lg:text-3xl font-bold tracking-tight"
       >
         {children}
       </h1>
@@ -142,7 +154,7 @@ export default async function ProjectPage({
     h2: ({ children }: { children?: ReactNode }) => (
       <h2
         id={slugify(toText(children))}
-        className="mb-2.5 text-lg lg:text-xl font-semibold tracking-tight"
+        className="mb-4 mt-12 scroll-mt-24 border-t border-foreground/15 pt-8 text-xl font-bold tracking-tight text-foreground lg:text-2xl"
       >
         {children}
       </h2>
@@ -151,7 +163,7 @@ export default async function ProjectPage({
     h3: ({ children }: { children?: ReactNode }) => (
       <h3
         id={slugify(toText(children))}
-        className="mb-2 text-base lg:text-lg font-semibold"
+        className="mb-2 scroll-mt-24 text-base lg:text-lg font-semibold"
       >
         {children}
       </h3>
@@ -187,19 +199,7 @@ export default async function ProjectPage({
               <span className="mt-2 block h-1 w-12 rounded-full bg-accent-primary" />
             </h1>
 
-            <div className="flex items-center gap-2 text-xs lg:text-sm">
-              {project.repoUrl && (
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-foreground/20 px-3 py-2 font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-primary"
-                >
-                  <i aria-hidden="true" className="devicon-github-original text-base" />
-                  {t("viewCode")}
-                </a>
-              )}
-
+            <div className="flex flex-wrap items-center gap-2 text-xs lg:text-sm">
               {project.demoUrl && (
                 <a
                   href={project.demoUrl}
@@ -209,6 +209,18 @@ export default async function ProjectPage({
                 >
                   <ExternalLink aria-hidden="true" className="h-4 w-4" />
                   {t("viewDemo")}
+                </a>
+              )}
+
+              {project.repoUrl && (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-foreground/20 px-3 py-2 font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-primary"
+                >
+                  <i aria-hidden="true" className="devicon-github-original text-base" />
+                  {t("viewCode")}
                 </a>
               )}
             </div>
@@ -224,7 +236,7 @@ export default async function ProjectPage({
               height={350}
               priority
               sizes="(max-width: 1536px) 85vw, 56vw"
-              className="h-auto w-full rounded-xl border-2 border-surface object-cover shadow-lg"
+              className="h-auto w-full rounded-xl border-2 border-foreground/20 object-cover shadow-lg"
             />
           </Reveal>
 
@@ -255,41 +267,59 @@ export default async function ProjectPage({
                 </span>
               </div>
 
-              <div className="relative mt-3 w-full overflow-hidden md:mt-6">
-                <div className="relative z-10 mb-4 flex items-center justify-between gap-3">
-                  <h2 className="text-xl font-semibold tracking-tight text-foreground lg:text-2xl">
-                    {t.rich("techStack", {
-                      highlight: (chunks) => (
-                        <span className="text-accent-primary">{chunks}</span>
-                      ),
-                    })}
-                  </h2>
-                </div>
+              <div className="w-full">
+                <h2 className="mb-3 text-xl font-semibold tracking-tight text-foreground lg:text-2xl">
+                  {t.rich("techStack", {
+                    highlight: (chunks) => (
+                      <span className="text-accent-primary">{chunks}</span>
+                    ),
+                  })}
+                </h2>
 
-                <div className="relative z-10 grid w-full grid-cols-2 gap-2">
+                <ul className="flex w-full flex-wrap gap-3">
                   {project.technologies.map((tech) => (
-                    <div
+                    <li
                       key={tech}
-                      className="group flex items-center gap-3 rounded-xl border-2 border-surface bg-card px-2 py-1.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-primary/40 lg:px-3 lg:py-2.5 2xl:px-1.5 2xl:py-1 fhd:px-3 fhd:py-2.5"
+                      className="group inline-flex items-center gap-3 rounded-xl border-2 border-foreground/15 bg-card py-2 pl-2 pr-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-md"
                     >
-                      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-surface">
-                        <i
-                          aria-hidden="true"
-                          className={`${TECHNOLOGY_ICONS[tech]} text-xl text-foreground transition-all duration-200 group-hover:scale-110 group-hover:text-accent-primary`}
-                        />
-                      </div>
-
-                      <span className="truncate font-mono text-xs font-medium text-foreground-secondary transition-colors duration-200 group-hover:text-foreground lg:text-sm 2xl:text-xs fhd:text-sm">
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent-primary/15 transition-colors duration-200 group-hover:bg-accent-primary/25">
+                      <TechIcon
+                        name={tech}
+                        iconClass={TECHNOLOGY_ICONS[tech]}
+                        className="text-2xl text-accent-primary"
+                      />
+                      </span>
+                      <span className="text-sm font-semibold text-foreground">
                         {tech}
                       </span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           </Reveal>
         </div>
       </div>
+
+      {metrics.length > 0 && (
+        <Reveal className="w-[83.5vw] sm:w-[85vw]">
+          <dl className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+            {metrics.map((metric) => (
+              <div
+                key={metric.label}
+                className="flex flex-col gap-1 rounded-xl border-2 border-foreground/15 bg-card px-3 py-3 shadow-sm"
+              >
+                <dt className="order-2 text-xs font-medium leading-snug text-foreground-secondary sm:text-sm">
+                  {metric.label}
+                </dt>
+                <dd className="order-1 font-display text-2xl font-bold text-accent-primary lg:text-3xl">
+                  {metric.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      )}
 
       <div className="mt-4 flex w-[83.5vw] flex-col items-start justify-start gap-6 sm:w-[85vw] md:flex-row lg:mt-8 lg:gap-8">
         <aside className="hidden w-full shrink-0 md:sticky md:top-24 md:flex md:w-48 2xl:w-56">
@@ -353,6 +383,10 @@ export default async function ProjectPage({
                 prose-pre:border
                 prose-pre:border-white/10
                 prose-pre:bg-card
+                prose-pre:text-foreground
+                [&_pre_code]:bg-transparent
+                [&_pre_code]:p-0
+                [&_pre_code]:text-foreground
                 prose-img:rounded-xl
                 prose-hr:border-foreground/10
               "

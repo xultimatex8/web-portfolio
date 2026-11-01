@@ -1,125 +1,75 @@
-# UltimateWatch
+UltimateWatch es una aplicación web que unifica catálogos multimedia y facilita coordinar sesiones de visualización remotas con amigos. Se conecta a las APIs públicas de TMDb y Watchmode para ofrecer un buscador unificado donde consultar información de películas y series y ver en qué plataformas de streaming están disponibles.
 
-UltimateWatch es una aplicación web diseñada para unificar catálogos multimedia y facilitar que los usuarios coordinen sesiones de visualización remotas con sus amigos. Se conecta a las APIs públicas de TMDb y Watchmode para ofrecer un buscador unificado donde consultar información sobre películas y series, además de mostrar en qué plataformas de streaming están disponibles.
+Su característica principal es un módulo social para crear salas virtuales en las que los participantes coordinan la sesión mediante un temporizador sincronizado controlado por el anfitrión, una lista de reproducción interactiva y un chat integrado en tiempo real.
 
-Su característica principal es un módulo social que permite crear salas virtuales en las que varios participantes pueden coordinar la experiencia mediante un temporizador sincronizado controlado por el anfitrión, junto con una lista de reproducción interactiva y un chat integrado para comentar la sesión en tiempo real.
+## Funcionalidades
 
-## Características principales
-
-- **Búsqueda unificada**: consulta películas y series utilizando TMDb y Watchmode, mostrando su disponibilidad en plataformas de streaming en tiempo real.
-- **Sistema de amistad**: añade amigos mediante el envío y aceptación de solicitudes.
-- **Organización de eventos**: crea espacios sociales para coordinar sesiones de visualización remotas con amigos.
-- **Calendario de eventos**: consulta y gestiona fácilmente los eventos a los que te has unido.
+- **Búsqueda unificada**: consulta películas y series con TMDb y Watchmode, mostrando su disponibilidad en plataformas de streaming en tiempo real.
+- **Amigos**: añade amigos mediante el envío y aceptación de solicitudes.
+- **Eventos**: crea espacios sociales para coordinar sesiones de visualización remotas con amigos.
+- **Calendario de eventos**: consulta los eventos a los que te has unido.
 - **Votaciones**: organiza votaciones para decidir qué contenido ver durante un evento.
-- **Reproducción sincronizada**: temporizador controlado por el anfitrión para mantener a todos los participantes sincronizados.
+- **Reproducción sincronizada**: un temporizador controlado por el anfitrión mantiene a todos los participantes sincronizados.
 - **Lista de reproducción interactiva**: añade y organiza el contenido que se verá durante la sesión.
 - **Chat en tiempo real**: mensajería integrada para comentar la sesión mientras se desarrolla.
 - **Administración basada en roles**: gestiona permisos y accesos dentro de cada sala.
 
 ## Demostración
 
-Los siguientes ejemplos muestran algunas de las funcionalidades principales de UltimateWatch.
+<div className="grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
 
-<div className="grid gap-8 grid-cols-1 2xl:grid-cols-2">
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Explorar películas y series</h4>
-    <video
-      src="/videos/projects/ultimatewatch/series.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Explorar películas y series</h4>
+    <LazyVideo src="/videos/projects/ultimatewatch/series.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Organizar eventos</h4>
-    <video
-      src="/videos/projects/ultimatewatch/organize_event.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Organizar eventos</h4>
+    <LazyVideo src="/videos/projects/ultimatewatch/organize_event.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Unirse a eventos</h4>
-    <video
-      src="/videos/projects/ultimatewatch/join_event.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Unirse a eventos</h4>
+    <LazyVideo src="/videos/projects/ultimatewatch/join_event.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Sala del evento y estadísticas en tiempo real</h4>
-    <video
-      src="/videos/projects/ultimatewatch/event_room.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Calendario de eventos</h4>
-    <video
-      src="/videos/projects/ultimatewatch/calendar.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
-  </div>
-
-  <div className="space-y-2">
-    <h4 className="text-md font-semibold">Añadir amigos</h4>
-    <video
-      src="/videos/projects/ultimatewatch/friend.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="w-full rounded-xl border shadow-sm"
-    />
+  <div className="space-y-1">
+    <h4 className="m-0 text-md font-semibold">Sala del evento y estadísticas en tiempo real</h4>
+    <LazyVideo src="/videos/projects/ultimatewatch/event_room.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
   </div>
 
 </div>
 
-## Retos
+<details className="mt-4 rounded-xl border-2 border-foreground/20 bg-card px-4 py-3">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground marker:text-accent-primary">Más demos: calendario y amigos</summary>
 
-Desarrollar UltimateWatch supuso afrontar diversos retos tanto técnicos como de planificación:
+  <div className="mt-4 grid items-start gap-x-4 gap-y-3 grid-cols-1 2xl:grid-cols-2">
 
-- Gestionar el proyecto de forma individual, desde la planificación y estimación de tareas hasta el desarrollo y las pruebas, siguiendo una metodología Scrum.
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Calendario de eventos</h4>
+      <LazyVideo src="/videos/projects/ultimatewatch/calendar.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
+
+    <div className="space-y-1">
+      <h4 className="m-0 text-md font-semibold">Añadir amigos</h4>
+      <LazyVideo src="/videos/projects/ultimatewatch/friend.mp4" className="m-0 block w-full rounded-xl border-2 border-foreground/20 shadow-lg" />
+    </div>
+
+  </div>
+</details>
+
+## Retos técnicos
+
+- Gestionar el proyecto de forma individual, desde la planificación y estimación hasta el desarrollo y las pruebas, siguiendo Scrum.
 - Diseñar una estrategia de herencia en la base de datos que pudiera escalar de forma eficiente.
-- Implementar comunicación en tiempo real de baja latencia mediante WebSockets para soportar temporizadores sincronizados, chat y eventos de las salas.
-- Integrar y combinar datos procedentes de las APIs de TMDb y Watchmode en un catálogo único y consistente, respetando las limitaciones y políticas de uso de ambas.
-- Realizar estimaciones y descomponer correctamente las tareas del proyecto.
+- Implementar comunicación en tiempo real de baja latencia con WebSockets para temporizadores sincronizados, chat y eventos de las salas.
+- Combinar los datos de TMDb y Watchmode en un catálogo único y consistente, respetando las políticas de uso de cada API.
+- Estimar y descomponer correctamente las tareas del proyecto.
 
-## Lecciones aprendidas
+## Aprendizajes
 
-Trabajar en UltimateWatch me enseñó a gestionar un proyecto de esta envergadura de forma completamente individual, aplicando metodologías ágiles y priorizando un MVP para cumplir los objetivos de cada sprint.
-
-Investigar las tecnologías antes de comenzar el desarrollo, como evaluar NestJS por su arquitectura modular, resultó muy beneficioso durante el proyecto. Del mismo modo, validar previamente las APIs externas evitó problemas inesperados al integrar y obtener los datos.
-
-La implementación de funcionalidades en tiempo real mediante WebSockets me permitió adquirir experiencia práctica en el diseño de sistemas orientados a eventos, la gestión de clientes conectados y la sincronización de múltiples usuarios durante sesiones colaborativas.
-
-También comprobé de primera mano la importancia del diseño de la base de datos para la mantenibilidad. Tener que cambiar la estrategia de herencia con el proyecto ya avanzado solo fue posible porque el código se había mantenido cohesionado y desacoplado.
-
-Por último, este proyecto reforzó la importancia de descomponer correctamente las tareas y de no subestimar el tiempo que pueden requerir funcionalidades aparentemente sencillas.
+- Gestionar un proyecto de esta envergadura de forma individual, aplicando metodologías ágiles y priorizando un MVP para cumplir los objetivos de cada sprint.
+- Investigar las tecnologías antes de empezar (por ejemplo, evaluar NestJS por su arquitectura modular) y validar previamente las APIs externas evitó problemas inesperados más adelante.
+- Los WebSockets me dieron experiencia práctica en comunicación orientada a eventos, gestión de clientes conectados y sincronización de varios usuarios en sesiones colaborativas.
+- El diseño de la base de datos importa para la mantenibilidad: cambiar la estrategia de herencia con el proyecto avanzado solo fue posible porque el código estaba cohesionado y desacoplado.
+- Hay que descomponer bien las tareas y no subestimar las que parecen sencillas.
