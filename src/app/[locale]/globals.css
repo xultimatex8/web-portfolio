@@ -3,18 +3,18 @@
 @import "devicon/devicon.min.css";
 
 :root {
-  --background: #EEF0F3;
-  --surface: #D5D9E0;
-  --card: #F9FAFB;
-  --nav: #1F2937;
-  --nav-foreground: #F7F8FA;
-  --accent-primary: #D97706;
-  --accent-secondary: #93C5FD;
-  --foreground: #111827;
-  --foreground-secondary: #5B6472;
-  --live: #4D9A6A;
-  --offline: #A66A6A;
-  --category: #C4B5FD;
+  --background: #0A0E14;
+  --surface: #1D2733;
+  --card: #131A24;
+  --nav: #263241;
+  --nav-foreground: #F1EFE8;
+  --accent-primary: #C7433C;
+  --accent-secondary: #3E7CB1;
+  --foreground: #F1EFE8;
+  --foreground-secondary: #8795aa;
+  --live: #5FBF7F;
+  --offline: #C97878;
+  --category: #9B8BC0;
 }
 
 @theme inline {
@@ -34,24 +34,6 @@
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-display), sans-serif;
   --breakpoint-qhd: 1000px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0A0E14;
-    --surface: #1D2733;
-    --card: #131A24;
-    --nav: #263241;
-    --nav-foreground: #F1EFE8;
-    --accent-primary: #C7433C;
-    --accent-secondary: #3E7CB1;
-    --foreground: #111827;
-    --foreground-secondary: #8795aa;
-    --foreground: #F1EFE8;
-    --live: #5FBF7F;
-    --offline: #C97878;
-    --category: #9B8BC0;
-  }
 }
 
 @theme {
